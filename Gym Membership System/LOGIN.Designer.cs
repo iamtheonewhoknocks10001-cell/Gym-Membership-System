@@ -131,10 +131,10 @@
             chkShowPassword.UseVisualStyleBackColor = false;
             chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
 
-            // btnLogin - ONLY FONT CHANGED
+            // btnLogin
             btnLogin.BackColor = Color.FromArgb(255, 100, 0);
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Impact 16F
+            btnLogin.Font = new Font("Impact", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(550, 445);
             btnLogin.Name = "btnLogin";
@@ -148,13 +148,13 @@
             // btnCreateAccount
             btnCreateAccount.BackColor = Color.FromArgb(76, 175, 80);
             btnCreateAccount.FlatStyle = FlatStyle.Flat;
-            btnCreateAccount.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCreateAccount.Font = new Font("Impact", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCreateAccount.ForeColor = Color.White;
             btnCreateAccount.Location = new Point(550, 505);
             btnCreateAccount.Name = "btnCreateAccount";
             btnCreateAccount.Size = new Size(400, 35);
             btnCreateAccount.TabIndex = 9;
-            btnCreateAccount.Text = "CREATE FIRST ADMIN ACCOUNT";  // This is for first-time setup
+            btnCreateAccount.Text = "CREATE FIRST ADMIN ACCOUNT";
             btnCreateAccount.TextAlign = ContentAlignment.MiddleCenter;
             btnCreateAccount.UseVisualStyleBackColor = false;
             btnCreateAccount.FlatAppearance.BorderSize = 0;
@@ -168,7 +168,6 @@
             lblForgotPassword.Name = "lblForgotPassword";
             lblForgotPassword.Size = new Size(400, 25);
             lblForgotPassword.TabIndex = 10;
-            lblForgotPassword.Text = "Forgot Password?";
             lblForgotPassword.Text = "Forgot Password?";
             lblForgotPassword.TextAlign = ContentAlignment.MiddleCenter;
             lblForgotPassword.Cursor = Cursors.Hand;
@@ -212,5 +211,4 @@
         private Label lblQuote;
         private Label lblForgotPassword;
     }
-
 }

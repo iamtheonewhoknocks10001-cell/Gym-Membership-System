@@ -77,7 +77,7 @@ namespace Gym_Membership_System
 
             // lblFirstName
             lblFirstName.BackColor = Color.Transparent;
-            lblFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Lato
+            lblFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblFirstName.ForeColor = Color.White;
             lblFirstName.Location = new Point(300, 200);
             lblFirstName.Name = "lblFirstName";
@@ -88,7 +88,7 @@ namespace Gym_Membership_System
 
             // txtFirstName
             txtFirstName.BackColor = Color.White;
-            txtFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0); // Changed from Lato
+            txtFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtFirstName.ForeColor = Color.Black;
             txtFirstName.Location = new Point(430, 200);
             txtFirstName.Name = "txtFirstName";
@@ -98,7 +98,7 @@ namespace Gym_Membership_System
 
             // lblLastName
             lblLastName.BackColor = Color.Transparent;
-            lblLastName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Lato
+            lblLastName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblLastName.ForeColor = Color.White;
             lblLastName.Location = new Point(300, 250);
             lblLastName.Name = "lblLastName";
@@ -109,7 +109,7 @@ namespace Gym_Membership_System
 
             // txtLastName
             txtLastName.BackColor = Color.White;
-            txtLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0); // Changed from Lato
+            txtLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtLastName.ForeColor = Color.Black;
             txtLastName.Location = new Point(430, 250);
             txtLastName.Name = "txtLastName";
@@ -120,7 +120,7 @@ namespace Gym_Membership_System
 
             // lblEmail
             lblEmail.BackColor = Color.Transparent;
-            lblEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Lato
+            lblEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblEmail.ForeColor = Color.White;
             lblEmail.Location = new Point(300, 300);
             lblEmail.Name = "lblEmail";
@@ -131,7 +131,7 @@ namespace Gym_Membership_System
 
             // txtEmail
             txtEmail.BackColor = Color.White;
-            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0); // Changed from Lato
+            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtEmail.ForeColor = Color.Black;
             txtEmail.Location = new Point(430, 300);
             txtEmail.Name = "txtEmail";
@@ -141,7 +141,7 @@ namespace Gym_Membership_System
 
             // lblUsername
             lblUsername.BackColor = Color.Transparent;
-            lblUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Lato
+            lblUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUsername.ForeColor = Color.White;
             lblUsername.Location = new Point(300, 350);
             lblUsername.Name = "lblUsername";
@@ -152,7 +152,7 @@ namespace Gym_Membership_System
 
             // txtUsername
             txtUsername.BackColor = Color.White;
-            txtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0); // Changed from Lato
+            txtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtUsername.ForeColor = Color.Black;
             txtUsername.Location = new Point(430, 350);
             txtUsername.Name = "txtUsername";
@@ -162,7 +162,7 @@ namespace Gym_Membership_System
 
             // lblPassword
             lblPassword.BackColor = Color.Transparent;
-            lblPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Lato
+            lblPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPassword.ForeColor = Color.White;
             lblPassword.Location = new Point(300, 400);
             lblPassword.Name = "lblPassword";
@@ -173,7 +173,7 @@ namespace Gym_Membership_System
 
             // txtPassword
             txtPassword.BackColor = Color.White;
-            txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0); // Changed from Lato
+            txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPassword.ForeColor = Color.Black;
             txtPassword.Location = new Point(430, 400);
             txtPassword.Name = "txtPassword";
@@ -184,7 +184,7 @@ namespace Gym_Membership_System
 
             // lblConfirmPassword
             lblConfirmPassword.BackColor = Color.Transparent;
-            lblConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Lato
+            lblConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblConfirmPassword.ForeColor = Color.White;
             lblConfirmPassword.Location = new Point(300, 450);
             lblConfirmPassword.Name = "lblConfirmPassword";
@@ -195,7 +195,7 @@ namespace Gym_Membership_System
 
             // txtConfirmPassword
             txtConfirmPassword.BackColor = Color.White;
-            txtConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0); // Changed from Lato
+            txtConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtConfirmPassword.ForeColor = Color.Black;
             txtConfirmPassword.Location = new Point(430, 450);
             txtConfirmPassword.Name = "txtConfirmPassword";
@@ -207,7 +207,7 @@ namespace Gym_Membership_System
 
             // chkShowPassword
             chkShowPassword.BackColor = Color.Transparent;
-            chkShowPassword.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0); // Changed from Lato
+            chkShowPassword.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkShowPassword.ForeColor = Color.FromArgb(255, 200, 0);
             chkShowPassword.Location = new Point(430, 490);
             chkShowPassword.Name = "chkShowPassword";
@@ -217,10 +217,10 @@ namespace Gym_Membership_System
             chkShowPassword.UseVisualStyleBackColor = false;
             chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
 
-            // btnSave - ONLY FONT CHANGED
+            // btnSave
             btnSave.BackColor = Color.FromArgb(76, 175, 80);
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Lato 14F
+            btnSave.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(350, 560);
             btnSave.Name = "btnSave";
@@ -232,10 +232,10 @@ namespace Gym_Membership_System
             btnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(56, 142, 60);
             btnSave.Click += BtnSave_Click;
 
-            // btnReset - ONLY FONT CHANGED
+            // btnReset
             btnReset.BackColor = Color.FromArgb(220, 53, 69);
             btnReset.FlatStyle = FlatStyle.Flat;
-            btnReset.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0); // Changed from Lato 14F
+            btnReset.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReset.ForeColor = Color.White;
             btnReset.Location = new Point(550, 560);
             btnReset.Name = "btnReset";
@@ -249,7 +249,7 @@ namespace Gym_Membership_System
 
             // lblBackToLogin
             lblBackToLogin.BackColor = Color.Transparent;
-            lblBackToLogin.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point, 0); // Changed from Lato
+            lblBackToLogin.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblBackToLogin.ForeColor = Color.FromArgb(255, 200, 0);
             lblBackToLogin.Location = new Point(425, 630);
             lblBackToLogin.Name = "lblBackToLogin";

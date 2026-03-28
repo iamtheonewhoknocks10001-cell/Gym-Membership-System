@@ -21,8 +21,6 @@
             this.navPanel = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.Button();
-            this.btnStore = new System.Windows.Forms.Button();
-            this.btnBlogs = new System.Windows.Forms.Button();
             this.btnAboutUs = new System.Windows.Forms.Button();
             this.btnContactUs = new System.Windows.Forms.Button();
 
@@ -71,8 +69,6 @@
             this.navPanel.BackColor = System.Drawing.Color.White;
             this.navPanel.Controls.Add(this.lblLogo);
             this.navPanel.Controls.Add(this.btnHome);
-            this.navPanel.Controls.Add(this.btnStore);
-            this.navPanel.Controls.Add(this.btnBlogs);
             this.navPanel.Controls.Add(this.btnAboutUs);
             this.navPanel.Controls.Add(this.btnContactUs);
             this.navPanel.Dock = System.Windows.Forms.DockStyle.Top;
@@ -87,53 +83,39 @@
                 }
             };
 
+            // Logo
             this.lblLogo.AutoSize = true;
             this.lblLogo.Font = new System.Drawing.Font("Verdana", 14F, System.Drawing.FontStyle.Bold);
             this.lblLogo.ForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
             this.lblLogo.Location = new System.Drawing.Point(30, 20);
-            this.lblLogo.Text = "FITNESS CLUB";
+            this.lblLogo.Text = "FITWARE";
 
+            // ADD MEMBER Button
             this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHome.FlatAppearance.BorderSize = 0;
             this.btnHome.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnHome.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
             this.btnHome.Location = new System.Drawing.Point(220, 18);
-            this.btnHome.Size = new System.Drawing.Size(110, 30);
+            this.btnHome.Size = new System.Drawing.Size(120, 30);
             this.btnHome.Text = "ADD MEMBER";
             this.btnHome.Click += new System.EventHandler(this.btnAddMember_Click);
 
-            this.btnStore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStore.FlatAppearance.BorderSize = 0;
-            this.btnStore.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnStore.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
-            this.btnStore.Location = new System.Drawing.Point(340, 18);
-            this.btnStore.Size = new System.Drawing.Size(120, 30);
-            this.btnStore.Text = "MANAGE";
-            this.btnStore.Click += new System.EventHandler(this.btnManage_Click);
-
-            this.btnBlogs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBlogs.FlatAppearance.BorderSize = 0;
-            this.btnBlogs.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnBlogs.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
-            this.btnBlogs.Location = new System.Drawing.Point(470, 18);
-            this.btnBlogs.Size = new System.Drawing.Size(100, 30);
-            this.btnBlogs.Text = "TRAINERS";
-            this.btnBlogs.Click += new System.EventHandler(this.btnTrainers_Click);
-
+            // PAYMENTS Button
             this.btnAboutUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAboutUs.FlatAppearance.BorderSize = 0;
             this.btnAboutUs.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnAboutUs.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
-            this.btnAboutUs.Location = new System.Drawing.Point(580, 18);
-            this.btnAboutUs.Size = new System.Drawing.Size(100, 30);
+            this.btnAboutUs.Location = new System.Drawing.Point(360, 18);
+            this.btnAboutUs.Size = new System.Drawing.Size(120, 30);
             this.btnAboutUs.Text = "PAYMENTS";
             this.btnAboutUs.Click += new System.EventHandler(this.btnPayments_Click);
 
+            // LOG OUT Button
             this.btnContactUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnContactUs.FlatAppearance.BorderSize = 0;
             this.btnContactUs.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnContactUs.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
-            this.btnContactUs.Location = new System.Drawing.Point(690, 18);
+            this.btnContactUs.Location = new System.Drawing.Point(500, 18);
             this.btnContactUs.Size = new System.Drawing.Size(100, 30);
             this.btnContactUs.Text = "LOG OUT";
             this.btnContactUs.Click += new System.EventHandler(this.btnLogout_Click);
@@ -260,7 +242,7 @@
             // ============================================
             this.tableContainer.BackColor = System.Drawing.Color.LightGray;
             this.tableContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableContainer.Padding = new System.Windows.Forms.Padding(20, 10, 20, 20); // Add padding around table
+            this.tableContainer.Padding = new System.Windows.Forms.Padding(20, 10, 20, 20);
             this.tableContainer.Controls.Add(this.dgvMembers);
 
             this.dgvMembers.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -278,12 +260,12 @@
             this.dgvMembers.AllowUserToDeleteRows = false;
             this.dgvMembers.ReadOnly = true;
 
-            // Header styling - Darker for contrast
+            // Header styling
             this.dgvMembers.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(240, 240, 245);
             this.dgvMembers.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(60, 60, 70);
             this.dgvMembers.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
 
-            // Row styling - White and light alternating
+            // Row styling
             this.dgvMembers.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgvMembers.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvMembers.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(255, 245, 235);
@@ -363,7 +345,7 @@
             int spacing = 30;
 
             // Search bar height - adjustable
-            int searchBarHeight = 19; // Change this to adjust search bar height
+            int searchBarHeight = 19;
 
             // Calculate total width
             int totalWidth = titleWidth + spacing + searchWidth + spacing + refreshWidth;
@@ -372,9 +354,9 @@
             if (startX < 10) startX = 10;
 
             // Individual vertical positions
-            int titleVerticalPosition = 26;      // Position for Members List text
-            int searchBarVerticalPosition = 23;  // Position for search bar
-            int refreshVerticalPosition = 26;    // Position for refresh button
+            int titleVerticalPosition = 26;
+            int searchBarVerticalPosition = 23;
+            int refreshVerticalPosition = 26;
 
             // Set search bar height
             this.txtSearch.Height = searchBarHeight;
@@ -397,32 +379,25 @@
         {
             if (this.dgvMembers == null || this.tableContainer == null) return;
 
-            // Calculate table size - use 95% of container width to leave margins
             int desiredWidth = (int)(this.tableContainer.Width * 0.95);
             int desiredHeight = this.tableContainer.Height - 30;
 
-            // Set minimum and maximum constraints
             if (desiredWidth > 1400) desiredWidth = 1400;
             if (desiredWidth < 700) desiredWidth = 700;
 
-            // Center the table horizontally and vertically
             this.dgvMembers.Width = desiredWidth;
             this.dgvMembers.Height = desiredHeight;
             this.dgvMembers.Left = (this.tableContainer.Width - this.dgvMembers.Width) / 2;
             this.dgvMembers.Top = (this.tableContainer.Height - this.dgvMembers.Height) / 2;
 
-            // Set anchor to none for manual positioning
             this.dgvMembers.Anchor = System.Windows.Forms.AnchorStyles.None;
-
-            // Force the table to fill columns properly
             this.dgvMembers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
+
         // CONTROL DECLARATIONS
         private System.Windows.Forms.Panel navPanel;
         private System.Windows.Forms.Label lblLogo;
         private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Button btnStore;
-        private System.Windows.Forms.Button btnBlogs;
         private System.Windows.Forms.Button btnAboutUs;
         private System.Windows.Forms.Button btnContactUs;
 
