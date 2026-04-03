@@ -633,8 +633,16 @@ namespace Gym_Membership_System
 
         private void btnPayments_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Payments functionality for {_role}.", "Payments",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                FormPayments paymentForm = new FormPayments();
+                paymentForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error opening Payment Form: {ex.Message}\n\nMake sure the FormPayments class exists.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

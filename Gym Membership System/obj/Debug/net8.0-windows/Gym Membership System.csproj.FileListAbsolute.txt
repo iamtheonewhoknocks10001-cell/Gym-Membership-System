@@ -112,3 +112,5 @@ C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windo
 C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windows\ref\Gym Membership System.dll
 C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.BaseForm.resources
 C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.ForgotAccountForm.resources
+C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.AddPaymentForm.resources
+C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.FormPayments.resources

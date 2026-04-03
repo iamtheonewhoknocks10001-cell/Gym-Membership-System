@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\JEFS\\Gym-Membership-System\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\jefs\\gym-membership-system\\gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|C:\\Users\\JEFS\\Gym-Membership-System\\gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\jefs\\gym-membership-system\\gym membership system\\addpaymentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\addpaymentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\jefs\\gym-membership-system\\gym membership system\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,14 +29,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|C:\\Users\\JEFS\\Gym-Membership-System\\gym membership system\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\jefs\\gym-membership-system\\gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|C:\\Users\\JEFS\\Gym-Membership-System\\gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\jefs\\gym-membership-system\\gym membership system\\forgotaccountform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -86,7 +90,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,7 +98,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 2,
+              "Title": "AddPaymentForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\AddPaymentForm.cs",
+              "RelativeDocumentMoniker": "Gym Membership System\\AddPaymentForm.cs",
+              "ToolTip": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\AddPaymentForm.cs [Design]",
+              "RelativeToolTip": "Gym Membership System\\AddPaymentForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T11:23:10.059Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ForgotAccountForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\ForgotAccountForm.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\ForgotAccountForm.cs",
@@ -105,7 +121,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "BaseForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\BaseForm.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\BaseForm.cs",
@@ -116,30 +132,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\Form1.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\Form1.cs",
               "ToolTip": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\Form1.cs [Design]",
               "RelativeToolTip": "Gym Membership System\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T10:56:50.919Z"
+              "WhenOpened": "2026-04-03T10:56:50.919Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\Form1.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\Form1.cs",
               "ToolTip": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\Form1.cs",
               "RelativeToolTip": "Gym Membership System\\Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAGYCAAAAAAAAAAA4wHcCAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T10:56:36.33Z"
+              "WhenOpened": "2026-04-03T10:56:36.33Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "ForgotAccountForm.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\ForgotAccountForm.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\ForgotAccountForm.cs",
@@ -151,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "LOGIN.cs [Design]",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\LOGIN.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\LOGIN.cs",
@@ -162,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "LOGIN.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\LOGIN.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\LOGIN.cs",
@@ -174,7 +192,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "SIGNUP.cs [Design]",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\SIGNUP.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\SIGNUP.cs",
@@ -186,7 +204,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "SIGNUP.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\SIGNUP.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\SIGNUP.cs",
@@ -199,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "addmember.cs [Design]",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\addmember.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\addmember.cs",
@@ -210,7 +228,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "addmember.Designer.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\addmember.Designer.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\addmember.Designer.cs",
@@ -222,7 +240,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\Program.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\Program.cs",
@@ -234,7 +252,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "addmember.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\addmember.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\addmember.cs",
@@ -246,7 +264,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "BaseForm.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\BaseForm.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\BaseForm.cs",
@@ -258,7 +276,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "SIGNUP.Designer.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\SIGNUP.Designer.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\SIGNUP.Designer.cs",
@@ -270,7 +288,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "LOGIN.Designer.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\LOGIN.Designer.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\LOGIN.Designer.cs",
@@ -282,7 +300,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\Form1.Designer.cs",
@@ -290,11 +308,12 @@
               "RelativeToolTip": "Gym Membership System\\Form1.Designer.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAYwE0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-03T10:56:36.393Z"
+              "WhenOpened": "2026-04-03T10:56:36.393Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Gym Membership System.csproj",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\Gym Membership System.csproj",
               "RelativeDocumentMoniker": "Gym Membership System\\Gym Membership System.csproj",
@@ -306,7 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "SQLQuery1.sql",
               "DocumentMoniker": "C:\\Users\\JEFS\\Gym-Membership-System\\Gym Membership System\\SQLQuery1.sql",
               "RelativeDocumentMoniker": "Gym Membership System\\SQLQuery1.sql",
