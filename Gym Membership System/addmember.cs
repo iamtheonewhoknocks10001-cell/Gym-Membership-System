@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Gym_Membership_System
 {
@@ -16,26 +17,62 @@ namespace Gym_Membership_System
     {
         private string connectionString = "Server=DESKTOP-PMQJTOJ;Database=GymDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
-        private const int OverlayAlpha = 180;
-        private const int VignetteAlpha = 200;
-        private const float VignetteFocus = 0.55f;
-        private const int GradientAlpha = 80;
-        private readonly Image _backgroundImage = Properties.Resources.sunsetview;
+        // Visual constants - MATCHING LOGIN FORM'S DARKER SETTINGS
+        private const int OverlayAlpha = 180;      // Same as Login - very dark
+        private const int VignetteAlpha = 200;     // Same as Login - strong vignette
+        private const float VignetteFocus = 0.55f; // Same as Login - tight focus
+        private const int GradientAlpha = 80;      // Same as Login - strong gradient
+        private readonly Image _backgroundImage = Properties.Resources.loginbg;
+
+        private bool isTransitioning = false;
+        private bool isShowingError = false;
+
+        // All quotes - expanded to match Login + more
+        private string[] quotes = {
+            "\"WHERE MUSCLE MEETS TECHNOLOGY\"",
+            "\"NO EXCUSES. JUST RESULTS.\"",
+            "\"Your body can stand almost anything. It's your mind that you have to convince.\"",
+            "\"The only bad workout is the one that didn't happen.\"",
+            "\"PROGRESS, NOT PERFECTION\"",
+            "\"Success starts with self-discipline.\"",
+            "\"TRAIN HARD. STAY STRONG.\"",
+            "\"Your health is an investment, not an expense.\"",
+            "\"MAKE YOURSELF PROUD\"",
+            "\"The pain you feel today will be the strength you feel tomorrow.\"",
+            "\"EARN YOUR BODY\"",
+            "\"Strive for progress, not perfection.\"",
+            "\"NO PAIN. NO GAIN. NO EXCUSES.\"",
+            "\"You are stronger than you think.\"",
+            "\"FIND YOUR STRENGTH\""
+        };
+        private int currentQuoteIndex = 0;
+        private System.Windows.Forms.Timer quoteTimer;
 
         public AddMember()
         {
             InitializeComponent();
             SetupForm();
+            this.Opacity = 0;
         }
 
         private void SetupForm()
         {
-            this.BackgroundImage = null;
+            this.BackgroundImage = null; // Let OnPaintBackground handle background with effects
             this.WindowState = FormWindowState.Maximized;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.DoubleBuffered = true;
             this.Text = "Add Member - FitWare";
 
+            // Setup quote timer
+            quoteTimer = new System.Windows.Forms.Timer();
+            quoteTimer.Interval = 5000;
+            quoteTimer.Tick += QuoteTimer_Tick;
+            quoteTimer.Start();
+
+            lblQuote.Text = quotes[0];
+            currentQuoteIndex = 0;
+
+            // Enable custom painting for smooth rendering (matching Login form)
             SetStyle(ControlStyles.OptimizedDoubleBuffer |
                      ControlStyles.AllPaintingInWmPaint |
                      ControlStyles.UserPaint |
@@ -43,9 +80,86 @@ namespace Gym_Membership_System
                      ControlStyles.DoubleBuffer, true);
 
             this.Load += (s, e) => CenterControls();
-            this.Resize += (s, e) => CenterControls();
+            this.Resize += (s, e) => { CenterControls(); this.Invalidate(); };
+            this.Shown += (s, e) => FadeIn();
 
             SetupEventHandlers();
+        }
+
+        private void QuoteTimer_Tick(object sender, EventArgs e)
+        {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.Length;
+            lblQuote.Text = quotes[currentQuoteIndex];
+        }
+
+        private void FadeIn()
+        {
+            Timer fadeIn = new Timer();
+            fadeIn.Interval = 15;
+            fadeIn.Tick += (s, e) =>
+            {
+                if (this.Opacity < 1)
+                {
+                    this.Opacity += 0.05;
+                }
+                else
+                {
+                    fadeIn.Stop();
+                    fadeIn.Dispose();
+                }
+            };
+            fadeIn.Start();
+        }
+
+        private void FadeOutAndNavigate()
+        {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            Timer fadeOut = new Timer();
+            fadeOut.Interval = 15;
+            fadeOut.Tick += (s, e) =>
+            {
+                if (this.Opacity > 0)
+                {
+                    this.Opacity -= 0.05;
+                }
+                else
+                {
+                    fadeOut.Stop();
+                    fadeOut.Dispose();
+
+                    Form1 dashboard = null;
+                    foreach (Form f in Application.OpenForms)
+                    {
+                        if (f is Form1)
+                        {
+                            dashboard = (Form1)f;
+                            break;
+                        }
+                    }
+
+                    if (dashboard != null)
+                    {
+                        dashboard.Show();
+                        dashboard.BringToFront();
+                        dashboard.WindowState = FormWindowState.Normal;
+                        dashboard.WindowState = FormWindowState.Maximized;
+                        _ = dashboard.RefreshMembers();
+                        this.Hide();
+                        this.Opacity = 1;
+                        isTransitioning = false;
+                    }
+                    else
+                    {
+                        Form1 mainForm = new Form1("", "", "");
+                        mainForm.Show();
+                        this.Hide();
+                        isTransitioning = false;
+                    }
+                }
+            };
+            fadeOut.Start();
         }
 
         private void SetupEventHandlers()
@@ -53,11 +167,74 @@ namespace Gym_Membership_System
             btnAdd.Click += BtnAdd_Click;
             btnClear.Click += BtnClear_Click;
             btnBack.Click += BtnBack_Click;
+            lblQuote.Click += LblQuote_Click;
+        }
+
+        private void LblQuote_Click(object sender, EventArgs e)
+        {
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.Length;
+            lblQuote.Text = quotes[currentQuoteIndex];
+            quoteTimer.Stop();
+            quoteTimer.Start();
         }
 
         private void CenterControls()
         {
-            // Controls positioned absolutely in designer
+            // Get the form client size (matching Login form approach)
+            int formWidth = this.ClientSize.Width;
+            int formHeight = this.ClientSize.Height;
+            int centerX = formWidth / 2;
+
+            // Logo at top (like Login's lblTitle)
+            int topOffset = 100;
+            lblLogo.Location = new Point(centerX - 600, topOffset);
+            lblLogo.Size = new Size(1200, 100);
+            lblLogo.TextAlign = ContentAlignment.MiddleCenter;
+
+            // Quote below logo (like Login's lblQuote)
+            lblQuote.Location = new Point(centerX - 500, lblLogo.Bottom + 20);
+            lblQuote.Size = new Size(1000, 40);
+            lblQuote.TextAlign = ContentAlignment.MiddleCenter;
+
+            // Calculate vertical center for form fields - TIGHTER SPACING
+            int panelHeight = 350;  // Reduced from 400
+            int panelTop = (formHeight - panelHeight) / 2 + 50;
+            int currentY = panelTop;
+
+            // Tighter spacing between fields (reduced from 20px to 12px)
+            int fieldSpacing = 12;
+
+            // First Name
+            lblFirstName.Location = new Point(centerX - 200, currentY);
+            txtFirstName.Location = new Point(centerX - 200, lblFirstName.Bottom + 5);
+            currentY = txtFirstName.Bottom + fieldSpacing;
+
+            // Last Name
+            lblLastName.Location = new Point(centerX - 200, currentY);
+            txtLastName.Location = new Point(centerX - 200, lblLastName.Bottom + 5);
+            currentY = txtLastName.Bottom + fieldSpacing;
+
+            // Email
+            lblEmail.Location = new Point(centerX - 200, currentY);
+            txtEmail.Location = new Point(centerX - 200, lblEmail.Bottom + 5);
+            currentY = txtEmail.Bottom + fieldSpacing;
+
+            // Phone
+            lblPhone.Location = new Point(centerX - 200, currentY);
+            txtPhone.Location = new Point(centerX - 200, lblPhone.Bottom + 5);
+            currentY = txtPhone.Bottom + fieldSpacing;
+
+            // Membership Type
+            lblMembershipType.Location = new Point(centerX - 200, currentY);
+            cmbMembershipType.Location = new Point(centerX - 200, lblMembershipType.Bottom + 5);
+            currentY = cmbMembershipType.Bottom + 25;  // Slightly more space before buttons
+
+            // Buttons - side by side
+            btnAdd.Location = new Point(centerX - 200, currentY);
+            btnClear.Location = new Point(centerX + 20, currentY);  // Closer together (was +50)
+
+            // BACK button at bottom right (matching Login's style)
+            btnBack.Location = new Point(formWidth - 160, formHeight - 100);
         }
 
         private async void BtnAdd_Click(object sender, EventArgs e)
@@ -67,8 +244,13 @@ namespace Gym_Membership_System
 
             if (await CheckEmailExists(txtEmail.Text))
             {
-                MessageBox.Show("A member with this email already exists.",
-                    "Duplicate Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (!isShowingError)
+                {
+                    isShowingError = true;
+                    MessageBox.Show("A member with this email already exists.",
+                        "Duplicate Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    isShowingError = false;
+                }
                 return;
             }
 
@@ -88,19 +270,14 @@ namespace Gym_Membership_System
             if (newMemberId > 0)
             {
                 ClearForm();
-                MessageBox.Show($"Member {newMember.FirstName} {newMember.LastName} added successfully! (ID: MEM-{newMemberId:D4})",
-                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                foreach (Form f in Application.OpenForms)
+                if (!isShowingError)
                 {
-                    if (f is Form1 form1)
-                    {
-                        await form1.RefreshMembers();
-                        form1.Show();
-                        this.Close();
-                        return;
-                    }
+                    isShowingError = true;
+                    MessageBox.Show($"Member {newMember.FirstName} {newMember.LastName} added successfully! (ID: MEM-{newMemberId:D4})",
+                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    isShowingError = false;
                 }
+                FadeOutAndNavigate();
             }
         }
 
@@ -217,34 +394,35 @@ namespace Gym_Membership_System
 
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            foreach (Form f in Application.OpenForms)
-            {
-                if (f is Form1)
-                {
-                    f.Show();
-                    this.Close(); // This will trigger BaseForm closing and exit app
-                    return;
-                }
-            }
+            FadeOutAndNavigate();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            quoteTimer?.Stop();
+            quoteTimer?.Dispose();
+            base.OnFormClosing(e);
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)
         {
+            // EXACT MATCH of Login form's OnPaintBackground
             base.OnPaintBackground(e);
 
             var g = e.Graphics;
             g.SmoothingMode = SmoothingMode.HighQuality;
             Rectangle rect = ClientRectangle;
+            if (rect.Width <= 0 || rect.Height <= 0) return;
 
             if (_backgroundImage != null)
             {
-                float ratio = Math.Max((float)rect.Width / _backgroundImage.Width,
-                                      (float)rect.Height / _backgroundImage.Height);
-                int drawW = (int)(_backgroundImage.Width * ratio);
-                int drawH = (int)(_backgroundImage.Height * ratio);
-                int drawX = (rect.Width - drawW) / 2;
-                int drawY = (rect.Height - drawH) / 2;
-                g.DrawImage(_backgroundImage, new Rectangle(drawX, drawY, drawW, drawH));
+                var img = _backgroundImage;
+                float ratio = Math.Max((float)rect.Width / img.Width, (float)rect.Height / img.Height);
+                int drawW = (int)Math.Ceiling(img.Width * ratio);
+                int drawH = (int)Math.Ceiling(img.Height * ratio);
+                int drawX = rect.X + (rect.Width - drawW) / 2;
+                int drawY = rect.Y + (rect.Height - drawH) / 2;
+                g.DrawImage(img, new Rectangle(drawX, drawY, drawW, drawH));
             }
 
             using (var overlay = new SolidBrush(Color.FromArgb(OverlayAlpha, 0, 0, 0)))
@@ -254,8 +432,7 @@ namespace Gym_Membership_System
             {
                 float inflateW = rect.Width * 0.5f;
                 float inflateH = rect.Height * 0.5f;
-                path.AddEllipse(rect.X - inflateW / 2, rect.Y - inflateH / 2,
-                    rect.Width + inflateW, rect.Height + inflateH);
+                path.AddEllipse(rect.X - inflateW / 2, rect.Y - inflateH / 2, rect.Width + inflateW, rect.Height + inflateH);
                 using (var pgb = new PathGradientBrush(path))
                 {
                     pgb.CenterColor = Color.FromArgb(0, 0, 0, 0);
@@ -265,9 +442,7 @@ namespace Gym_Membership_System
                 }
             }
 
-            using (var lg = new LinearGradientBrush(rect,
-                Color.FromArgb(GradientAlpha, 0, 0, 0),
-                Color.FromArgb(0, 0, 0, 0), 90f))
+            using (var lg = new LinearGradientBrush(rect, Color.FromArgb(GradientAlpha, 0, 0, 0), Color.FromArgb(0, 0, 0, 0), 90f))
                 g.FillRectangle(lg, rect);
         }
     }

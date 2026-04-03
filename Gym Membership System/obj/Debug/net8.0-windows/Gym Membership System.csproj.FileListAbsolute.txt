@@ -47,10 +47,10 @@ C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.AssemblyInfoInputs.cache
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.AssemblyInfo.cs
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.csproj.CoreCompileInputs.cache
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.sourcelink.json
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Memb.5DEDC591.Up2Date
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.dll
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\refint\Gym Membership System.dll
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.pdb
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.genruntimeconfig.cache
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\ref\Gym Membership System.dll
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.sourcelink.json
