@@ -15,7 +15,7 @@ namespace Gym_Membership_System
 {
     public partial class AddMember : BaseForm
     {
-        private string connectionString = "Server=DESKTOP-PMQJTOJ;Database=GymDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        private string connectionString = "Server=DESKTOP-AH6OHHK;Database=GymDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         // Visual constants - MATCHING LOGIN FORM'S DARKER SETTINGS
         private const int OverlayAlpha = 180;      // Same as Login - very dark

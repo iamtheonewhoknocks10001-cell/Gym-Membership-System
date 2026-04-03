@@ -18,7 +18,7 @@ namespace Gym_Membership_System
         private const int GradientAlpha = 40;
         private readonly Image _backgroundImage = Properties.Resources.edited;
 
-        private string connectionString = "Server=DESKTOP-PMQJTOJ;Database=GymDB;Trusted_Connection=True;TrustServerCertificate=True;";
+        private string connectionString = "Server=DESKTOP-AH6OHHK;Database=GymDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         private string _email;
         private string _role;
