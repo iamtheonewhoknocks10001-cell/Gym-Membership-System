@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\Xyrelle Rafael\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\Xyrelle Rafael\\.nuget\\packages",
+      "C:\\Users\\JEFS\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\JEFS\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {
