@@ -15,287 +15,303 @@
 
         private void InitializeComponent()
         {
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.lblMember = new System.Windows.Forms.Label();
-            this.cmbMember = new System.Windows.Forms.ComboBox();
-            this.lblMembershipType = new System.Windows.Forms.Label();
-            this.cmbMembershipType = new System.Windows.Forms.ComboBox();
-            this.priceInfoPanel = new System.Windows.Forms.Panel();
-            this.lblPriceInfo = new System.Windows.Forms.Label();
-            this.lblPaymentPeriod = new System.Windows.Forms.Label();
-            this.cmbPaymentPeriod = new System.Windows.Forms.ComboBox();
-            this.lblAmount = new System.Windows.Forms.Label();
-            this.nudAmount = new System.Windows.Forms.NumericUpDown();
-            this.lblCalculatedAmount = new System.Windows.Forms.Label();
-            this.lblPaymentMethod = new System.Windows.Forms.Label();
-            this.cmbPaymentMethod = new System.Windows.Forms.ComboBox();
-            this.lblPaymentDate = new System.Windows.Forms.Label();
-            this.dtpPaymentDate = new System.Windows.Forms.DateTimePicker();
-            this.lblDueDate = new System.Windows.Forms.Label();
-            this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
-            this.lblTransactionRef = new System.Windows.Forms.Label();
-            this.txtTransactionRef = new System.Windows.Forms.TextBox();
-            this.lblNotes = new System.Windows.Forms.Label();
-            this.txtNotes = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
+            lblTitle = new Label();
+            lblMember = new Label();
+            cmbMember = new ComboBox();
+            lblMembershipType = new Label();
+            cmbMembershipType = new ComboBox();
+            lblPaymentPeriod = new Label();
+            cmbPaymentPeriod = new ComboBox();
+            lblAmount = new Label();
+            nudAmount = new NumericUpDown();
+            lblPaymentMethod = new Label();
+            cmbPaymentMethod = new ComboBox();
+            lblPaymentDate = new Label();
+            dtpPaymentDate = new DateTimePicker();
+            lblDueDate = new Label();
+            dtpDueDate = new DateTimePicker();
+            btnSave = new Button();
+            btnCancel = new Button();
+            btnBack = new Button();
+            ((System.ComponentModel.ISupportInitialize)nudAmount).BeginInit();
+            SuspendLayout();
 
-            this.priceInfoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).BeginInit();
-            this.SuspendLayout();
+            // ============================================
+            // FORM BACKGROUND
+            // ============================================
+            this.BackColor = Color.FromArgb(30, 30, 35);
+            this.BackgroundImage = null;
+            this.WindowState = FormWindowState.Maximized;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
+            this.DoubleBuffered = true;
+            this.Text = "Add Payment - FitWare";
 
-            // lblTitle
-            this.lblTitle.Text = "💰 New Payment Record";
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
-            this.lblTitle.Location = new System.Drawing.Point(20, 20);
-            this.lblTitle.Size = new System.Drawing.Size(350, 40);
-            this.lblTitle.Name = "lblTitle";
+            // ============================================
+            // TITLE
+            // ============================================
+            lblTitle.BackColor = Color.Transparent;
+            lblTitle.Font = new Font("Impact", 58F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.FromArgb(255, 100, 0);
+            lblTitle.Location = new Point(0, 0);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(1200, 100);
+            lblTitle.TabIndex = 30;
+            lblTitle.Text = "ADD PAYMENT";
+            lblTitle.TextAlign = ContentAlignment.MiddleCenter;
 
-            // lblMember
-            this.lblMember.Text = "Select Member:";
-            this.lblMember.Location = new System.Drawing.Point(20, 80);
-            this.lblMember.Size = new System.Drawing.Size(150, 25);
-            this.lblMember.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblMember.Name = "lblMember";
+            // ============================================
+            // MEMBER
+            // ============================================
+            lblMember.BackColor = Color.Transparent;
+            lblMember.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblMember.ForeColor = Color.FromArgb(220, 220, 230);
+            lblMember.Location = new Point(0, 0);
+            lblMember.Name = "lblMember";
+            lblMember.Size = new Size(180, 35);
+            lblMember.TabIndex = 29;
+            lblMember.Text = "Member:";
+            lblMember.TextAlign = ContentAlignment.MiddleRight;
 
-            // cmbMember
-            this.cmbMember.Location = new System.Drawing.Point(180, 78);
-            this.cmbMember.Size = new System.Drawing.Size(330, 30);
-            this.cmbMember.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbMember.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMember.Name = "cmbMember";
+            cmbMember.BackColor = Color.White;
+            cmbMember.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMember.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
+            cmbMember.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            cmbMember.Location = new Point(0, 0);
+            cmbMember.Name = "cmbMember";
+            cmbMember.Size = new Size(400, 38);
+            cmbMember.TabIndex = 1;
 
-            // lblMembershipType
-            this.lblMembershipType.Text = "Membership Type:";
-            this.lblMembershipType.Location = new System.Drawing.Point(20, 120);
-            this.lblMembershipType.Size = new System.Drawing.Size(150, 25);
-            this.lblMembershipType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblMembershipType.Name = "lblMembershipType";
+            // ============================================
+            // MEMBERSHIP TYPE - Darker text inside
+            // ============================================
+            lblMembershipType.BackColor = Color.Transparent;
+            lblMembershipType.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblMembershipType.ForeColor = Color.FromArgb(220, 220, 230);
+            lblMembershipType.Location = new Point(0, 0);
+            lblMembershipType.Name = "lblMembershipType";
+            lblMembershipType.Size = new Size(180, 35);
+            lblMembershipType.TabIndex = 28;
+            lblMembershipType.Text = "Membership Type:";
+            lblMembershipType.TextAlign = ContentAlignment.MiddleRight;
 
-            // cmbMembershipType
-            this.cmbMembershipType.Location = new System.Drawing.Point(180, 118);
-            this.cmbMembershipType.Size = new System.Drawing.Size(200, 30);
-            this.cmbMembershipType.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbMembershipType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMembershipType.Items.AddRange(new object[] { "BASIC", "PREMIUM" });
-            this.cmbMembershipType.Name = "cmbMembershipType";
+            cmbMembershipType.BackColor = Color.White;
+            cmbMembershipType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMembershipType.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
+            cmbMembershipType.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            cmbMembershipType.Location = new Point(0, 0);
+            cmbMembershipType.Name = "cmbMembershipType";
+            cmbMembershipType.Size = new Size(400, 38);
+            cmbMembershipType.TabIndex = 3;
 
-            // priceInfoPanel
-            this.priceInfoPanel.BackColor = System.Drawing.Color.FromArgb(248, 249, 252);
-            this.priceInfoPanel.Location = new System.Drawing.Point(20, 160);
-            this.priceInfoPanel.Size = new System.Drawing.Size(490, 70);
-            this.priceInfoPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.priceInfoPanel.Name = "priceInfoPanel";
+            // ============================================
+            // PAYMENT PERIOD - Darker text inside
+            // ============================================
+            lblPaymentPeriod.BackColor = Color.Transparent;
+            lblPaymentPeriod.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblPaymentPeriod.ForeColor = Color.FromArgb(220, 220, 230);
+            lblPaymentPeriod.Location = new Point(0, 0);
+            lblPaymentPeriod.Name = "lblPaymentPeriod";
+            lblPaymentPeriod.Size = new Size(180, 35);
+            lblPaymentPeriod.TabIndex = 27;
+            lblPaymentPeriod.Text = "Payment Period:";
+            lblPaymentPeriod.TextAlign = ContentAlignment.MiddleRight;
 
-            // lblPriceInfo
-            this.lblPriceInfo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular);
-            this.lblPriceInfo.ForeColor = System.Drawing.Color.FromArgb(100, 100, 110);
-            this.lblPriceInfo.Location = new System.Drawing.Point(10, 8);
-            this.lblPriceInfo.Size = new System.Drawing.Size(470, 55);
-            this.lblPriceInfo.Text = "📋 PRICING (35 PHP/day):\n• BASIC: Monthly ₱1,050 | Quarterly ₱3,150 | Annual ₱12,775\n• PREMIUM: Monthly ₱1,400 | Quarterly ₱4,000 | Annual ₱15,000";
-            this.lblPriceInfo.Name = "lblPriceInfo";
-            this.priceInfoPanel.Controls.Add(this.lblPriceInfo);
+            cmbPaymentPeriod.BackColor = Color.White;
+            cmbPaymentPeriod.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPaymentPeriod.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
+            cmbPaymentPeriod.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            cmbPaymentPeriod.Items.AddRange(new object[] { "Monthly", "Quarterly", "Annual" });
+            cmbPaymentPeriod.Location = new Point(0, 0);
+            cmbPaymentPeriod.Name = "cmbPaymentPeriod";
+            cmbPaymentPeriod.Size = new Size(400, 38);
+            cmbPaymentPeriod.TabIndex = 5;
 
-            // lblPaymentPeriod
-            this.lblPaymentPeriod.Text = "Payment Period:";
-            this.lblPaymentPeriod.Location = new System.Drawing.Point(20, 250);
-            this.lblPaymentPeriod.Size = new System.Drawing.Size(150, 25);
-            this.lblPaymentPeriod.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPaymentPeriod.Name = "lblPaymentPeriod";
+            // ============================================
+            // AMOUNT - Darker text inside
+            // ============================================
+            lblAmount.BackColor = Color.Transparent;
+            lblAmount.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblAmount.ForeColor = Color.White;
+            lblAmount.Location = new Point(0, 0);
+            lblAmount.Name = "lblAmount";
+            lblAmount.Size = new Size(180, 35);
+            lblAmount.TabIndex = 26;
+            lblAmount.Text = "Amount:";
+            lblAmount.TextAlign = ContentAlignment.MiddleRight;
 
-            // cmbPaymentPeriod
-            this.cmbPaymentPeriod.Location = new System.Drawing.Point(180, 248);
-            this.cmbPaymentPeriod.Size = new System.Drawing.Size(200, 30);
-            this.cmbPaymentPeriod.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbPaymentPeriod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPaymentPeriod.Items.AddRange(new object[] { "Monthly", "Quarterly", "Annual" });
-            this.cmbPaymentPeriod.Name = "cmbPaymentPeriod";
+            nudAmount.BackColor = Color.FromArgb(245, 245, 250);
+            nudAmount.DecimalPlaces = 2;
+            nudAmount.Font = new Font("Segoe UI", 16F, FontStyle.Bold);  // Large + Bold
+            nudAmount.ForeColor = Color.DarkOrange;  // Green
+            nudAmount.Location = new Point(0, 0);
+            nudAmount.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
+            nudAmount.Name = "nudAmount";
+            nudAmount.ReadOnly = true;
+            nudAmount.Size = new Size(400, 42);
+            nudAmount.TabIndex = 7;
+            nudAmount.ThousandsSeparator = true;
 
-            // lblAmount
-            this.lblAmount.Text = "Amount:";
-            this.lblAmount.Location = new System.Drawing.Point(20, 290);
-            this.lblAmount.Size = new System.Drawing.Size(150, 25);
-            this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.lblAmount.Name = "lblAmount";
+            // ============================================
+            // PAYMENT METHOD - Darker text inside
+            // ============================================
+            lblPaymentMethod.BackColor = Color.Transparent;
+            lblPaymentMethod.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblPaymentMethod.ForeColor = Color.FromArgb(220, 220, 230);
+            lblPaymentMethod.Location = new Point(0, 0);
+            lblPaymentMethod.Name = "lblPaymentMethod";
+            lblPaymentMethod.Size = new Size(180, 35);
+            lblPaymentMethod.TabIndex = 25;
+            lblPaymentMethod.Text = "Payment Method:";
+            lblPaymentMethod.TextAlign = ContentAlignment.MiddleRight;
 
-            // nudAmount
-            this.nudAmount.Location = new System.Drawing.Point(180, 288);
-            this.nudAmount.Size = new System.Drawing.Size(150, 30);
-            this.nudAmount.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.nudAmount.DecimalPlaces = 2;
-            this.nudAmount.Minimum = 0;
-            this.nudAmount.Maximum = 50000;
-            this.nudAmount.ThousandsSeparator = true;
-            this.nudAmount.Enabled = false;
-            this.nudAmount.Name = "nudAmount";
+            cmbPaymentMethod.BackColor = Color.White;
+            cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbPaymentMethod.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
+            cmbPaymentMethod.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            cmbPaymentMethod.Items.AddRange(new object[] { "Cash", "GCash" });
+            cmbPaymentMethod.Location = new Point(0, 0);
+            cmbPaymentMethod.Name = "cmbPaymentMethod";
+            cmbPaymentMethod.Size = new Size(400, 38);
+            cmbPaymentMethod.TabIndex = 9;
 
-            // lblCalculatedAmount
-            this.lblCalculatedAmount.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblCalculatedAmount.ForeColor = System.Drawing.Color.FromArgb(76, 175, 80);
-            this.lblCalculatedAmount.Location = new System.Drawing.Point(350, 288);
-            this.lblCalculatedAmount.Size = new System.Drawing.Size(160, 30);
-            this.lblCalculatedAmount.Text = "";
-            this.lblCalculatedAmount.Name = "lblCalculatedAmount";
+            // ============================================
+            // PAYMENT DATE - Darker text inside
+            // ============================================
+            lblPaymentDate.BackColor = Color.Transparent;
+            lblPaymentDate.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblPaymentDate.ForeColor = Color.FromArgb(220, 220, 230);
+            lblPaymentDate.Location = new Point(0, 0);
+            lblPaymentDate.Name = "lblPaymentDate";
+            lblPaymentDate.Size = new Size(180, 35);
+            lblPaymentDate.TabIndex = 24;
+            lblPaymentDate.Text = "Payment Date:";
+            lblPaymentDate.TextAlign = ContentAlignment.MiddleRight;
 
-            // lblPaymentMethod
-            this.lblPaymentMethod.Text = "Payment Method:";
-            this.lblPaymentMethod.Location = new System.Drawing.Point(20, 330);
-            this.lblPaymentMethod.Size = new System.Drawing.Size(150, 25);
-            this.lblPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPaymentMethod.Name = "lblPaymentMethod";
+            dtpPaymentDate.Enabled = false;
+            dtpPaymentDate.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
+            dtpPaymentDate.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            dtpPaymentDate.Location = new Point(0, 0);
+            dtpPaymentDate.Name = "dtpPaymentDate";
+            dtpPaymentDate.Size = new Size(400, 38);
+            dtpPaymentDate.TabIndex = 11;
+            dtpPaymentDate.Value = DateTime.Now;
 
-            // cmbPaymentMethod
-            this.cmbPaymentMethod.Location = new System.Drawing.Point(180, 328);
-            this.cmbPaymentMethod.Size = new System.Drawing.Size(200, 30);
-            this.cmbPaymentMethod.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbPaymentMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbPaymentMethod.Items.AddRange(new object[] { "Cash", "GCash" });
-            this.cmbPaymentMethod.SelectedIndex = 0;
-            this.cmbPaymentMethod.Name = "cmbPaymentMethod";
+            // ============================================
+            // DUE DATE - Darker text inside
+            // ============================================
+            lblDueDate.BackColor = Color.Transparent;
+            lblDueDate.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblDueDate.ForeColor = Color.FromArgb(220, 220, 230);
+            lblDueDate.Location = new Point(0, 0);
+            lblDueDate.Name = "lblDueDate";
+            lblDueDate.Size = new Size(180, 35);
+            lblDueDate.TabIndex = 23;
+            lblDueDate.Text = "Due Date:";
+            lblDueDate.TextAlign = ContentAlignment.MiddleRight;
 
-            // lblPaymentDate
-            this.lblPaymentDate.Text = "Payment Date:";
-            this.lblPaymentDate.Location = new System.Drawing.Point(20, 370);
-            this.lblPaymentDate.Size = new System.Drawing.Size(150, 25);
-            this.lblPaymentDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblPaymentDate.Name = "lblPaymentDate";
+            dtpDueDate.Enabled = false;
+            dtpDueDate.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
+            dtpDueDate.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            dtpDueDate.Location = new Point(0, 0);
+            dtpDueDate.Name = "dtpDueDate";
+            dtpDueDate.Size = new Size(400, 38);
+            dtpDueDate.TabIndex = 13;
 
-            // dtpPaymentDate
-            this.dtpPaymentDate.Location = new System.Drawing.Point(180, 368);
-            this.dtpPaymentDate.Size = new System.Drawing.Size(200, 30);
-            this.dtpPaymentDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpPaymentDate.Value = System.DateTime.Now;
-            this.dtpPaymentDate.Name = "dtpPaymentDate";
+            // ============================================
+            // SAVE BUTTON
+            // ============================================
+            btnSave.BackColor = Color.FromArgb(255, 100, 0);
+            btnSave.Cursor = Cursors.Hand;
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Impact", 18F, FontStyle.Bold);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(0, 0);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(180, 50);
+            btnSave.TabIndex = 19;
+            btnSave.Text = "SAVE";
+            btnSave.UseVisualStyleBackColor = false;
 
-            // lblDueDate
-            this.lblDueDate.Text = "Due Date:";
-            this.lblDueDate.Location = new System.Drawing.Point(20, 410);
-            this.lblDueDate.Size = new System.Drawing.Size(150, 25);
-            this.lblDueDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblDueDate.Name = "lblDueDate";
+            // ============================================
+            // CANCEL BUTTON
+            // ============================================
+            btnCancel.BackColor = Color.FromArgb(100, 100, 100);
+            btnCancel.Cursor = Cursors.Hand;
+            btnCancel.FlatAppearance.BorderSize = 0;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Font = new Font("Impact", 18F, FontStyle.Bold);
+            btnCancel.ForeColor = Color.White;
+            btnCancel.Location = new Point(0, 0);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(180, 50);
+            btnCancel.TabIndex = 20;
+            btnCancel.Text = "CANCEL";
+            btnCancel.UseVisualStyleBackColor = false;
 
-            // dtpDueDate
-            this.dtpDueDate.Location = new System.Drawing.Point(180, 408);
-            this.dtpDueDate.Size = new System.Drawing.Size(200, 30);
-            this.dtpDueDate.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dtpDueDate.Value = System.DateTime.Now.AddMonths(1);
-            this.dtpDueDate.Name = "dtpDueDate";
+            // ============================================
+            // BACK BUTTON
+            // ============================================
+            btnBack.BackColor = Color.FromArgb(100, 100, 100);
+            btnBack.Cursor = Cursors.Hand;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            btnBack.ForeColor = Color.White;
+            btnBack.Location = new Point(0, 0);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(140, 45);
+            btnBack.TabIndex = 21;
+            btnBack.Text = "← BACK";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += (s, e) => this.Close();
 
-            // lblTransactionRef
-            this.lblTransactionRef.Text = "Transaction Ref:";
-            this.lblTransactionRef.Location = new System.Drawing.Point(20, 450);
-            this.lblTransactionRef.Size = new System.Drawing.Size(150, 25);
-            this.lblTransactionRef.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblTransactionRef.Name = "lblTransactionRef";
+            // ============================================
+            // ADD ALL CONTROLS
+            // ============================================
+            this.Controls.Add(btnBack);
+            this.Controls.Add(btnCancel);
+            this.Controls.Add(btnSave);
+            this.Controls.Add(dtpDueDate);
+            this.Controls.Add(lblDueDate);
+            this.Controls.Add(dtpPaymentDate);
+            this.Controls.Add(lblPaymentDate);
+            this.Controls.Add(cmbPaymentMethod);
+            this.Controls.Add(lblPaymentMethod);
+            this.Controls.Add(nudAmount);
+            this.Controls.Add(lblAmount);
+            this.Controls.Add(cmbPaymentPeriod);
+            this.Controls.Add(lblPaymentPeriod);
+            this.Controls.Add(cmbMembershipType);
+            this.Controls.Add(lblMembershipType);
+            this.Controls.Add(cmbMember);
+            this.Controls.Add(lblMember);
+            this.Controls.Add(lblTitle);
 
-            // txtTransactionRef
-            this.txtTransactionRef.Location = new System.Drawing.Point(180, 448);
-            this.txtTransactionRef.Size = new System.Drawing.Size(330, 30);
-            this.txtTransactionRef.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtTransactionRef.PlaceholderText = "Optional - GCash reference #";
-            this.txtTransactionRef.Name = "txtTransactionRef";
-
-            // lblNotes
-            this.lblNotes.Text = "Notes:";
-            this.lblNotes.Location = new System.Drawing.Point(20, 490);
-            this.lblNotes.Size = new System.Drawing.Size(150, 25);
-            this.lblNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblNotes.Name = "lblNotes";
-
-            // txtNotes
-            this.txtNotes.Location = new System.Drawing.Point(180, 488);
-            this.txtNotes.Size = new System.Drawing.Size(330, 25);
-            this.txtNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtNotes.PlaceholderText = "Optional notes";
-            this.txtNotes.Name = "txtNotes";
-
-            // btnSave
-            this.btnSave.Text = "💾 Save Payment";
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(76, 175, 80);
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Location = new System.Drawing.Point(180, 530);
-            this.btnSave.Size = new System.Drawing.Size(140, 40);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.UseVisualStyleBackColor = false;
-
-            // btnCancel
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(200, 200, 210);
-            this.btnCancel.ForeColor = System.Drawing.Color.Black;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCancel.Location = new System.Drawing.Point(340, 530);
-            this.btnCancel.Size = new System.Drawing.Size(100, 40);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.UseVisualStyleBackColor = false;
-
-            // AddPaymentForm
-            this.Text = "Add New Payment";
-            this.Size = new System.Drawing.Size(550, 620);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.BackColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "AddPaymentForm";
-
-            // Add controls to form
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblMember);
-            this.Controls.Add(this.cmbMember);
-            this.Controls.Add(this.lblMembershipType);
-            this.Controls.Add(this.cmbMembershipType);
-            this.Controls.Add(this.priceInfoPanel);
-            this.Controls.Add(this.lblPaymentPeriod);
-            this.Controls.Add(this.cmbPaymentPeriod);
-            this.Controls.Add(this.lblAmount);
-            this.Controls.Add(this.nudAmount);
-            this.Controls.Add(this.lblCalculatedAmount);
-            this.Controls.Add(this.lblPaymentMethod);
-            this.Controls.Add(this.cmbPaymentMethod);
-            this.Controls.Add(this.lblPaymentDate);
-            this.Controls.Add(this.dtpPaymentDate);
-            this.Controls.Add(this.lblDueDate);
-            this.Controls.Add(this.dtpDueDate);
-            this.Controls.Add(this.lblTransactionRef);
-            this.Controls.Add(this.txtTransactionRef);
-            this.Controls.Add(this.lblNotes);
-            this.Controls.Add(this.txtNotes);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-
-            // Resume layouts
-            this.priceInfoPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nudAmount)).EndInit();
-            this.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)nudAmount).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
-        // Control declarations
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblMember;
         private System.Windows.Forms.ComboBox cmbMember;
         private System.Windows.Forms.Label lblMembershipType;
         private System.Windows.Forms.ComboBox cmbMembershipType;
-        private System.Windows.Forms.Panel priceInfoPanel;
-        private System.Windows.Forms.Label lblPriceInfo;
         private System.Windows.Forms.Label lblPaymentPeriod;
         private System.Windows.Forms.ComboBox cmbPaymentPeriod;
         private System.Windows.Forms.Label lblAmount;
         private System.Windows.Forms.NumericUpDown nudAmount;
-        private System.Windows.Forms.Label lblCalculatedAmount;
         private System.Windows.Forms.Label lblPaymentMethod;
         private System.Windows.Forms.ComboBox cmbPaymentMethod;
         private System.Windows.Forms.Label lblPaymentDate;
         private System.Windows.Forms.DateTimePicker dtpPaymentDate;
         private System.Windows.Forms.Label lblDueDate;
         private System.Windows.Forms.DateTimePicker dtpDueDate;
-        private System.Windows.Forms.Label lblTransactionRef;
-        private System.Windows.Forms.TextBox txtTransactionRef;
-        private System.Windows.Forms.Label lblNotes;
-        private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnBack;
     }
 }

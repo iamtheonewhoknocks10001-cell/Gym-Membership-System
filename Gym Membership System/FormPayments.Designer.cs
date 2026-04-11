@@ -15,343 +15,388 @@
 
         private void InitializeComponent()
         {
-            // Top Panel
-            this.topPanel = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnAddPayment = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnPrintReceipt = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-
-            // Filter Panel
-            this.filterPanel = new System.Windows.Forms.Panel();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.cmbStatusFilter = new System.Windows.Forms.ComboBox();
-            this.cmbMembershipFilter = new System.Windows.Forms.ComboBox();
-            this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
-            this.btnApplyFilter = new System.Windows.Forms.Button();
-            this.lblFilterStatus = new System.Windows.Forms.Label();
-            this.lblFilterMembership = new System.Windows.Forms.Label();
-            this.lblFilterDate = new System.Windows.Forms.Label();
-
-            // Stats Panel
-            this.statsPanel = new System.Windows.Forms.Panel();
-            this.lblTotalAmount = new System.Windows.Forms.Label();
-            this.lblTotalPayments = new System.Windows.Forms.Label();
-            this.lblBasicTotal = new System.Windows.Forms.Label();
-            this.lblPremiumTotal = new System.Windows.Forms.Label();
-            this.panelStatsDivider = new System.Windows.Forms.Panel();
-
-            // Data Grid View
-            this.dgvPayments = new System.Windows.Forms.DataGridView();
-
-            // Suspend Layout
-            this.topPanel.SuspendLayout();
-            this.filterPanel.SuspendLayout();
-            this.statsPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).BeginInit();
-            this.SuspendLayout();
-
-            // ============================================
-            // TOP PANEL
-            // ============================================
-            this.topPanel.BackColor = System.Drawing.Color.White;
-            this.topPanel.Controls.Add(this.lblTitle);
-            this.topPanel.Controls.Add(this.btnAddPayment);
-            this.topPanel.Controls.Add(this.btnRefresh);
-            this.topPanel.Controls.Add(this.btnPrintReceipt);
-            this.topPanel.Controls.Add(this.btnBack);
-            this.topPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.topPanel.Height = 70;
-            this.topPanel.Name = "topPanel";
-
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            topPanel = new Panel();
+            lblTitle = new Label();
+            btnAddPayment = new Button();
+            btnRefresh = new Button();
+            btnPrintReceipt = new Button();
+            btnBack = new Button();
+            filterPanel = new Panel();
+            txtSearch = new TextBox();
+            cmbStatusFilter = new ComboBox();
+            cmbMembershipFilter = new ComboBox();
+            dtpStartDate = new DateTimePicker();
+            dtpEndDate = new DateTimePicker();
+            btnApplyFilter = new Button();
+            lblFilterStatus = new Label();
+            lblFilterMembership = new Label();
+            lblFilterDate = new Label();
+            statsPanel = new Panel();
+            lblTotalAmount = new Label();
+            lblTotalPayments = new Label();
+            lblBasicTotal = new Label();
+            lblPremiumTotal = new Label();
+            panelStatsDivider = new Panel();
+            dgvPayments = new DataGridView();
+            topPanel.SuspendLayout();
+            filterPanel.SuspendLayout();
+            statsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPayments).BeginInit();
+            SuspendLayout();
+            // 
+            // topPanel
+            // 
+            topPanel.BackColor = Color.White;
+            topPanel.Controls.Add(lblTitle);
+            topPanel.Controls.Add(btnAddPayment);
+            topPanel.Controls.Add(btnRefresh);
+            topPanel.Controls.Add(btnPrintReceipt);
+            topPanel.Controls.Add(btnBack);
+            topPanel.Dock = DockStyle.Top;
+            topPanel.Location = new Point(0, 0);
+            topPanel.Margin = new Padding(3, 4, 3, 4);
+            topPanel.Name = "topPanel";
+            topPanel.Size = new Size(1371, 93);
+            topPanel.TabIndex = 3;
+            // 
             // lblTitle
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
-            this.lblTitle.Location = new System.Drawing.Point(30, 18);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(310, 37);
-            this.lblTitle.Text = "💰 Payment Management";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
+            // 
+            lblTitle.AutoSize = true;
+            lblTitle.Font = new Font("Segoe UI", 20F, FontStyle.Bold);
+            lblTitle.ForeColor = Color.FromArgb(255, 100, 0);
+            lblTitle.Location = new Point(34, 24);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new Size(437, 46);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "💰 Payment Management";
+            lblTitle.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // btnAddPayment
-            this.btnAddPayment.BackColor = System.Drawing.Color.FromArgb(76, 175, 80);
-            this.btnAddPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddPayment.FlatAppearance.BorderSize = 0;
-            this.btnAddPayment.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnAddPayment.ForeColor = System.Drawing.Color.White;
-            this.btnAddPayment.Location = new System.Drawing.Point(380, 18);
-            this.btnAddPayment.Name = "btnAddPayment";
-            this.btnAddPayment.Size = new System.Drawing.Size(140, 35);
-            this.btnAddPayment.TabIndex = 0;
-            this.btnAddPayment.Text = "+ New Payment";
-            this.btnAddPayment.UseVisualStyleBackColor = false;
-            this.btnAddPayment.Cursor = System.Windows.Forms.Cursors.Hand;
-
+            // 
+            btnAddPayment.BackColor = Color.FromArgb(76, 175, 80);
+            btnAddPayment.Cursor = Cursors.Hand;
+            btnAddPayment.FlatAppearance.BorderSize = 0;
+            btnAddPayment.FlatStyle = FlatStyle.Flat;
+            btnAddPayment.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnAddPayment.ForeColor = Color.White;
+            btnAddPayment.Location = new Point(434, 24);
+            btnAddPayment.Margin = new Padding(3, 4, 3, 4);
+            btnAddPayment.Name = "btnAddPayment";
+            btnAddPayment.Size = new Size(160, 47);
+            btnAddPayment.TabIndex = 0;
+            btnAddPayment.Text = "+ New Payment";
+            btnAddPayment.UseVisualStyleBackColor = false;
+            // 
             // btnRefresh
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(100, 120, 150);
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.FlatAppearance.BorderSize = 0;
-            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Location = new System.Drawing.Point(535, 18);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(100, 35);
-            this.btnRefresh.TabIndex = 1;
-            this.btnRefresh.Text = "⟳ Refresh";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
-
+            // 
+            btnRefresh.BackColor = Color.FromArgb(100, 120, 150);
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.FlatAppearance.BorderSize = 0;
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnRefresh.ForeColor = Color.White;
+            btnRefresh.Location = new Point(611, 24);
+            btnRefresh.Margin = new Padding(3, 4, 3, 4);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(114, 47);
+            btnRefresh.TabIndex = 1;
+            btnRefresh.Text = "⟳ Refresh";
+            btnRefresh.UseVisualStyleBackColor = false;
+            // 
             // btnPrintReceipt
-            this.btnPrintReceipt.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
-            this.btnPrintReceipt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrintReceipt.FlatAppearance.BorderSize = 0;
-            this.btnPrintReceipt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnPrintReceipt.ForeColor = System.Drawing.Color.White;
-            this.btnPrintReceipt.Location = new System.Drawing.Point(650, 18);
-            this.btnPrintReceipt.Name = "btnPrintReceipt";
-            this.btnPrintReceipt.Size = new System.Drawing.Size(120, 35);
-            this.btnPrintReceipt.TabIndex = 2;
-            this.btnPrintReceipt.Text = "🖨️ Print Receipt";
-            this.btnPrintReceipt.UseVisualStyleBackColor = false;
-            this.btnPrintReceipt.Cursor = System.Windows.Forms.Cursors.Hand;
-
+            // 
+            btnPrintReceipt.BackColor = Color.FromArgb(33, 150, 243);
+            btnPrintReceipt.Cursor = Cursors.Hand;
+            btnPrintReceipt.FlatAppearance.BorderSize = 0;
+            btnPrintReceipt.FlatStyle = FlatStyle.Flat;
+            btnPrintReceipt.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnPrintReceipt.ForeColor = Color.White;
+            btnPrintReceipt.Location = new Point(743, 24);
+            btnPrintReceipt.Margin = new Padding(3, 4, 3, 4);
+            btnPrintReceipt.Name = "btnPrintReceipt";
+            btnPrintReceipt.Size = new Size(137, 47);
+            btnPrintReceipt.TabIndex = 2;
+            btnPrintReceipt.Text = "🖨️ Print Receipt";
+            btnPrintReceipt.UseVisualStyleBackColor = false;
+            // 
             // btnBack
-            this.btnBack.BackColor = System.Drawing.Color.FromArgb(200, 200, 210);
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.FlatAppearance.BorderSize = 0;
-            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.btnBack.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
-            this.btnBack.Location = new System.Drawing.Point(785, 18);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(100, 35);
-            this.btnBack.TabIndex = 3;
-            this.btnBack.Text = "← Back";
-            this.btnBack.UseVisualStyleBackColor = false;
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
-
-            // ============================================
-            // FILTER PANEL
-            // ============================================
-            this.filterPanel.BackColor = System.Drawing.Color.White;
-            this.filterPanel.Controls.Add(this.txtSearch);
-            this.filterPanel.Controls.Add(this.cmbStatusFilter);
-            this.filterPanel.Controls.Add(this.cmbMembershipFilter);
-            this.filterPanel.Controls.Add(this.dtpStartDate);
-            this.filterPanel.Controls.Add(this.dtpEndDate);
-            this.filterPanel.Controls.Add(this.btnApplyFilter);
-            this.filterPanel.Controls.Add(this.lblFilterStatus);
-            this.filterPanel.Controls.Add(this.lblFilterMembership);
-            this.filterPanel.Controls.Add(this.lblFilterDate);
-            this.filterPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.filterPanel.Height = 80;
-            this.filterPanel.Name = "filterPanel";
-            this.filterPanel.Padding = new System.Windows.Forms.Padding(20, 15, 20, 10);
-
+            // 
+            btnBack.BackColor = Color.FromArgb(200, 200, 210);
+            btnBack.Cursor = Cursors.Hand;
+            btnBack.FlatAppearance.BorderSize = 0;
+            btnBack.FlatStyle = FlatStyle.Flat;
+            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnBack.ForeColor = Color.FromArgb(80, 80, 90);
+            btnBack.Location = new Point(897, 24);
+            btnBack.Margin = new Padding(3, 4, 3, 4);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(114, 47);
+            btnBack.TabIndex = 3;
+            btnBack.Text = "← Back";
+            btnBack.UseVisualStyleBackColor = false;
+            // 
+            // filterPanel
+            // 
+            filterPanel.BackColor = Color.White;
+            filterPanel.Controls.Add(txtSearch);
+            filterPanel.Controls.Add(cmbStatusFilter);
+            filterPanel.Controls.Add(cmbMembershipFilter);
+            filterPanel.Controls.Add(dtpStartDate);
+            filterPanel.Controls.Add(dtpEndDate);
+            filterPanel.Controls.Add(btnApplyFilter);
+            filterPanel.Controls.Add(lblFilterStatus);
+            filterPanel.Controls.Add(lblFilterMembership);
+            filterPanel.Controls.Add(lblFilterDate);
+            filterPanel.Dock = DockStyle.Top;
+            filterPanel.Location = new Point(0, 93);
+            filterPanel.Margin = new Padding(3, 4, 3, 4);
+            filterPanel.Name = "filterPanel";
+            filterPanel.Padding = new Padding(23, 20, 23, 13);
+            filterPanel.Size = new Size(1371, 107);
+            filterPanel.TabIndex = 2;
+            // 
             // txtSearch
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtSearch.Location = new System.Drawing.Point(20, 40);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(220, 27);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.PlaceholderText = "🔍 Search by receipt #...";
-
-            // lblFilterStatus
-            this.lblFilterStatus.AutoSize = true;
-            this.lblFilterStatus.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular);
-            this.lblFilterStatus.ForeColor = System.Drawing.Color.FromArgb(100, 100, 110);
-            this.lblFilterStatus.Location = new System.Drawing.Point(260, 20);
-            this.lblFilterStatus.Name = "lblFilterStatus";
-            this.lblFilterStatus.Size = new System.Drawing.Size(42, 15);
-            this.lblFilterStatus.Text = "Status:";
-
+            // 
+            txtSearch.Font = new Font("Segoe UI", 11F);
+            txtSearch.Location = new Point(23, 53);
+            txtSearch.Margin = new Padding(3, 4, 3, 4);
+            txtSearch.Name = "txtSearch";
+            txtSearch.PlaceholderText = "🔍 Search by receipt #...";
+            txtSearch.Size = new Size(251, 32);
+            txtSearch.TabIndex = 0;
+            // 
             // cmbStatusFilter
-            this.cmbStatusFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStatusFilter.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cmbStatusFilter.Items.AddRange(new object[] { "All", "Paid", "Pending" });
-            this.cmbStatusFilter.Location = new System.Drawing.Point(260, 38);
-            this.cmbStatusFilter.Name = "cmbStatusFilter";
-            this.cmbStatusFilter.Size = new System.Drawing.Size(110, 28);
-            this.cmbStatusFilter.TabIndex = 1;
-            this.cmbStatusFilter.SelectedIndex = 0;
-
-            // lblFilterMembership
-            this.lblFilterMembership.AutoSize = true;
-            this.lblFilterMembership.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular);
-            this.lblFilterMembership.ForeColor = System.Drawing.Color.FromArgb(100, 100, 110);
-            this.lblFilterMembership.Location = new System.Drawing.Point(390, 20);
-            this.lblFilterMembership.Name = "lblFilterMembership";
-            this.lblFilterMembership.Size = new System.Drawing.Size(70, 15);
-            this.lblFilterMembership.Text = "Membership:";
-
+            // 
+            cmbStatusFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStatusFilter.Font = new Font("Segoe UI", 11F);
+            cmbStatusFilter.Items.AddRange(new object[] { "All", "Paid", "Pending" });
+            cmbStatusFilter.Location = new Point(297, 51);
+            cmbStatusFilter.Margin = new Padding(3, 4, 3, 4);
+            cmbStatusFilter.Name = "cmbStatusFilter";
+            cmbStatusFilter.Size = new Size(125, 33);
+            cmbStatusFilter.TabIndex = 1;
+            // 
             // cmbMembershipFilter
-            this.cmbMembershipFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbMembershipFilter.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cmbMembershipFilter.Items.AddRange(new object[] { "All", "BASIC", "PREMIUM" });
-            this.cmbMembershipFilter.Location = new System.Drawing.Point(390, 38);
-            this.cmbMembershipFilter.Name = "cmbMembershipFilter";
-            this.cmbMembershipFilter.Size = new System.Drawing.Size(120, 28);
-            this.cmbMembershipFilter.TabIndex = 2;
-            this.cmbMembershipFilter.SelectedIndex = 0;
-
-            // lblFilterDate
-            this.lblFilterDate.AutoSize = true;
-            this.lblFilterDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular);
-            this.lblFilterDate.ForeColor = System.Drawing.Color.FromArgb(100, 100, 110);
-            this.lblFilterDate.Location = new System.Drawing.Point(530, 20);
-            this.lblFilterDate.Name = "lblFilterDate";
-            this.lblFilterDate.Size = new System.Drawing.Size(35, 15);
-            this.lblFilterDate.Text = "Date:";
-
+            // 
+            cmbMembershipFilter.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMembershipFilter.Font = new Font("Segoe UI", 11F);
+            cmbMembershipFilter.Items.AddRange(new object[] { "All", "BASIC", "PREMIUM" });
+            cmbMembershipFilter.Location = new Point(446, 51);
+            cmbMembershipFilter.Margin = new Padding(3, 4, 3, 4);
+            cmbMembershipFilter.Name = "cmbMembershipFilter";
+            cmbMembershipFilter.Size = new Size(137, 33);
+            cmbMembershipFilter.TabIndex = 2;
+            // 
             // dtpStartDate
-            this.dtpStartDate.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpStartDate.Location = new System.Drawing.Point(530, 38);
-            this.dtpStartDate.Name = "dtpStartDate";
-            this.dtpStartDate.Size = new System.Drawing.Size(100, 27);
-            this.dtpStartDate.TabIndex = 3;
-            this.dtpStartDate.Value = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
-
+            // 
+            dtpStartDate.Font = new Font("Segoe UI", 11F);
+            dtpStartDate.Format = DateTimePickerFormat.Short;
+            dtpStartDate.Location = new Point(606, 51);
+            dtpStartDate.Margin = new Padding(3, 4, 3, 4);
+            dtpStartDate.Name = "dtpStartDate";
+            dtpStartDate.Size = new Size(114, 32);
+            dtpStartDate.TabIndex = 3;
+            dtpStartDate.Value = new DateTime(2024, 1, 1, 0, 0, 0, 0);
+            // 
             // dtpEndDate
-            this.dtpEndDate.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEndDate.Location = new System.Drawing.Point(640, 38);
-            this.dtpEndDate.Name = "dtpEndDate";
-            this.dtpEndDate.Size = new System.Drawing.Size(100, 27);
-            this.dtpEndDate.TabIndex = 4;
-            this.dtpEndDate.Value = System.DateTime.Now;
-
+            // 
+            dtpEndDate.Font = new Font("Segoe UI", 11F);
+            dtpEndDate.Format = DateTimePickerFormat.Short;
+            dtpEndDate.Location = new Point(731, 51);
+            dtpEndDate.Margin = new Padding(3, 4, 3, 4);
+            dtpEndDate.Name = "dtpEndDate";
+            dtpEndDate.Size = new Size(114, 32);
+            dtpEndDate.TabIndex = 4;
+            dtpEndDate.Value = new DateTime(2026, 4, 6, 21, 2, 54, 436);
+            // 
             // btnApplyFilter
-            this.btnApplyFilter.BackColor = System.Drawing.Color.FromArgb(100, 120, 150);
-            this.btnApplyFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnApplyFilter.FlatAppearance.BorderSize = 0;
-            this.btnApplyFilter.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnApplyFilter.ForeColor = System.Drawing.Color.White;
-            this.btnApplyFilter.Location = new System.Drawing.Point(760, 36);
-            this.btnApplyFilter.Name = "btnApplyFilter";
-            this.btnApplyFilter.Size = new System.Drawing.Size(80, 30);
-            this.btnApplyFilter.TabIndex = 5;
-            this.btnApplyFilter.Text = "Apply";
-            this.btnApplyFilter.UseVisualStyleBackColor = false;
-            this.btnApplyFilter.Cursor = System.Windows.Forms.Cursors.Hand;
-
-            // ============================================
-            // STATS PANEL
-            // ============================================
-            this.statsPanel.BackColor = System.Drawing.Color.FromArgb(248, 249, 252);
-            this.statsPanel.Controls.Add(this.lblTotalAmount);
-            this.statsPanel.Controls.Add(this.lblTotalPayments);
-            this.statsPanel.Controls.Add(this.lblBasicTotal);
-            this.statsPanel.Controls.Add(this.lblPremiumTotal);
-            this.statsPanel.Controls.Add(this.panelStatsDivider);
-            this.statsPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.statsPanel.Height = 60;
-            this.statsPanel.Name = "statsPanel";
-            this.statsPanel.Padding = new System.Windows.Forms.Padding(20, 10, 20, 10);
-
+            // 
+            btnApplyFilter.BackColor = Color.FromArgb(100, 120, 150);
+            btnApplyFilter.Cursor = Cursors.Hand;
+            btnApplyFilter.FlatAppearance.BorderSize = 0;
+            btnApplyFilter.FlatStyle = FlatStyle.Flat;
+            btnApplyFilter.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnApplyFilter.ForeColor = Color.White;
+            btnApplyFilter.Location = new Point(869, 48);
+            btnApplyFilter.Margin = new Padding(3, 4, 3, 4);
+            btnApplyFilter.Name = "btnApplyFilter";
+            btnApplyFilter.Size = new Size(91, 40);
+            btnApplyFilter.TabIndex = 5;
+            btnApplyFilter.Text = "Apply";
+            btnApplyFilter.UseVisualStyleBackColor = false;
+            // 
+            // lblFilterStatus
+            // 
+            lblFilterStatus.AutoSize = true;
+            lblFilterStatus.Font = new Font("Segoe UI", 9F);
+            lblFilterStatus.ForeColor = Color.FromArgb(100, 100, 110);
+            lblFilterStatus.Location = new Point(297, 27);
+            lblFilterStatus.Name = "lblFilterStatus";
+            lblFilterStatus.Size = new Size(52, 20);
+            lblFilterStatus.TabIndex = 6;
+            lblFilterStatus.Text = "Status:";
+            // 
+            // lblFilterMembership
+            // 
+            lblFilterMembership.AutoSize = true;
+            lblFilterMembership.Font = new Font("Segoe UI", 9F);
+            lblFilterMembership.ForeColor = Color.FromArgb(100, 100, 110);
+            lblFilterMembership.Location = new Point(446, 27);
+            lblFilterMembership.Name = "lblFilterMembership";
+            lblFilterMembership.Size = new Size(95, 20);
+            lblFilterMembership.TabIndex = 7;
+            lblFilterMembership.Text = "Membership:";
+            // 
+            // lblFilterDate
+            // 
+            lblFilterDate.AutoSize = true;
+            lblFilterDate.Font = new Font("Segoe UI", 9F);
+            lblFilterDate.ForeColor = Color.FromArgb(100, 100, 110);
+            lblFilterDate.Location = new Point(606, 27);
+            lblFilterDate.Name = "lblFilterDate";
+            lblFilterDate.Size = new Size(44, 20);
+            lblFilterDate.TabIndex = 8;
+            lblFilterDate.Text = "Date:";
+            // 
+            // statsPanel
+            // 
+            statsPanel.BackColor = Color.FromArgb(248, 249, 252);
+            statsPanel.Controls.Add(lblTotalAmount);
+            statsPanel.Controls.Add(lblTotalPayments);
+            statsPanel.Controls.Add(lblBasicTotal);
+            statsPanel.Controls.Add(lblPremiumTotal);
+            statsPanel.Controls.Add(panelStatsDivider);
+            statsPanel.Dock = DockStyle.Top;
+            statsPanel.Location = new Point(0, 200);
+            statsPanel.Margin = new Padding(3, 4, 3, 4);
+            statsPanel.Name = "statsPanel";
+            statsPanel.Padding = new Padding(23, 13, 23, 13);
+            statsPanel.Size = new Size(1371, 80);
+            statsPanel.TabIndex = 1;
+            // 
             // lblTotalAmount
-            this.lblTotalAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTotalAmount.ForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
-            this.lblTotalAmount.Location = new System.Drawing.Point(20, 15);
-            this.lblTotalAmount.Name = "lblTotalAmount";
-            this.lblTotalAmount.Size = new System.Drawing.Size(200, 30);
-            this.lblTotalAmount.Text = "💰 Total: ₱0.00";
-            this.lblTotalAmount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
+            // 
+            lblTotalAmount.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTotalAmount.ForeColor = Color.FromArgb(255, 100, 0);
+            lblTotalAmount.Location = new Point(23, 20);
+            lblTotalAmount.Name = "lblTotalAmount";
+            lblTotalAmount.Size = new Size(229, 40);
+            lblTotalAmount.TabIndex = 0;
+            lblTotalAmount.Text = "💰 Total: ₱0.00";
+            lblTotalAmount.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // lblTotalPayments
-            this.lblTotalPayments.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblTotalPayments.ForeColor = System.Drawing.Color.FromArgb(76, 175, 80);
-            this.lblTotalPayments.Location = new System.Drawing.Point(230, 15);
-            this.lblTotalPayments.Name = "lblTotalPayments";
-            this.lblTotalPayments.Size = new System.Drawing.Size(180, 30);
-            this.lblTotalPayments.Text = "📊 Payments: 0";
-            this.lblTotalPayments.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
+            // 
+            lblTotalPayments.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblTotalPayments.ForeColor = Color.FromArgb(76, 175, 80);
+            lblTotalPayments.Location = new Point(263, 20);
+            lblTotalPayments.Name = "lblTotalPayments";
+            lblTotalPayments.Size = new Size(206, 40);
+            lblTotalPayments.TabIndex = 1;
+            lblTotalPayments.Text = "📊 Payments: 0";
+            lblTotalPayments.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // lblBasicTotal
-            this.lblBasicTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular);
-            this.lblBasicTotal.ForeColor = System.Drawing.Color.FromArgb(33, 150, 243);
-            this.lblBasicTotal.Location = new System.Drawing.Point(450, 15);
-            this.lblBasicTotal.Name = "lblBasicTotal";
-            this.lblBasicTotal.Size = new System.Drawing.Size(200, 30);
-            this.lblBasicTotal.Text = "⭐ BASIC: ₱0.00";
-            this.lblBasicTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
+            // 
+            lblBasicTotal.Font = new Font("Segoe UI", 11F);
+            lblBasicTotal.ForeColor = Color.FromArgb(33, 150, 243);
+            lblBasicTotal.Location = new Point(514, 20);
+            lblBasicTotal.Name = "lblBasicTotal";
+            lblBasicTotal.Size = new Size(229, 40);
+            lblBasicTotal.TabIndex = 2;
+            lblBasicTotal.Text = "⭐ BASIC: ₱0.00";
+            lblBasicTotal.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // lblPremiumTotal
-            this.lblPremiumTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular);
-            this.lblPremiumTotal.ForeColor = System.Drawing.Color.FromArgb(156, 39, 176);
-            this.lblPremiumTotal.Location = new System.Drawing.Point(660, 15);
-            this.lblPremiumTotal.Name = "lblPremiumTotal";
-            this.lblPremiumTotal.Size = new System.Drawing.Size(220, 30);
-            this.lblPremiumTotal.Text = "💎 PREMIUM: ₱0.00";
-            this.lblPremiumTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-
+            // 
+            lblPremiumTotal.Font = new Font("Segoe UI", 11F);
+            lblPremiumTotal.ForeColor = Color.FromArgb(156, 39, 176);
+            lblPremiumTotal.Location = new Point(754, 20);
+            lblPremiumTotal.Name = "lblPremiumTotal";
+            lblPremiumTotal.Size = new Size(251, 40);
+            lblPremiumTotal.TabIndex = 3;
+            lblPremiumTotal.Text = "💎 PREMIUM: ₱0.00";
+            lblPremiumTotal.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // panelStatsDivider
-            this.panelStatsDivider.BackColor = System.Drawing.Color.FromArgb(230, 230, 240);
-            this.panelStatsDivider.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelStatsDivider.Height = 1;
-            this.panelStatsDivider.Name = "panelStatsDivider";
-
-            // ============================================
-            // DATA GRID VIEW
-            // ============================================
-            this.dgvPayments.AllowUserToAddRows = false;
-            this.dgvPayments.AllowUserToDeleteRows = false;
-            this.dgvPayments.BackgroundColor = System.Drawing.Color.White;
-            this.dgvPayments.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvPayments.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvPayments.ColumnHeadersHeight = 45;
-            this.dgvPayments.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPayments.EnableHeadersVisualStyles = false;
-            this.dgvPayments.GridColor = System.Drawing.Color.FromArgb(235, 235, 240);
-            this.dgvPayments.Name = "dgvPayments";
-            this.dgvPayments.ReadOnly = true;
-            this.dgvPayments.RowHeadersVisible = false;
-            this.dgvPayments.RowTemplate.Height = 40;
-            this.dgvPayments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-
-            // Header Styling
-            this.dgvPayments.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(240, 240, 245);
-            this.dgvPayments.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(60, 60, 70);
-            this.dgvPayments.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.dgvPayments.ColumnHeadersDefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-
-            // Row Styling
-            this.dgvPayments.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.dgvPayments.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvPayments.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(255, 245, 235);
-            this.dgvPayments.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
-            this.dgvPayments.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
-            this.dgvPayments.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.dgvPayments.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(250, 250, 255);
-            this.dgvPayments.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-
-            // ============================================
-            // FORM
-            // ============================================
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(245, 245, 250);
-            this.ClientSize = new System.Drawing.Size(1200, 700);
-            this.Controls.Add(this.dgvPayments);
-            this.Controls.Add(this.statsPanel);
-            this.Controls.Add(this.filterPanel);
-            this.Controls.Add(this.topPanel);
-            this.DoubleBuffered = true;
-            this.Name = "FormPayments";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FitWare - Payment Management";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-
-            // Resume Layout
-            this.topPanel.ResumeLayout(false);
-            this.topPanel.PerformLayout();
-            this.filterPanel.ResumeLayout(false);
-            this.filterPanel.PerformLayout();
-            this.statsPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPayments)).EndInit();
-            this.ResumeLayout(false);
+            // 
+            panelStatsDivider.BackColor = Color.FromArgb(230, 230, 240);
+            panelStatsDivider.Dock = DockStyle.Bottom;
+            panelStatsDivider.Location = new Point(23, 66);
+            panelStatsDivider.Margin = new Padding(3, 4, 3, 4);
+            panelStatsDivider.Name = "panelStatsDivider";
+            panelStatsDivider.Size = new Size(1325, 1);
+            panelStatsDivider.TabIndex = 4;
+            // 
+            // dgvPayments
+            // 
+            dgvPayments.AllowUserToAddRows = false;
+            dgvPayments.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(250, 250, 255);
+            dgvPayments.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvPayments.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvPayments.BackgroundColor = Color.White;
+            dgvPayments.BorderStyle = BorderStyle.None;
+            dgvPayments.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(240, 240, 245);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(60, 60, 70);
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvPayments.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dgvPayments.ColumnHeadersHeight = 45;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 10F);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.Padding = new Padding(10, 5, 10, 5);
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(255, 245, 235);
+            dataGridViewCellStyle3.SelectionForeColor = Color.FromArgb(255, 100, 0);
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgvPayments.DefaultCellStyle = dataGridViewCellStyle3;
+            dgvPayments.Dock = DockStyle.Fill;
+            dgvPayments.EnableHeadersVisualStyles = false;
+            dgvPayments.GridColor = Color.FromArgb(235, 235, 240);
+            dgvPayments.Location = new Point(0, 280);
+            dgvPayments.Margin = new Padding(3, 4, 3, 4);
+            dgvPayments.Name = "dgvPayments";
+            dgvPayments.ReadOnly = true;
+            dgvPayments.RowHeadersVisible = false;
+            dgvPayments.RowHeadersWidth = 51;
+            dgvPayments.RowTemplate.Height = 40;
+            dgvPayments.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvPayments.Size = new Size(1371, 653);
+            dgvPayments.TabIndex = 0;
+            dgvPayments.CellContentClick += dgvPayments_CellContentClick;
+            // 
+            // FormPayments
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(245, 245, 250);
+            ClientSize = new Size(1371, 933);
+            Controls.Add(dgvPayments);
+            Controls.Add(statsPanel);
+            Controls.Add(filterPanel);
+            Controls.Add(topPanel);
+            DoubleBuffered = true;
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "FormPayments";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "FitWare - Payment Management";
+            WindowState = FormWindowState.Maximized;
+            topPanel.ResumeLayout(false);
+            topPanel.PerformLayout();
+            filterPanel.ResumeLayout(false);
+            filterPanel.PerformLayout();
+            statsPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvPayments).EndInit();
+            ResumeLayout(false);
         }
 
         // ============================================

@@ -15,14 +15,13 @@
 
         private void InitializeComponent()
         {
-
-
             // Navigation Panel - Fixed at top
             this.navPanel = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
-            this.btnHome = new System.Windows.Forms.Button();
-            this.btnAboutUs = new System.Windows.Forms.Button();
-            this.btnContactUs = new System.Windows.Forms.Button();
+            this.btnAddMember = new System.Windows.Forms.Button();
+            this.btnPayments = new System.Windows.Forms.Button();
+            this.btnAttendance = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
 
             // Dashboard Container - Fills remaining space
             this.dashboardContainer = new System.Windows.Forms.Panel();
@@ -46,6 +45,7 @@
             this.lblMembersTitle = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.tableContainer = new System.Windows.Forms.Panel();
             this.dgvMembers = new System.Windows.Forms.DataGridView();
 
@@ -68,9 +68,10 @@
             // ============================================
             this.navPanel.BackColor = System.Drawing.Color.White;
             this.navPanel.Controls.Add(this.lblLogo);
-            this.navPanel.Controls.Add(this.btnHome);
-            this.navPanel.Controls.Add(this.btnAboutUs);
-            this.navPanel.Controls.Add(this.btnContactUs);
+            this.navPanel.Controls.Add(this.btnAddMember);
+            this.navPanel.Controls.Add(this.btnPayments);
+            this.navPanel.Controls.Add(this.btnAttendance);
+            this.navPanel.Controls.Add(this.btnLogout);
             this.navPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.navPanel.Height = 65;
             this.navPanel.Name = "navPanel";
@@ -91,34 +92,48 @@
             this.lblLogo.Text = "FITWARE";
 
             // ADD MEMBER Button
-            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHome.FlatAppearance.BorderSize = 0;
-            this.btnHome.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnHome.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
-            this.btnHome.Location = new System.Drawing.Point(220, 18);
-            this.btnHome.Size = new System.Drawing.Size(120, 30);
-            this.btnHome.Text = "ADD MEMBER";
-            this.btnHome.Click += new System.EventHandler(this.btnAddMember_Click);
+            this.btnAddMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddMember.FlatAppearance.BorderSize = 0;
+            this.btnAddMember.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAddMember.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
+            this.btnAddMember.Location = new System.Drawing.Point(220, 18);
+            this.btnAddMember.Size = new System.Drawing.Size(120, 30);
+            this.btnAddMember.Text = "ADD MEMBER";
+            this.btnAddMember.UseVisualStyleBackColor = true;
+            this.btnAddMember.Click += new System.EventHandler(this.btnAddMember_Click);
 
             // PAYMENTS Button
-            this.btnAboutUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAboutUs.FlatAppearance.BorderSize = 0;
-            this.btnAboutUs.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnAboutUs.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
-            this.btnAboutUs.Location = new System.Drawing.Point(360, 18);
-            this.btnAboutUs.Size = new System.Drawing.Size(120, 30);
-            this.btnAboutUs.Text = "PAYMENTS";
-            this.btnAboutUs.Click += new System.EventHandler(this.btnPayments_Click);
+            this.btnPayments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayments.FlatAppearance.BorderSize = 0;
+            this.btnPayments.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnPayments.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
+            this.btnPayments.Location = new System.Drawing.Point(360, 18);
+            this.btnPayments.Size = new System.Drawing.Size(120, 30);
+            this.btnPayments.Text = "PAYMENTS";
+            this.btnPayments.UseVisualStyleBackColor = true;
+            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
+
+            // ATTENDANCE Button
+            this.btnAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAttendance.FlatAppearance.BorderSize = 0;
+            this.btnAttendance.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnAttendance.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
+            this.btnAttendance.Location = new System.Drawing.Point(500, 18);
+            this.btnAttendance.Size = new System.Drawing.Size(120, 30);
+            this.btnAttendance.Text = "ATTENDANCE";
+            this.btnAttendance.UseVisualStyleBackColor = true;
+            this.btnAttendance.Click += new System.EventHandler(this.btnAttendance_Click);
 
             // LOG OUT Button
-            this.btnContactUs.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnContactUs.FlatAppearance.BorderSize = 0;
-            this.btnContactUs.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnContactUs.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
-            this.btnContactUs.Location = new System.Drawing.Point(500, 18);
-            this.btnContactUs.Size = new System.Drawing.Size(100, 30);
-            this.btnContactUs.Text = "LOG OUT";
-            this.btnContactUs.Click += new System.EventHandler(this.btnLogout_Click);
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.FlatAppearance.BorderSize = 0;
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.btnLogout.ForeColor = System.Drawing.Color.FromArgb(80, 80, 90);
+            this.btnLogout.Location = new System.Drawing.Point(640, 18);
+            this.btnLogout.Size = new System.Drawing.Size(100, 30);
+            this.btnLogout.Text = "LOG OUT";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
 
             // ============================================
             // DASHBOARD CONTAINER
@@ -181,9 +196,9 @@
             this.membersSection.Padding = new System.Windows.Forms.Padding(0);
 
             // ============================================
-            // MEMBERS HEADER - Light lavender background
+            // MEMBERS HEADER
             // ============================================
-            this.membersHeader.BackColor = System.Drawing.Color.LightCyan;
+            this.membersHeader.BackColor = System.Drawing.Color.Wheat;
             this.membersHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.membersHeader.Height = 85;
             this.membersHeader.Padding = new System.Windows.Forms.Padding(0);
@@ -202,38 +217,47 @@
             this.membersHeaderContent.Controls.Add(this.lblMembersTitle);
             this.membersHeaderContent.Controls.Add(this.txtSearch);
             this.membersHeaderContent.Controls.Add(this.btnRefresh);
+            this.membersHeaderContent.Controls.Add(this.btnDelete);
             this.membersHeaderContent.Resize += (s, e) => CenterHeaderContent();
 
-            // Members Title - Colored text
-            this.lblMembersTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            // Members Title
+            this.lblMembersTitle.Font = new System.Drawing.Font("Segoe UI", 28F, System.Drawing.FontStyle.Bold);
             this.lblMembersTitle.ForeColor = System.Drawing.Color.FromArgb(75, 85, 110);
-            this.lblMembersTitle.Size = new System.Drawing.Size(200, 45);
+            this.lblMembersTitle.Size = new System.Drawing.Size(280, 55);
             this.lblMembersTitle.Text = "📋 Members List";
             this.lblMembersTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblMembersTitle.AutoSize = false;
 
-            // Search Box - With improved styling
+            // Search Box
             this.txtSearch.BackColor = System.Drawing.Color.White;
             this.txtSearch.ForeColor = System.Drawing.Color.Black;
             this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtSearch.Size = new System.Drawing.Size(385, 36);
+            this.txtSearch.Size = new System.Drawing.Size(250, 36);
             this.txtSearch.PlaceholderText = "🔍 Search by name, email, or ID...";
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
 
-            // Refresh Button - With hover effect and accent color
+            // Refresh Button
             this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(100, 120, 150);
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRefresh.FlatAppearance.BorderSize = 0;
             this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
-            this.btnRefresh.Size = new System.Drawing.Size(110, 36);
+            this.btnRefresh.Size = new System.Drawing.Size(100, 36);
             this.btnRefresh.Text = "⟳ Refresh";
             this.btnRefresh.Cursor = Cursors.Hand;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 
-            this.btnRefresh.MouseEnter += (s, e) => { this.btnRefresh.BackColor = Color.FromArgb(80, 100, 130); };
-            this.btnRefresh.MouseLeave += (s, e) => { this.btnRefresh.BackColor = Color.FromArgb(100, 120, 150); };
+            // Delete Button
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(244, 67, 54);
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Size = new System.Drawing.Size(100, 36);
+            this.btnDelete.Text = "🗑️ DELETE";
+            this.btnDelete.Cursor = Cursors.Hand;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 
             this.membersHeader.Controls.Add(this.membersHeaderContent);
 
@@ -268,8 +292,8 @@
             // Row styling
             this.dgvMembers.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgvMembers.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvMembers.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(255, 245, 235);
-            this.dgvMembers.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
+            this.dgvMembers.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.PaleGreen;
+            this.dgvMembers.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvMembers.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(10);
             this.dgvMembers.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(248, 248, 252);
 
@@ -317,8 +341,6 @@
             this.ResumeLayout(false);
         }
 
-
-
         private void CenterStatsPanel()
         {
             if (this.statsFlowLayout == null || this.statsContainer == null) return;
@@ -338,41 +360,36 @@
 
             int containerWidth = this.membersHeaderContent.Width;
 
-            // Element dimensions
-            int titleWidth = 200;
-            int searchWidth = 385;
-            int refreshWidth = 110;
-            int spacing = 30;
+            int titleWidth = 280;
+            int searchWidth = 250;
+            int refreshWidth = 100;
+            int deleteWidth = 100;
+            int spacing = 15;
 
-            // Search bar height - adjustable
-            int searchBarHeight = 19;
-
-            // Calculate total width
-            int totalWidth = titleWidth + spacing + searchWidth + spacing + refreshWidth;
+            int totalWidth = titleWidth + spacing + searchWidth + spacing + refreshWidth + spacing + deleteWidth + spacing;
             int startX = (containerWidth - totalWidth) / 2;
+            int titleStartX = startX - 230;
 
             if (startX < 10) startX = 10;
 
-            // Individual vertical positions
-            int titleVerticalPosition = 26;
-            int searchBarVerticalPosition = 23;
-            int refreshVerticalPosition = 26;
+            int titleVerticalPosition = 21;
+            int searchBarVerticalPosition = 35;
+            int buttonVerticalPosition = 30;
 
-            // Set search bar height
-            this.txtSearch.Height = searchBarHeight;
 
-            // Adjust search bar position if height changes
-            int adjustedSearchPosition = searchBarVerticalPosition - ((searchBarHeight - 36) / 2);
+            // Title uses titleStartX (moved left)
+            this.lblMembersTitle.Location = new System.Drawing.Point(titleStartX, titleVerticalPosition);
 
-            // Position title
-            this.lblMembersTitle.Location = new System.Drawing.Point(startX, titleVerticalPosition);
+            int searchX = startX + titleWidth + spacing;
+            this.txtSearch.Location = new System.Drawing.Point(searchX, searchBarVerticalPosition);
+            this.txtSearch.Size = new System.Drawing.Size(searchWidth, 36);
 
-            // Position search bar
-            this.txtSearch.Location = new System.Drawing.Point(startX + titleWidth + spacing, adjustedSearchPosition);
-            this.txtSearch.Size = new System.Drawing.Size(searchWidth, searchBarHeight);
+            int refreshX = searchX + searchWidth + spacing;
+            this.btnRefresh.Location = new System.Drawing.Point(refreshX, buttonVerticalPosition);
 
-            // Position refresh button
-            this.btnRefresh.Location = new System.Drawing.Point(startX + titleWidth + spacing + searchWidth + spacing, refreshVerticalPosition);
+            int deleteX = refreshX + refreshWidth + spacing;
+            this.btnDelete.Location = new System.Drawing.Point(deleteX, buttonVerticalPosition);
+
         }
 
         private void CenterTable()
@@ -397,9 +414,10 @@
         // CONTROL DECLARATIONS
         private System.Windows.Forms.Panel navPanel;
         private System.Windows.Forms.Label lblLogo;
-        private System.Windows.Forms.Button btnHome;
-        private System.Windows.Forms.Button btnAboutUs;
-        private System.Windows.Forms.Button btnContactUs;
+        private System.Windows.Forms.Button btnAddMember;
+        private System.Windows.Forms.Button btnPayments;
+        private System.Windows.Forms.Button btnAttendance;
+        private System.Windows.Forms.Button btnLogout;
 
         private System.Windows.Forms.Panel dashboardContainer;
         private System.Windows.Forms.Panel dashboardContent;
@@ -417,6 +435,7 @@
         private System.Windows.Forms.Label lblMembersTitle;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnDelete;
 
         private System.Windows.Forms.Panel tableContainer;
         private System.Windows.Forms.DataGridView dgvMembers;

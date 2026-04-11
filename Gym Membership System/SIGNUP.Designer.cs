@@ -52,222 +52,251 @@ namespace Gym_Membership_System
             errorProvider = new ErrorProvider(components);
             ((ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
-
-            // lblSignup - Title
+            // 
+            // lblSignup
+            // 
             lblSignup.BackColor = Color.Transparent;
             lblSignup.Font = new Font("Impact", 52F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSignup.ForeColor = Color.White;
             lblSignup.Location = new Point(0, 0);
             lblSignup.Name = "lblSignup";
-            lblSignup.Size = new Size(800, 100);
+            lblSignup.Size = new Size(914, 133);
             lblSignup.TabIndex = 0;
             lblSignup.Text = "CREATE ADMIN ACCOUNT";
             lblSignup.TextAlign = ContentAlignment.MiddleCenter;
-
-            // lblWarning - Warning message
+            // 
+            // lblFirstName
+            // 
+            lblFirstName.BackColor = Color.Transparent;
+            lblFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblFirstName.ForeColor = Color.White;
+            lblFirstName.Location = new Point(343, 267);
+            lblFirstName.Name = "lblFirstName";
+            lblFirstName.Size = new Size(137, 33);
+            lblFirstName.TabIndex = 1;
+            lblFirstName.Text = "First Name *";
+            lblFirstName.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtFirstName
+            // 
+            txtFirstName.BackColor = Color.White;
+            txtFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtFirstName.ForeColor = Color.Black;
+            txtFirstName.Location = new Point(491, 267);
+            txtFirstName.Margin = new Padding(3, 4, 3, 4);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.PlaceholderText = "Enter first name";
+            txtFirstName.Size = new Size(285, 34);
+            txtFirstName.TabIndex = 2;
+            // 
+            // lblLastName
+            // 
+            lblLastName.BackColor = Color.Transparent;
+            lblLastName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblLastName.ForeColor = Color.White;
+            lblLastName.Location = new Point(343, 333);
+            lblLastName.Name = "lblLastName";
+            lblLastName.Size = new Size(137, 33);
+            lblLastName.TabIndex = 3;
+            lblLastName.Text = "Last Name *";
+            lblLastName.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtLastName
+            // 
+            txtLastName.BackColor = Color.White;
+            txtLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtLastName.ForeColor = Color.Black;
+            txtLastName.Location = new Point(491, 333);
+            txtLastName.Margin = new Padding(3, 4, 3, 4);
+            txtLastName.Name = "txtLastName";
+            txtLastName.PlaceholderText = "Enter last name";
+            txtLastName.Size = new Size(285, 34);
+            txtLastName.TabIndex = 4;
+            txtLastName.TextChanged += txtLastName_TextChanged;
+            // 
+            // lblEmail
+            // 
+            lblEmail.BackColor = Color.Transparent;
+            lblEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEmail.ForeColor = Color.White;
+            lblEmail.Location = new Point(343, 400);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(137, 33);
+            lblEmail.TabIndex = 5;
+            lblEmail.Text = "Email *";
+            lblEmail.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtEmail
+            // 
+            txtEmail.BackColor = Color.White;
+            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtEmail.ForeColor = Color.Black;
+            txtEmail.Location = new Point(491, 400);
+            txtEmail.Margin = new Padding(3, 4, 3, 4);
+            txtEmail.Name = "txtEmail";
+            txtEmail.PlaceholderText = "admin@gym.com";
+            txtEmail.Size = new Size(285, 34);
+            txtEmail.TabIndex = 6;
+            // 
+            // lblUsername
+            // 
+            lblUsername.BackColor = Color.Transparent;
+            lblUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblUsername.ForeColor = Color.White;
+            lblUsername.Location = new Point(343, 467);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(137, 33);
+            lblUsername.TabIndex = 7;
+            lblUsername.Text = "Username *";
+            lblUsername.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtUsername
+            // 
+            txtUsername.BackColor = Color.White;
+            txtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtUsername.ForeColor = Color.Black;
+            txtUsername.Location = new Point(491, 467);
+            txtUsername.Margin = new Padding(3, 4, 3, 4);
+            txtUsername.Name = "txtUsername";
+            txtUsername.PlaceholderText = "Choose username";
+            txtUsername.Size = new Size(285, 34);
+            txtUsername.TabIndex = 8;
+            // 
+            // lblPassword
+            // 
+            lblPassword.BackColor = Color.Transparent;
+            lblPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPassword.ForeColor = Color.White;
+            lblPassword.Location = new Point(343, 533);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(137, 33);
+            lblPassword.TabIndex = 9;
+            lblPassword.Text = "Password *";
+            lblPassword.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtPassword
+            // 
+            txtPassword.BackColor = Color.White;
+            txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPassword.ForeColor = Color.Black;
+            txtPassword.Location = new Point(491, 533);
+            txtPassword.Margin = new Padding(3, 4, 3, 4);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.PlaceholderText = "Enter password";
+            txtPassword.Size = new Size(285, 34);
+            txtPassword.TabIndex = 10;
+            // 
+            // lblConfirmPassword
+            // 
+            lblConfirmPassword.BackColor = Color.Transparent;
+            lblConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblConfirmPassword.ForeColor = Color.White;
+            lblConfirmPassword.Location = new Point(343, 600);
+            lblConfirmPassword.Name = "lblConfirmPassword";
+            lblConfirmPassword.Size = new Size(137, 33);
+            lblConfirmPassword.TabIndex = 11;
+            lblConfirmPassword.Text = "Confirm *";
+            lblConfirmPassword.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtConfirmPassword
+            // 
+            txtConfirmPassword.BackColor = Color.White;
+            txtConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtConfirmPassword.ForeColor = Color.Black;
+            txtConfirmPassword.Location = new Point(491, 600);
+            txtConfirmPassword.Margin = new Padding(3, 4, 3, 4);
+            txtConfirmPassword.Name = "txtConfirmPassword";
+            txtConfirmPassword.PasswordChar = '*';
+            txtConfirmPassword.PlaceholderText = "Confirm password";
+            txtConfirmPassword.Size = new Size(285, 34);
+            txtConfirmPassword.TabIndex = 12;
+            txtConfirmPassword.TextChanged += txtConfirmPassword_TextChanged;
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.FromArgb(76, 175, 80);
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(56, 142, 60);
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.ForeColor = Color.White;
+            btnSave.Location = new Point(400, 747);
+            btnSave.Margin = new Padding(3, 4, 3, 4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(171, 67);
+            btnSave.TabIndex = 16;
+            btnSave.Text = "CREATE";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += BtnSave_Click;
+            // 
+            // btnReset
+            // 
+            btnReset.BackColor = Color.FromArgb(220, 53, 69);
+            btnReset.FlatAppearance.BorderSize = 0;
+            btnReset.FlatAppearance.MouseOverBackColor = Color.FromArgb(200, 35, 51);
+            btnReset.FlatStyle = FlatStyle.Flat;
+            btnReset.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnReset.ForeColor = Color.White;
+            btnReset.Location = new Point(629, 747);
+            btnReset.Margin = new Padding(3, 4, 3, 4);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(171, 67);
+            btnReset.TabIndex = 17;
+            btnReset.Text = "RESET";
+            btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += BtnReset_Click;
+            // 
+            // lblBackToLogin
+            // 
+            lblBackToLogin.BackColor = Color.Transparent;
+            lblBackToLogin.Cursor = Cursors.Hand;
+            lblBackToLogin.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            lblBackToLogin.ForeColor = Color.FromArgb(255, 200, 0);
+            lblBackToLogin.Location = new Point(486, 840);
+            lblBackToLogin.Name = "lblBackToLogin";
+            lblBackToLogin.Size = new Size(229, 33);
+            lblBackToLogin.TabIndex = 18;
+            lblBackToLogin.Text = "← Back to Login";
+            lblBackToLogin.TextAlign = ContentAlignment.MiddleCenter;
+            lblBackToLogin.Click += LblBackToLogin_Click;
+            // 
+            // lblWarning
+            // 
             lblWarning.BackColor = Color.Transparent;
             lblWarning.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblWarning.ForeColor = Color.FromArgb(255, 100, 0);
             lblWarning.Location = new Point(0, 0);
             lblWarning.Name = "lblWarning";
-            lblWarning.Size = new Size(400, 40);
+            lblWarning.Size = new Size(457, 53);
             lblWarning.TabIndex = 25;
             lblWarning.Text = "⚠️ FIRST TIME SETUP ⚠️";
             lblWarning.TextAlign = ContentAlignment.MiddleCenter;
-
-            // lblFirstName
-            lblFirstName.BackColor = Color.Transparent;
-            lblFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblFirstName.ForeColor = Color.White;
-            lblFirstName.Location = new Point(300, 200);
-            lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(120, 25);
-            lblFirstName.TabIndex = 1;
-            lblFirstName.Text = "First Name *";
-            lblFirstName.TextAlign = ContentAlignment.MiddleRight;
-
-            // txtFirstName
-            txtFirstName.BackColor = Color.White;
-            txtFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtFirstName.ForeColor = Color.Black;
-            txtFirstName.Location = new Point(430, 200);
-            txtFirstName.Name = "txtFirstName";
-            txtFirstName.PlaceholderText = "Enter first name";
-            txtFirstName.Size = new Size(250, 29);
-            txtFirstName.TabIndex = 2;
-
-            // lblLastName
-            lblLastName.BackColor = Color.Transparent;
-            lblLastName.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLastName.ForeColor = Color.White;
-            lblLastName.Location = new Point(300, 250);
-            lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(120, 25);
-            lblLastName.TabIndex = 3;
-            lblLastName.Text = "Last Name *";
-            lblLastName.TextAlign = ContentAlignment.MiddleRight;
-
-            // txtLastName
-            txtLastName.BackColor = Color.White;
-            txtLastName.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtLastName.ForeColor = Color.Black;
-            txtLastName.Location = new Point(430, 250);
-            txtLastName.Name = "txtLastName";
-            txtLastName.PlaceholderText = "Enter last name";
-            txtLastName.Size = new Size(250, 29);
-            txtLastName.TabIndex = 4;
-            txtLastName.TextChanged += txtLastName_TextChanged;
-
-            // lblEmail
-            lblEmail.BackColor = Color.Transparent;
-            lblEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmail.ForeColor = Color.White;
-            lblEmail.Location = new Point(300, 300);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(120, 25);
-            lblEmail.TabIndex = 5;
-            lblEmail.Text = "Email *";
-            lblEmail.TextAlign = ContentAlignment.MiddleRight;
-
-            // txtEmail
-            txtEmail.BackColor = Color.White;
-            txtEmail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtEmail.ForeColor = Color.Black;
-            txtEmail.Location = new Point(430, 300);
-            txtEmail.Name = "txtEmail";
-            txtEmail.PlaceholderText = "admin@gym.com";
-            txtEmail.Size = new Size(250, 29);
-            txtEmail.TabIndex = 6;
-
-            // lblUsername
-            lblUsername.BackColor = Color.Transparent;
-            lblUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUsername.ForeColor = Color.White;
-            lblUsername.Location = new Point(300, 350);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(120, 25);
-            lblUsername.TabIndex = 7;
-            lblUsername.Text = "Username *";
-            lblUsername.TextAlign = ContentAlignment.MiddleRight;
-
-            // txtUsername
-            txtUsername.BackColor = Color.White;
-            txtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtUsername.ForeColor = Color.Black;
-            txtUsername.Location = new Point(430, 350);
-            txtUsername.Name = "txtUsername";
-            txtUsername.PlaceholderText = "Choose username";
-            txtUsername.Size = new Size(250, 29);
-            txtUsername.TabIndex = 8;
-
-            // lblPassword
-            lblPassword.BackColor = Color.Transparent;
-            lblPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPassword.ForeColor = Color.White;
-            lblPassword.Location = new Point(300, 400);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(120, 25);
-            lblPassword.TabIndex = 9;
-            lblPassword.Text = "Password *";
-            lblPassword.TextAlign = ContentAlignment.MiddleRight;
-
-            // txtPassword
-            txtPassword.BackColor = Color.White;
-            txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtPassword.ForeColor = Color.Black;
-            txtPassword.Location = new Point(430, 400);
-            txtPassword.Name = "txtPassword";
-            txtPassword.PasswordChar = '*';
-            txtPassword.PlaceholderText = "Enter password";
-            txtPassword.Size = new Size(250, 29);
-            txtPassword.TabIndex = 10;
-
-            // lblConfirmPassword
-            lblConfirmPassword.BackColor = Color.Transparent;
-            lblConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblConfirmPassword.ForeColor = Color.White;
-            lblConfirmPassword.Location = new Point(300, 450);
-            lblConfirmPassword.Name = "lblConfirmPassword";
-            lblConfirmPassword.Size = new Size(120, 25);
-            lblConfirmPassword.TabIndex = 11;
-            lblConfirmPassword.Text = "Confirm *";
-            lblConfirmPassword.TextAlign = ContentAlignment.MiddleRight;
-
-            // txtConfirmPassword
-            txtConfirmPassword.BackColor = Color.White;
-            txtConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txtConfirmPassword.ForeColor = Color.Black;
-            txtConfirmPassword.Location = new Point(430, 450);
-            txtConfirmPassword.Name = "txtConfirmPassword";
-            txtConfirmPassword.PasswordChar = '*';
-            txtConfirmPassword.PlaceholderText = "Confirm password";
-            txtConfirmPassword.Size = new Size(250, 29);
-            txtConfirmPassword.TabIndex = 12;
-            txtConfirmPassword.TextChanged += txtConfirmPassword_TextChanged;
-
+            // 
             // chkShowPassword
+            // 
             chkShowPassword.BackColor = Color.Transparent;
             chkShowPassword.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkShowPassword.ForeColor = Color.FromArgb(255, 200, 0);
-            chkShowPassword.Location = new Point(430, 490);
+            chkShowPassword.Location = new Point(491, 653);
+            chkShowPassword.Margin = new Padding(3, 4, 3, 4);
             chkShowPassword.Name = "chkShowPassword";
-            chkShowPassword.Size = new Size(150, 25);
+            chkShowPassword.Size = new Size(171, 33);
             chkShowPassword.TabIndex = 15;
             chkShowPassword.Text = "Show Password";
             chkShowPassword.UseVisualStyleBackColor = false;
             chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
-
-            // btnSave
-            btnSave.BackColor = Color.FromArgb(76, 175, 80);
-            btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(350, 560);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(150, 50);
-            btnSave.TabIndex = 16;
-            btnSave.Text = "CREATE";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.FlatAppearance.BorderSize = 0;
-            btnSave.FlatAppearance.MouseOverBackColor = Color.FromArgb(56, 142, 60);
-            btnSave.Click += BtnSave_Click;
-
-            // btnReset
-            btnReset.BackColor = Color.FromArgb(220, 53, 69);
-            btnReset.FlatStyle = FlatStyle.Flat;
-            btnReset.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnReset.ForeColor = Color.White;
-            btnReset.Location = new Point(550, 560);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new Size(150, 50);
-            btnReset.TabIndex = 17;
-            btnReset.Text = "RESET";
-            btnReset.UseVisualStyleBackColor = false;
-            btnReset.FlatAppearance.BorderSize = 0;
-            btnReset.FlatAppearance.MouseOverBackColor = Color.FromArgb(200, 35, 51);
-            btnReset.Click += BtnReset_Click;
-
-            // lblBackToLogin
-            lblBackToLogin.BackColor = Color.Transparent;
-            lblBackToLogin.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            lblBackToLogin.ForeColor = Color.FromArgb(255, 200, 0);
-            lblBackToLogin.Location = new Point(425, 630);
-            lblBackToLogin.Name = "lblBackToLogin";
-            lblBackToLogin.Size = new Size(200, 25);
-            lblBackToLogin.TabIndex = 18;
-            lblBackToLogin.Text = "← Back to Login";
-            lblBackToLogin.TextAlign = ContentAlignment.MiddleCenter;
-            lblBackToLogin.Cursor = Cursors.Hand;
-            lblBackToLogin.Click += LblBackToLogin_Click;
-
+            // 
             // errorProvider
+            // 
             errorProvider.ContainerControl = this;
-
+            // 
             // SIGNUP
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.signupbg1;
-            ClientSize = new Size(1515, 821);
+            ClientSize = new Size(1731, 1095);
             Controls.Add(lblBackToLogin);
             Controls.Add(btnReset);
             Controls.Add(btnSave);
@@ -286,9 +315,11 @@ namespace Gym_Membership_System
             Controls.Add(lblFirstName);
             Controls.Add(lblWarning);
             Controls.Add(lblSignup);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "SIGNUP";
             Text = "Admin Signup";
             WindowState = FormWindowState.Maximized;
+            Load += SIGNUP_Load;
             ((ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();

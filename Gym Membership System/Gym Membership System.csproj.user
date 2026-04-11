@@ -7,7 +7,13 @@
     <Compile Update="AddPaymentForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="attendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="BaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="boardupdate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="ForgotAccountForm.cs">
