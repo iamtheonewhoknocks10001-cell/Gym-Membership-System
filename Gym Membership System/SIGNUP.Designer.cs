@@ -38,6 +38,8 @@ namespace Gym_Membership_System
             txtLastName = new TextBox();
             lblEmail = new Label();
             txtEmail = new TextBox();
+            lblPhone = new Label();
+            txtPhone = new TextBox();
             lblUsername = new Label();
             txtUsername = new TextBox();
             lblPassword = new Label();
@@ -138,12 +140,36 @@ namespace Gym_Membership_System
             txtEmail.Size = new Size(285, 34);
             txtEmail.TabIndex = 6;
             // 
+            // lblPhone
+            // 
+            lblPhone.BackColor = Color.Transparent;
+            lblPhone.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblPhone.ForeColor = Color.White;
+            lblPhone.Location = new Point(343, 467);
+            lblPhone.Name = "lblPhone";
+            lblPhone.Size = new Size(137, 33);
+            lblPhone.TabIndex = 19;
+            lblPhone.Text = "Phone *";
+            lblPhone.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // txtPhone
+            // 
+            txtPhone.BackColor = Color.White;
+            txtPhone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPhone.ForeColor = Color.Black;
+            txtPhone.Location = new Point(491, 467);
+            txtPhone.Margin = new Padding(3, 4, 3, 4);
+            txtPhone.Name = "txtPhone";
+            txtPhone.PlaceholderText = "(555) 123-4567";
+            txtPhone.Size = new Size(285, 34);
+            txtPhone.TabIndex = 20;
+            // 
             // lblUsername
             // 
             lblUsername.BackColor = Color.Transparent;
             lblUsername.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblUsername.ForeColor = Color.White;
-            lblUsername.Location = new Point(343, 467);
+            lblUsername.Location = new Point(343, 534);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(137, 33);
             lblUsername.TabIndex = 7;
@@ -155,7 +181,7 @@ namespace Gym_Membership_System
             txtUsername.BackColor = Color.White;
             txtUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtUsername.ForeColor = Color.Black;
-            txtUsername.Location = new Point(491, 467);
+            txtUsername.Location = new Point(491, 534);
             txtUsername.Margin = new Padding(3, 4, 3, 4);
             txtUsername.Name = "txtUsername";
             txtUsername.PlaceholderText = "Choose username";
@@ -167,7 +193,7 @@ namespace Gym_Membership_System
             lblPassword.BackColor = Color.Transparent;
             lblPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblPassword.ForeColor = Color.White;
-            lblPassword.Location = new Point(343, 533);
+            lblPassword.Location = new Point(343, 600);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(137, 33);
             lblPassword.TabIndex = 9;
@@ -179,7 +205,7 @@ namespace Gym_Membership_System
             txtPassword.BackColor = Color.White;
             txtPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtPassword.ForeColor = Color.Black;
-            txtPassword.Location = new Point(491, 533);
+            txtPassword.Location = new Point(491, 600);
             txtPassword.Margin = new Padding(3, 4, 3, 4);
             txtPassword.Name = "txtPassword";
             txtPassword.PasswordChar = '*';
@@ -192,7 +218,7 @@ namespace Gym_Membership_System
             lblConfirmPassword.BackColor = Color.Transparent;
             lblConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblConfirmPassword.ForeColor = Color.White;
-            lblConfirmPassword.Location = new Point(343, 600);
+            lblConfirmPassword.Location = new Point(343, 667);
             lblConfirmPassword.Name = "lblConfirmPassword";
             lblConfirmPassword.Size = new Size(137, 33);
             lblConfirmPassword.TabIndex = 11;
@@ -204,7 +230,7 @@ namespace Gym_Membership_System
             txtConfirmPassword.BackColor = Color.White;
             txtConfirmPassword.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtConfirmPassword.ForeColor = Color.Black;
-            txtConfirmPassword.Location = new Point(491, 600);
+            txtConfirmPassword.Location = new Point(491, 667);
             txtConfirmPassword.Margin = new Padding(3, 4, 3, 4);
             txtConfirmPassword.Name = "txtConfirmPassword";
             txtConfirmPassword.PasswordChar = '*';
@@ -221,7 +247,7 @@ namespace Gym_Membership_System
             btnSave.FlatStyle = FlatStyle.Flat;
             btnSave.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = Color.White;
-            btnSave.Location = new Point(400, 747);
+            btnSave.Location = new Point(400, 780);
             btnSave.Margin = new Padding(3, 4, 3, 4);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(171, 67);
@@ -238,7 +264,7 @@ namespace Gym_Membership_System
             btnReset.FlatStyle = FlatStyle.Flat;
             btnReset.Font = new Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnReset.ForeColor = Color.White;
-            btnReset.Location = new Point(629, 747);
+            btnReset.Location = new Point(629, 780);
             btnReset.Margin = new Padding(3, 4, 3, 4);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(171, 67);
@@ -253,7 +279,7 @@ namespace Gym_Membership_System
             lblBackToLogin.Cursor = Cursors.Hand;
             lblBackToLogin.Font = new Font("Segoe UI", 12F, FontStyle.Underline, GraphicsUnit.Point, 0);
             lblBackToLogin.ForeColor = Color.FromArgb(255, 200, 0);
-            lblBackToLogin.Location = new Point(486, 840);
+            lblBackToLogin.Location = new Point(486, 873);
             lblBackToLogin.Name = "lblBackToLogin";
             lblBackToLogin.Size = new Size(229, 33);
             lblBackToLogin.TabIndex = 18;
@@ -278,7 +304,7 @@ namespace Gym_Membership_System
             chkShowPassword.BackColor = Color.Transparent;
             chkShowPassword.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             chkShowPassword.ForeColor = Color.FromArgb(255, 200, 0);
-            chkShowPassword.Location = new Point(491, 653);
+            chkShowPassword.Location = new Point(491, 720);
             chkShowPassword.Margin = new Padding(3, 4, 3, 4);
             chkShowPassword.Name = "chkShowPassword";
             chkShowPassword.Size = new Size(171, 33);
@@ -307,6 +333,8 @@ namespace Gym_Membership_System
             Controls.Add(lblPassword);
             Controls.Add(txtUsername);
             Controls.Add(lblUsername);
+            Controls.Add(txtPhone);
+            Controls.Add(lblPhone);
             Controls.Add(txtEmail);
             Controls.Add(lblEmail);
             Controls.Add(txtLastName);
@@ -333,6 +361,8 @@ namespace Gym_Membership_System
         private TextBox txtLastName;
         private Label lblEmail;
         private TextBox txtEmail;
+        private Label lblPhone;
+        private TextBox txtPhone;
         private Label lblUsername;
         private TextBox txtUsername;
         private Label lblPassword;

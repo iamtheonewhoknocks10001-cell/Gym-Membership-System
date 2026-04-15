@@ -113,14 +113,14 @@ namespace Gym_Membership_System
                 lblError.Text = "Welcome! This is your first time running the system. Please create your admin account.";
                 lblError.ForeColor = Color.FromArgb(255, 200, 0);
                 btnCreateAccount.Text = "CREATE FIRST ADMIN ACCOUNT";
-                btnCreateAccount.Font = new Font("Impact", 12F, FontStyle.Bold);
+                btnCreateAccount.Font = new Font("Calibri", 12F, FontStyle.Bold);
                 btnCreateAccount.BackColor = Color.FromArgb(76, 175, 80);
             }
             else
             {
                 // Has existing accounts - transform button to Forgot Account
                 btnCreateAccount.Text = "FORGOT PASSWORD?";
-                btnCreateAccount.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+                btnCreateAccount.Font = new Font("Calibri", 12F, FontStyle.Bold);
                 btnCreateAccount.BackColor = Color.FromArgb(255, 100, 0);
             }
 
@@ -388,15 +388,21 @@ namespace Gym_Membership_System
         {
             if (!hasExistingAccounts)
             {
+                // Use ShowDialog instead of Show to make SIGNUP modal
                 SIGNUP signupForm = new SIGNUP();
-                signupForm.Show();
-                this.Hide();
+                signupForm.ShowDialog();  // This will block until SIGNUP closes
+                                          // After SIGNUP closes, LOGIN is still here and visible
             }
             else
             {
                 ForgotAccountForm forgotForm = new ForgotAccountForm(connectionString);
                 forgotForm.ShowDialog();
             }
+        }
+        public async Task RefreshDatabaseStatus()
+        {
+            await CheckDatabaseStatus();
+            CenterControls();
         }
 
         private void lblForgotPassword_Click(object sender, EventArgs e)

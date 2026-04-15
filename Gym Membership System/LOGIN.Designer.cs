@@ -103,7 +103,7 @@
             btnLogin.BackColor = Color.FromArgb(255, 100, 0);
             btnLogin.FlatAppearance.BorderSize = 0;
             btnLogin.FlatStyle = FlatStyle.Flat;
-            btnLogin.Font = new Font("Impact", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnLogin.Font = new Font("Calibri", 16F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.White;
             btnLogin.Location = new Point(629, 593);
             btnLogin.Margin = new Padding(3, 4, 3, 4);

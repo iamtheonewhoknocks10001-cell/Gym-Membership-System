@@ -10,41 +10,32 @@ using Timer = System.Windows.Forms.Timer;
 
 namespace Gym_Membership_System
 {
-    public partial class SIGNUP : BaseForm  // Change from Form to BaseForm
+    public partial class SIGNUP : BaseForm
     {
         private string connectionString = "Server=DESKTOP-PMQJTOJ;Database=GymDB;Trusted_Connection=True;TrustServerCertificate=True;";
 
         // Visual constants - Made darker like login page
-        private const int OverlayAlpha = 180;  // Increased from 100 to 180 (darker)
-        private const int VignetteAlpha = 220; // Increased from 200 to 220
+        private const int OverlayAlpha = 180;
+        private const int VignetteAlpha = 220;
         private const float VignetteFocus = 0.45f;
-        private const int GradientAlpha = 100; // Increased from 80 to 100
+        private const int GradientAlpha = 100;
         private readonly Image _backgroundImage = Properties.Resources.signupbg1;
 
-        // Control dimensions for consistent layout - INCREASED SIZES
-        private const int LabelWidth = 150;      // Increased from 120
-        private const int FieldWidth = 350;      // Increased from 300
-        private const int FieldHeight = 35;      // Increased from 30
-        private const int Spacing = 20;          // Increased from 15
-        private const int RowHeight = 55;         // Increased from 45
+        // Control dimensions for consistent layout
+        private const int LabelWidth = 150;
+        private const int FieldWidth = 350;
+        private const int FieldHeight = 35;
+        private const int Spacing = 20;
+        private const int RowHeight = 55;
 
         private bool isTransitioning = false;
         private bool isResetting = false;
 
         public SIGNUP()
         {
-            // Start with opacity 0 for fade-in
             this.Opacity = 0;
-
             InitializeComponent();
             SetupForm();
-            this.Disposed += (s, e) =>
-            {
-                if (Application.OpenForms.Count == 0)
-                {
-                    Environment.Exit(0);
-                }
-            };
         }
 
         private void SetupForm()
@@ -65,7 +56,7 @@ namespace Gym_Membership_System
             lblSignup.Text = "CREATE ADMIN ACCOUNT";
             lblSignup.Font = new Font("Impact", 52F, FontStyle.Bold);
             lblSignup.ForeColor = Color.White;
-            lblSignup.TextAlign = ContentAlignment.MiddleCenter; // Center aligned
+            lblSignup.TextAlign = ContentAlignment.MiddleCenter;
             lblSignup.Size = new Size(900, 100);
             lblSignup.AutoSize = false;
 
@@ -73,7 +64,7 @@ namespace Gym_Membership_System
             lblWarning.Text = "⚠️ FIRST TIME SETUP ⚠️";
             lblWarning.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lblWarning.ForeColor = Color.FromArgb(255, 100, 0);
-            lblWarning.TextAlign = ContentAlignment.MiddleCenter; // Center aligned
+            lblWarning.TextAlign = ContentAlignment.MiddleCenter;
             lblWarning.Size = new Size(500, 45);
             lblWarning.AutoSize = false;
 
@@ -102,51 +93,8 @@ namespace Gym_Membership_System
             fadeIn.Start();
         }
 
-        private void OpenFormSmoothly(Form newForm)
-        {
-            if (isTransitioning) return;
-            isTransitioning = true;
-
-            Timer fadeOut = new Timer();
-            fadeOut.Interval = 15;
-            fadeOut.Tick += (s, e) =>
-            {
-                if (this.Opacity > 0)
-                {
-                    this.Opacity -= 0.05;
-                }
-                else
-                {
-                    fadeOut.Stop();
-
-                    newForm.Opacity = 0;
-                    newForm.StartPosition = FormStartPosition.CenterScreen;
-                    newForm.Show();
-                    this.Close();
-
-                    Timer fadeIn = new Timer();
-                    fadeIn.Interval = 15;
-                    fadeIn.Tick += (s2, e2) =>
-                    {
-                        if (newForm.Opacity < 1)
-                        {
-                            newForm.Opacity += 0.05;
-                        }
-                        else
-                        {
-                            fadeIn.Stop();
-                            isTransitioning = false;
-                        }
-                    };
-                    fadeIn.Start();
-                }
-            };
-            fadeOut.Start();
-        }
-
         private void SetupEventHandlers()
         {
-            // Unsubscribe first to prevent multiple subscriptions
             btnSave.Click -= BtnSave_Click;
             btnSave.Click += BtnSave_Click;
 
@@ -159,7 +107,6 @@ namespace Gym_Membership_System
             chkShowPassword.CheckedChanged -= chkShowPassword_CheckedChanged;
             chkShowPassword.CheckedChanged += chkShowPassword_CheckedChanged;
 
-            // Validation events
             txtFirstName.Leave -= ValidateRequiredField;
             txtFirstName.Leave += ValidateRequiredField;
 
@@ -168,6 +115,9 @@ namespace Gym_Membership_System
 
             txtEmail.Leave -= ValidateEmail;
             txtEmail.Leave += ValidateEmail;
+
+            txtPhone.Leave -= ValidateRequiredField;
+            txtPhone.Leave += ValidateRequiredField;
 
             txtUsername.Leave -= ValidateUsername;
             txtUsername.Leave += ValidateUsername;
@@ -178,7 +128,6 @@ namespace Gym_Membership_System
             txtConfirmPassword.Leave -= ValidateConfirmPassword;
             txtConfirmPassword.Leave += ValidateConfirmPassword;
 
-            // Real-time feedback
             txtConfirmPassword.TextChanged -= txtConfirmPassword_TextChanged;
             txtConfirmPassword.TextChanged += txtConfirmPassword_TextChanged;
 
@@ -191,80 +140,59 @@ namespace Gym_Membership_System
             int formWidth = this.ClientSize.Width;
             int formHeight = this.ClientSize.Height;
 
-            // Calculate center positions
             int centerX = formWidth / 2;
             int panelWidth = LabelWidth + FieldWidth + Spacing;
             int leftColX = centerX - panelWidth / 2;
             int rightColX = leftColX + LabelWidth + Spacing;
 
-            // TITLE - Centered on the form
             int titleY = 100;
             lblSignup.Location = new Point(centerX - lblSignup.Width / 2, titleY);
-
-            // WARNING - Centered directly under title
             lblWarning.Location = new Point(centerX - lblWarning.Width / 2, lblSignup.Bottom + 5);
 
-            // Calculate starting Y for form fields - MOVED DOWN
-            int totalRows = 6;
+            int totalRows = 7; // Added phone row
             int totalFormHeight = totalRows * RowHeight + 250;
             int startY = (formHeight - totalFormHeight) / 2 + 120;
 
             int currentY = startY;
 
-            // First Name Row
             lblFirstName.Location = new Point(leftColX, currentY);
-            lblFirstName.Font = new Font("Lato", 14F, FontStyle.Bold);
             txtFirstName.Location = new Point(rightColX, currentY);
-            txtFirstName.Font = new Font("Lato", 14F, FontStyle.Regular);
             txtFirstName.Size = new Size(FieldWidth, FieldHeight);
             currentY += RowHeight;
 
-            // Last Name Row
             lblLastName.Location = new Point(leftColX, currentY);
-            lblLastName.Font = new Font("Lato", 14F, FontStyle.Bold);
             txtLastName.Location = new Point(rightColX, currentY);
-            txtLastName.Font = new Font("Lato", 14F, FontStyle.Regular);
             txtLastName.Size = new Size(FieldWidth, FieldHeight);
             currentY += RowHeight;
 
-            // Email Row
             lblEmail.Location = new Point(leftColX, currentY);
-            lblEmail.Font = new Font("Lato", 14F, FontStyle.Bold);
             txtEmail.Location = new Point(rightColX, currentY);
-            txtEmail.Font = new Font("Lato", 14F, FontStyle.Regular);
             txtEmail.Size = new Size(FieldWidth, FieldHeight);
             currentY += RowHeight;
 
-            // Username Row
+            lblPhone.Location = new Point(leftColX, currentY);
+            txtPhone.Location = new Point(rightColX, currentY);
+            txtPhone.Size = new Size(FieldWidth, FieldHeight);
+            currentY += RowHeight;
+
             lblUsername.Location = new Point(leftColX, currentY);
-            lblUsername.Font = new Font("Lato", 14F, FontStyle.Bold);
             txtUsername.Location = new Point(rightColX, currentY);
-            txtUsername.Font = new Font("Lato", 14F, FontStyle.Regular);
             txtUsername.Size = new Size(FieldWidth, FieldHeight);
             currentY += RowHeight;
 
-            // Password Row
             lblPassword.Location = new Point(leftColX, currentY);
-            lblPassword.Font = new Font("Lato", 14F, FontStyle.Bold);
             txtPassword.Location = new Point(rightColX, currentY);
-            txtPassword.Font = new Font("Lato", 14F, FontStyle.Regular);
             txtPassword.Size = new Size(FieldWidth, FieldHeight);
             currentY += RowHeight;
 
-            // Confirm Password Row
             lblConfirmPassword.Location = new Point(leftColX, currentY);
-            lblConfirmPassword.Font = new Font("Lato", 14F, FontStyle.Bold);
             txtConfirmPassword.Location = new Point(rightColX, currentY);
-            txtConfirmPassword.Font = new Font("Lato", 14F, FontStyle.Regular);
             txtConfirmPassword.Size = new Size(FieldWidth, FieldHeight);
             currentY += RowHeight;
 
-            // Show Password checkbox
             chkShowPassword.Location = new Point(rightColX, currentY);
-            chkShowPassword.Font = new Font("Lato", 12F, FontStyle.Regular);
             currentY += RowHeight - 10;
 
-            // Buttons
             int buttonWidth = 180;
             int buttonHeight = 55;
             int buttonSpacing = 30;
@@ -273,20 +201,13 @@ namespace Gym_Membership_System
 
             btnSave.Location = new Point(buttonStartX, currentY);
             btnSave.Size = new Size(buttonWidth, buttonHeight);
-            btnSave.Font = new Font("Lato", 16F, FontStyle.Bold);
 
             btnReset.Location = new Point(buttonStartX + buttonWidth + buttonSpacing, currentY);
             btnReset.Size = new Size(buttonWidth, buttonHeight);
-            btnReset.Font = new Font("Lato", 16F, FontStyle.Bold);
             currentY += 70;
 
-            // Back to Login link
             lblBackToLogin.Location = new Point(centerX - lblBackToLogin.Width / 2, currentY);
-            lblBackToLogin.Font = new Font("Lato", 14F, FontStyle.Underline);
         }
-
-        // Rest of your methods remain the same...
-        // (All validation methods, database methods, etc. remain unchanged)
 
         private void ValidateRequiredField(object sender, EventArgs e)
         {
@@ -417,7 +338,6 @@ namespace Gym_Membership_System
 
             bool messageShown = false;
 
-            // Check if email already exists
             bool emailExists = await CheckEmailExists(txtEmail.Text);
             if (emailExists)
             {
@@ -435,7 +355,6 @@ namespace Gym_Membership_System
                 return;
             }
 
-            // Check if username already exists
             bool usernameExists = await CheckUsernameExists(txtUsername.Text);
             if (usernameExists)
             {
@@ -453,7 +372,6 @@ namespace Gym_Membership_System
                 return;
             }
 
-            // If both checks pass, create the account
             bool success = await CreateNewAdmin();
 
             if (success)
@@ -461,31 +379,32 @@ namespace Gym_Membership_System
                 MessageBox.Show("Account created successfully! You can now log in.",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                await Task.Delay(500);
-
+                // Find LOGIN form and refresh its status
+                LOGIN loginForm = null;
                 foreach (Form f in Application.OpenForms)
                 {
                     if (f is LOGIN)
                     {
-                        f.Show();
-                        this.Close(); // This will trigger BaseForm closing and exit app
-                        return;
+                        loginForm = (LOGIN)f;
+                        break;
                     }
                 }
+
+                if (loginForm != null)
+                {
+                    // Refresh the login form to show "FORGOT PASSWORD?" button
+                    await loginForm.RefreshDatabaseStatus();
+                    loginForm.BringToFront();
+                }
+
+                this.Hide();
             }
         }
 
         private void LblBackToLogin_Click(object sender, EventArgs e)
         {
-            foreach (Form f in Application.OpenForms)
-            {
-                if (f is LOGIN)
-                {
-                    f.Show();
-                    this.Close(); // This will trigger BaseForm closing and exit app
-                    return;
-                }
-            }
+            // Just close the SIGNUP form - this will return to LOGIN
+            this.Hide();
         }
 
         private bool ValidateAllFields()
@@ -512,6 +431,12 @@ namespace Gym_Membership_System
             else if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains("."))
             {
                 errorProvider.SetError(txtEmail, "Valid email is required");
+                isValid = false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                errorProvider.SetError(txtPhone, "Phone number is required");
                 isValid = false;
             }
 
@@ -603,14 +528,15 @@ namespace Gym_Membership_System
                 {
                     await conn.OpenAsync();
 
-                    string query = @"INSERT INTO Admins (FirstName, LastName, Email, Username, PasswordHash, Role, IsActive) 
-                            VALUES (@FirstName, @LastName, @Email, @Username, @Password, 'Admin', 1)";
+                    string query = @"INSERT INTO Admins (FirstName, LastName, Email, Phone, Username, PasswordHash, Role, IsActive) 
+                            VALUES (@FirstName, @LastName, @Email, @Phone, @Username, @Password, 'Admin', 1)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text);
                         cmd.Parameters.AddWithValue("@LastName", txtLastName.Text);
                         cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
+                        cmd.Parameters.AddWithValue("@Phone", txtPhone.Text);
                         cmd.Parameters.AddWithValue("@Username", txtUsername.Text);
                         cmd.Parameters.AddWithValue("@Password", txtPassword.Text);
 
@@ -618,7 +544,6 @@ namespace Gym_Membership_System
 
                         if (result > 0)
                         {
-                            // Set flag that first account was created
                             Program.FirstAccountCreated = true;
                         }
 
@@ -672,6 +597,7 @@ namespace Gym_Membership_System
                 txtFirstName.Clear();
                 txtLastName.Clear();
                 txtEmail.Clear();
+                txtPhone.Clear();
                 txtUsername.Clear();
                 txtPassword.Clear();
                 txtConfirmPassword.Clear();
@@ -680,6 +606,7 @@ namespace Gym_Membership_System
                 txtFirstName.BackColor = Color.White;
                 txtLastName.BackColor = Color.White;
                 txtEmail.BackColor = Color.White;
+                txtPhone.BackColor = Color.White;
                 txtUsername.BackColor = Color.White;
                 txtPassword.BackColor = Color.White;
                 txtConfirmPassword.BackColor = Color.White;
@@ -711,11 +638,9 @@ namespace Gym_Membership_System
                 g.DrawImage(_backgroundImage, new Rectangle(drawX, drawY, drawW, drawH));
             }
 
-            // DARKER OVERLAY - matches login page
             using (var overlay = new SolidBrush(Color.FromArgb(OverlayAlpha, 0, 0, 0)))
                 g.FillRectangle(overlay, rect);
 
-            // Vignette effect - darker edges
             using (var path = new GraphicsPath())
             {
                 float inflateW = rect.Width * 0.5f;
@@ -730,7 +655,6 @@ namespace Gym_Membership_System
                 }
             }
 
-            // Gradient overlay
             using (var lg = new LinearGradientBrush(rect, Color.FromArgb(GradientAlpha, 0, 0, 0), Color.FromArgb(0, 0, 0, 0), 90f))
                 g.FillRectangle(lg, rect);
         }

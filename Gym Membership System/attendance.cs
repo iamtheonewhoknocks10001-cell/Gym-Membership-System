@@ -13,8 +13,8 @@ namespace Gym_Membership_System
         private string connectionString;
         private int selectedMemberId = 0;
         private string selectedMemberName = "";
-        private System.Windows.Forms.Timer flashTimer;
-        private bool isFlashing = false;
+        private DataTable membersTable;
+        private bool isLoading = false;
 
         // Visual constants
         private const int OverlayAlpha = 180;
@@ -36,15 +36,14 @@ namespace Gym_Membership_System
                      ControlStyles.ResizeRedraw |
                      ControlStyles.DoubleBuffer, true);
 
-            flashTimer = new System.Windows.Forms.Timer();
-            flashTimer.Interval = 500;
-            flashTimer.Tick += FlashTimer_Tick;
+            // Subscribe to CellFormatting event to maintain colors after sorting
+            this.dgvAttendance.CellFormatting += DgvAttendance_CellFormatting;
         }
 
         private async void Attendance_Load(object sender, EventArgs e)
         {
-            await LoadCustomers();
             CenterControls();
+            await LoadAllMembers();
         }
 
         private void Attendance_Resize(object sender, EventArgs e)
@@ -63,41 +62,24 @@ namespace Gym_Membership_System
             lblTitle.Location = new Point(0, 0);
             lblTitle.Size = new Size(formWidth, 65);
 
-            // Draw border line at bottom of title
-            lblTitle.Paint += (s, pe) =>
-            {
-                using (Pen pen = new Pen(Color.FromArgb(230, 230, 240), 1))
-                {
-                    pe.Graphics.DrawLine(pen, 0, lblTitle.Height - 1, lblTitle.Width, lblTitle.Height - 1);
-                }
-            };
-
-            // Select Customer row
+            // Search Client row
             int startY = 100;
-            lblSelectCustomer.Location = new Point(centerX - 300, startY);
-            lblSelectCustomer.Size = new Size(180, 32);
-            cmbCustomer.Location = new Point(centerX - 110, startY - 2);
-            cmbCustomer.Size = new Size(350, 36);
+            lblSearchClient.Location = new Point(centerX - 300, startY);
+            lblSearchClient.Size = new Size(150, 35);
+            txtSearchClient.Location = new Point(centerX - 140, startY);
+            txtSearchClient.Size = new Size(350, 36);
 
             // Status row
             int statusY = startY + 55;
-            lblStatusLabel.Location = new Point(centerX - 300, statusY);
-            lblStatusValue.Location = new Point(centerX - 220, statusY);
-            lblStatusValue.Size = new Size(350, 32);
-
-            // Due Alert
-            int dueY = statusY + 40;
-            lblDueAlert.Location = new Point(centerX - 300, dueY);
-            lblDueAlert.Size = new Size(600, 25);
-
-            // Week Range
-            int weekY = dueY + 30;
-            lblWeekRange.Location = new Point(centerX - 300, weekY);
+            lblStatusLabel.Location = new Point(centerX - 200, statusY);
+            lblStatusLabel.Size = new Size(80, 35);
+            lblStatusValue.Location = new Point(centerX - 110, statusY);
+            lblStatusValue.Size = new Size(450, 35);
 
             // DataGridView
-            int gridY = weekY + 40;
-            int gridWidth = 1000;
-            int gridHeight = 350;
+            int gridY = statusY + 55;
+            int gridWidth = 1100;
+            int gridHeight = 400;
             dgvAttendance.Location = new Point(centerX - gridWidth / 2, gridY);
             dgvAttendance.Size = new Size(gridWidth, gridHeight);
 
@@ -118,191 +100,245 @@ namespace Gym_Membership_System
             btnClose.Size = new Size(buttonWidth, 45);
         }
 
-        private async Task LoadCustomers()
+        // Get the current attendance day (based on 5 AM cutoff)
+        private DateTime GetCurrentAttendanceDay()
+        {
+            DateTime now = DateTime.Now;
+            DateTime today5AM = new DateTime(now.Year, now.Month, now.Day, 5, 0, 0);
+
+            if (now < today5AM)
+            {
+                // Before 5 AM, use yesterday's date
+                return now.Date.AddDays(-1);
+            }
+            else
+            {
+                // After 5 AM, use today's date
+                return now.Date;
+            }
+        }
+
+        // Convert TimeSpan to AM/PM format
+        private string FormatTimeToAMPM(TimeSpan time)
+        {
+            DateTime dt = DateTime.Today.Add(time);
+            return dt.ToString("hh:mm tt");
+        }
+
+        private async Task LoadAllMembers()
         {
             try
             {
+                if (isLoading) return;
+                isLoading = true;
+
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     await conn.OpenAsync();
-                    string query = "SELECT MemberID, FirstName + ' ' + LastName AS MemberName FROM Members ORDER BY MemberName";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+
+                    DateTime attendanceDay = GetCurrentAttendanceDay();
+
+                    string query = @"
+                        SELECT 
+                            m.MemberID,
+                            m.FirstName + ' ' + m.LastName AS MemberName,
+                            FORMAT(m.JoinDate, 'MM/dd/yyyy') AS DateJoined,
+                            FORMAT(p.DueDate, 'MM/dd/yyyy') AS DueDate,
+                            CASE 
+                                WHEN a.IsPresent = 1 THEN 'Present'
+                                ELSE 'Absent'
+                            END AS Status,
+                            a.CheckInTime
+                        FROM Members m
+                        LEFT JOIN Attendance a ON m.MemberID = a.MemberID AND a.AttendanceDate = @AttendanceDay
+                        LEFT JOIN (
+                            SELECT MemberID, DueDate,
+                                   ROW_NUMBER() OVER (PARTITION BY MemberID ORDER BY DueDate DESC) as rn
+                            FROM Payments
+                        ) p ON m.MemberID = p.MemberID AND p.rn = 1
+                        ORDER BY MemberName";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@AttendanceDay", attendanceDay);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    cmbCustomer.DisplayMember = "MemberName";
-                    cmbCustomer.ValueMember = "MemberID";
-                    cmbCustomer.DataSource = dt;
+                    membersTable = dt;
 
-                    if (cmbCustomer.Items.Count > 0)
+                    if (dgvAttendance.InvokeRequired)
                     {
-                        cmbCustomer.SelectedIndex = 0;
+                        dgvAttendance.Invoke(new Action(() =>
+                        {
+                            // Clear existing columns and prevent auto-generation
+                            dgvAttendance.Columns.Clear();
+                            dgvAttendance.AutoGenerateColumns = false;
+
+                            // Add columns manually
+                            dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "MemberName", HeaderText = "Member Name", DataPropertyName = "MemberName", Width = 250 });
+                            dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "DateJoined", HeaderText = "Date Joined", DataPropertyName = "DateJoined", Width = 120 });
+                            dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "DueDate", HeaderText = "Due Date", DataPropertyName = "DueDate", Width = 120 });
+                            dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "Status", HeaderText = "Status Today", DataPropertyName = "Status", Width = 100 });
+                            dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "CheckInTime", HeaderText = "Check In Time", DataPropertyName = "CheckInTime", Width = 120 });
+
+                            dgvAttendance.DataSource = dt;
+
+                            // Store MemberID and DueDate in each row's Tag property
+                            for (int i = 0; i < dgvAttendance.Rows.Count; i++)
+                            {
+                                DataRowView rowView = (DataRowView)dgvAttendance.Rows[i].DataBoundItem;
+                                object memberIdObj = rowView["MemberID"];
+                                object dueDateObj = rowView["DueDate"];
+
+                                dgvAttendance.Rows[i].Tag = new
+                                {
+                                    MemberID = memberIdObj != DBNull.Value ? Convert.ToInt32(memberIdObj) : 0,
+                                    DueDate = dueDateObj != DBNull.Value ? dueDateObj.ToString() : null
+                                };
+                            }
+
+                            FormatAttendanceGrid();
+                        }));
                     }
                     else
                     {
-                        dgvAttendance.Rows.Clear();
-                        dgvAttendance.Rows.Add("No members found", "Add members first", "", "", "");
+                        // Clear existing columns and prevent auto-generation
+                        dgvAttendance.Columns.Clear();
+                        dgvAttendance.AutoGenerateColumns = false;
+
+                        // Add columns manually
+                        dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "MemberName", HeaderText = "Member Name", DataPropertyName = "MemberName", Width = 250 });
+                        dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "DateJoined", HeaderText = "Date Joined", DataPropertyName = "DateJoined", Width = 120 });
+                        dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "DueDate", HeaderText = "Due Date", DataPropertyName = "DueDate", Width = 120 });
+                        dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "Status", HeaderText = "Status Today", DataPropertyName = "Status", Width = 100 });
+                        dgvAttendance.Columns.Add(new DataGridViewTextBoxColumn { Name = "CheckInTime", HeaderText = "Check In Time", DataPropertyName = "CheckInTime", Width = 120 });
+
+                        dgvAttendance.DataSource = dt;
+
+                        // Store MemberID and DueDate in each row's Tag property
+                        for (int i = 0; i < dgvAttendance.Rows.Count; i++)
+                        {
+                            DataRowView rowView = (DataRowView)dgvAttendance.Rows[i].DataBoundItem;
+                            object memberIdObj = rowView["MemberID"];
+                            object dueDateObj = rowView["DueDate"];
+
+                            dgvAttendance.Rows[i].Tag = new
+                            {
+                                MemberID = memberIdObj != DBNull.Value ? Convert.ToInt32(memberIdObj) : 0,
+                                DueDate = dueDateObj != DBNull.Value ? dueDateObj.ToString() : null
+                            };
+                        }
+
+                        FormatAttendanceGrid();
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading customers: {ex.Message}", "Error",
+                MessageBox.Show($"Error loading members: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private async void cmbCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbCustomer.SelectedValue != null)
+            finally
             {
-                selectedMemberId = (int)cmbCustomer.SelectedValue;
-                selectedMemberName = cmbCustomer.Text;
-                await LoadAttendanceData();
-                await CheckMemberStatus();
-                await CheckDueDateAlert();
+                isLoading = false;
             }
         }
 
-        private async Task LoadAttendanceData()
+        private void FormatAttendanceGrid()
         {
-            try
+            if (dgvAttendance.Columns.Count == 0) return;
+
+            // Center align all columns except Member Name
+            foreach (DataGridViewColumn col in dgvAttendance.Columns)
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                if (col.Name != "MemberName")
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+        }
+
+        private void DgvAttendance_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if this is the Status column
+            if (dgvAttendance.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
+            {
+                string status = e.Value.ToString();
+                if (status == "Present")
                 {
-                    await conn.OpenAsync();
+                    e.CellStyle.ForeColor = Color.FromArgb(76, 175, 80);
+                    e.CellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+                }
+                else if (status == "Absent")
+                {
+                    e.CellStyle.ForeColor = Color.FromArgb(244, 67, 54);
+                }
+            }
 
-                    // Clear existing rows
-                    dgvAttendance.Rows.Clear();
+            // Format CheckInTime to AM/PM
+            if (dgvAttendance.Columns[e.ColumnIndex].Name == "CheckInTime" && e.Value != null && e.Value != DBNull.Value)
+            {
+                string status = dgvAttendance.Rows[e.RowIndex].Cells["Status"].Value?.ToString() ?? "";
+                if (status == "Present")
+                {
+                    TimeSpan time = (TimeSpan)e.Value;
+                    DateTime dt = DateTime.Today.Add(time);
+                    e.Value = dt.ToString("hh:mm tt");
+                    e.FormattingApplied = true;
+                }
+                else
+                {
+                    e.Value = "";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
 
-                    // Get attendance data for last 7 days
-                    string query = @"
-                        SELECT 
-                            FORMAT(AttendanceDate, 'MM/dd/yyyy') AS Date,
-                            DATENAME(dw, AttendanceDate) AS Day,
-                            CASE WHEN IsPresent = 1 THEN 'Present' ELSE 'Absent' END AS Status,
-                            LEFT(CAST(CheckInTime AS VARCHAR), 5) AS CheckIn,
-                            LEFT(CAST(CheckOutTime AS VARCHAR), 5) AS CheckOut
-                        FROM Attendance 
-                        WHERE MemberID = @MemberID 
-                        AND AttendanceDate >= DATEADD(day, -7, CAST(GETDATE() AS DATE))
-                        ORDER BY AttendanceDate DESC";
+        private void txtSearchClient_TextChanged(object sender, EventArgs e)
+        {
+            if (membersTable != null)
+            {
+                string searchTerm = txtSearchClient.Text.Trim();
+                if (string.IsNullOrEmpty(searchTerm))
+                {
+                    membersTable.DefaultView.RowFilter = string.Empty;
+                }
+                else
+                {
+                    membersTable.DefaultView.RowFilter = $"MemberName LIKE '%{searchTerm}%'";
+                }
+            }
+        }
 
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@MemberID", selectedMemberId);
+        private void dgvAttendance_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvAttendance.Rows[e.RowIndex];
 
-                    using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
+                // Get MemberID and DueDate from the row's Tag property
+                if (row.Tag != null)
+                {
+                    dynamic tagData = row.Tag;
+                    selectedMemberId = tagData.MemberID;
+                    selectedMemberName = row.Cells["MemberName"].Value?.ToString() ?? "";
+
+                    // Get DueDate from tag
+                    string dueDateStr = tagData.DueDate;
+                    if (!string.IsNullOrEmpty(dueDateStr))
                     {
-                        while (await reader.ReadAsync())
-                        {
-                            string status = reader["Status"].ToString();
-                            int rowIndex = dgvAttendance.Rows.Add(
-                                reader["Date"].ToString(),
-                                reader["Day"].ToString(),
-                                status,
-                                reader["CheckIn"].ToString(),
-                                reader["CheckOut"].ToString()
-                            );
-
-                            // Color the status cell
-                            if (status == "Present")
-                            {
-                                dgvAttendance.Rows[rowIndex].Cells["Status"].Style.ForeColor = Color.FromArgb(76, 175, 80);
-                                dgvAttendance.Rows[rowIndex].Cells["Status"].Style.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-                            }
-                            else if (status == "Absent")
-                            {
-                                dgvAttendance.Rows[rowIndex].Cells["Status"].Style.ForeColor = Color.FromArgb(244, 67, 54);
-                            }
-                        }
+                        DateTime dueDate = Convert.ToDateTime(dueDateStr);
+                        UpdateDueDateStatus(dueDate);
                     }
-
-                    // If no rows, show message
-                    if (dgvAttendance.Rows.Count == 0)
+                    else
                     {
-                        dgvAttendance.Rows.Add("No records for last 7 days", "Click 'MARK PRESENT' to add today", "", "", "");
-                        dgvAttendance.Rows[0].DefaultCellStyle.ForeColor = Color.Gray;
-                        dgvAttendance.Rows[0].DefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Italic);
+                        // If no due date, try to get from database
+                        GetDueDateFromDatabase(selectedMemberId);
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading attendance: {ex.Message}");
-                dgvAttendance.Rows.Clear();
-                dgvAttendance.Rows.Add("Error loading data", ex.Message, "", "", "");
-            }
         }
 
-        private async Task CheckMemberStatus()
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    await conn.OpenAsync();
-
-                    string query = @"SELECT 
-                                        COUNT(CASE WHEN IsPresent = 1 THEN 1 END) AS PresentCount,
-                                        COUNT(*) AS TotalDays
-                                    FROM Attendance 
-                                    WHERE MemberID = @MemberID 
-                                    AND AttendanceDate >= DATEADD(day, -7, CAST(GETDATE() AS DATE))";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@MemberID", selectedMemberId);
-
-                        using (SqlDataReader reader = await cmd.ExecuteReaderAsync())
-                        {
-                            if (await reader.ReadAsync())
-                            {
-                                int presentCount = reader["PresentCount"] != DBNull.Value ? Convert.ToInt32(reader["PresentCount"]) : 0;
-                                int totalDays = reader["TotalDays"] != DBNull.Value ? Convert.ToInt32(reader["TotalDays"]) : 0;
-
-                                if (totalDays == 0)
-                                {
-                                    lblStatusValue.Text = "⚠️ No attendance records this week";
-                                    lblStatusValue.ForeColor = Color.FromArgb(255, 193, 7);
-                                }
-                                else if (totalDays == 7 && presentCount == 7)
-                                {
-                                    lblStatusValue.Text = "✅ ACTIVE (Perfect Attendance!)";
-                                    lblStatusValue.ForeColor = Color.FromArgb(76, 175, 80);
-                                }
-                                else if (presentCount >= 5)
-                                {
-                                    lblStatusValue.Text = "✅ ACTIVE (Good Attendance)";
-                                    lblStatusValue.ForeColor = Color.FromArgb(76, 175, 80);
-                                }
-                                else if (presentCount >= 3)
-                                {
-                                    lblStatusValue.Text = "⚠️ WARNING (Low Attendance)";
-                                    lblStatusValue.ForeColor = Color.FromArgb(255, 193, 7);
-                                }
-                                else if (presentCount > 0)
-                                {
-                                    lblStatusValue.Text = "❌ INACTIVE (Poor attendance)";
-                                    lblStatusValue.ForeColor = Color.FromArgb(244, 67, 54);
-                                }
-                                else
-                                {
-                                    lblStatusValue.Text = "❌ INACTIVE (No attendance)";
-                                    lblStatusValue.ForeColor = Color.FromArgb(244, 67, 54);
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error checking status: {ex.Message}");
-                lblStatusValue.Text = "Unable to check status";
-            }
-        }
-
-        private async Task CheckDueDateAlert()
+        private async void GetDueDateFromDatabase(int memberId)
         {
             try
             {
@@ -316,71 +352,48 @@ namespace Gym_Membership_System
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@MemberID", selectedMemberId);
+                        cmd.Parameters.AddWithValue("@MemberID", memberId);
                         object result = await cmd.ExecuteScalarAsync();
 
-                        if (result != null)
+                        if (result != null && result != DBNull.Value)
                         {
                             DateTime dueDate = Convert.ToDateTime(result);
-                            DateTime today = DateTime.Now.Date;
-                            int daysUntilDue = (dueDate - today).Days;
-
-                            if (daysUntilDue <= 7 && daysUntilDue > 0)
-                            {
-                                lblDueAlert.Text = $"⚠️ DUE DATE ALERT: Membership expires in {daysUntilDue} day(s)! Please renew soon!";
-                                lblDueAlert.ForeColor = Color.FromArgb(255, 193, 7);
-                                StartFlashing();
-                            }
-                            else if (daysUntilDue <= 0)
-                            {
-                                lblDueAlert.Text = $"❌ EXPIRED: Membership expired on {dueDate:MM/dd/yyyy}. Please renew immediately!";
-                                lblDueAlert.ForeColor = Color.FromArgb(244, 67, 54);
-                                StartFlashing();
-                            }
-                            else
-                            {
-                                lblDueAlert.Text = $"✅ Membership valid until {dueDate:MM/dd/yyyy}";
-                                lblDueAlert.ForeColor = Color.FromArgb(76, 175, 80);
-                                StopFlashing();
-                            }
+                            UpdateDueDateStatus(dueDate);
                         }
                         else
                         {
-                            lblDueAlert.Text = "ℹ️ No payment records found";
-                            lblDueAlert.ForeColor = Color.FromArgb(100, 100, 110);
-                            StopFlashing();
+                            lblStatusValue.Text = "No records found";
+                            lblStatusValue.ForeColor = Color.OrangeRed;
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error checking due date: {ex.Message}");
-                lblDueAlert.Text = "Unable to check due date";
+                Console.WriteLine($"Error getting due date: {ex.Message}");
+                lblStatusValue.Text = "Unable to retrieve due date";
             }
         }
 
-        private void StartFlashing()
+        private void UpdateDueDateStatus(DateTime dueDate)
         {
-            isFlashing = true;
-            flashTimer.Start();
-        }
+            DateTime today = DateTime.Now.Date;
+            int daysUntilDue = (dueDate.Date - today).Days;
 
-        private void StopFlashing()
-        {
-            isFlashing = false;
-            flashTimer.Stop();
-            lblDueAlert.BackColor = Color.Transparent;
-        }
-
-        private void FlashTimer_Tick(object sender, EventArgs e)
-        {
-            if (isFlashing)
+            if (daysUntilDue < 0)
             {
-                if (lblDueAlert.BackColor == Color.Transparent)
-                    lblDueAlert.BackColor = Color.FromArgb(255, 200, 150);
-                else
-                    lblDueAlert.BackColor = Color.Transparent;
+                lblStatusValue.Text = $"EXPIRED (Expired on {dueDate:MM/dd/yyyy})";
+                lblStatusValue.ForeColor = Color.FromArgb(244, 67, 54);
+            }
+            else if (daysUntilDue == 0)
+            {
+                lblStatusValue.Text = "DUE TODAY!";
+                lblStatusValue.ForeColor = Color.FromArgb(255, 193, 7);
+            }
+            else
+            {
+                lblStatusValue.Text = $"{daysUntilDue} days until due date";
+                lblStatusValue.ForeColor = daysUntilDue <= 7 ? Color.FromArgb(255, 193, 7) : Color.FromArgb(76, 175, 80);
             }
         }
 
@@ -388,12 +401,12 @@ namespace Gym_Membership_System
         {
             if (selectedMemberId == 0)
             {
-                MessageBox.Show("Please select a customer first.", "No Selection",
+                MessageBox.Show("Please select a member first by clicking on a row.", "No Selection",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            DateTime today = DateTime.Now.Date;
+            DateTime attendanceDay = GetCurrentAttendanceDay();
             TimeSpan currentTime = DateTime.Now.TimeOfDay;
 
             try
@@ -407,7 +420,7 @@ namespace Gym_Membership_System
                     using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
                     {
                         checkCmd.Parameters.AddWithValue("@MemberID", selectedMemberId);
-                        checkCmd.Parameters.AddWithValue("@Date", today);
+                        checkCmd.Parameters.AddWithValue("@Date", attendanceDay);
                         int count = (int)await checkCmd.ExecuteScalarAsync();
 
                         if (count == 0)
@@ -418,13 +431,15 @@ namespace Gym_Membership_System
                             using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
                             {
                                 insertCmd.Parameters.AddWithValue("@MemberID", selectedMemberId);
-                                insertCmd.Parameters.AddWithValue("@Date", today);
+                                insertCmd.Parameters.AddWithValue("@Date", attendanceDay);
                                 insertCmd.Parameters.AddWithValue("@CheckInTime", currentTime.ToString());
                                 await insertCmd.ExecuteNonQueryAsync();
                             }
 
-                            MessageBox.Show($"✓ {selectedMemberName} has been marked as PRESENT for today at {currentTime.ToString(@"hh\:mm")}!",
+                            MessageBox.Show($"✓ {selectedMemberName} has been marked as PRESENT for today at {FormatTimeToAMPM(currentTime)}!",
                                 "Attendance Recorded", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            await LoadAllMembers();
                         }
                         else
                         {
@@ -433,9 +448,6 @@ namespace Gym_Membership_System
                         }
                     }
                 }
-
-                await LoadAttendanceData();
-                await CheckMemberStatus();
             }
             catch (Exception ex)
             {
@@ -446,17 +458,13 @@ namespace Gym_Membership_System
 
         private async void btnRefresh_Click(object sender, EventArgs e)
         {
-            await LoadAttendanceData();
-            await CheckMemberStatus();
-            await CheckDueDateAlert();
+            await LoadAllMembers();
             MessageBox.Show("Attendance data refreshed!", "Refresh",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            StopFlashing();
-            flashTimer?.Dispose();
             this.Close();
         }
 

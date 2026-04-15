@@ -228,7 +228,7 @@ namespace Gym_Membership_System
                 }
 
                 // Add indicator dot showing current filter state
-                using (Brush brush = new SolidBrush(_showNewMembers ? Color.FromArgb(255, 100, 0) : Color.FromArgb(255, 150, 0)))
+                using (Brush brush = new SolidBrush(_showNewMembers ? Color.FromArgb(255, 100, 0) : Color.Purple))
                 {
                     e.Graphics.FillEllipse(brush, cardNew.Width - 20, 10, 10, 10);
                 }
@@ -595,16 +595,16 @@ namespace Gym_Membership_System
         {
             try
             {
+                // First, update member status based on attendance
+                await UpdateMemberStatusBasedOnAttendance();
+
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     await conn.OpenAsync();
 
                     string query;
-
-                    // Priority: New Members card has highest priority
                     if (_showNewMembers)
                     {
-                        // Show ONLY new members from this month
                         query = @"SELECT 
                             MemberID,
                             'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
@@ -614,14 +614,13 @@ namespace Gym_Membership_System
                             Phone,
                             MembershipType AS [Type], 
                             FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
-                            'Active' AS [Status]
+                            CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
                         FROM Members 
                         WHERE JoinDate >= DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)
                         ORDER BY JoinDate DESC";
                     }
                     else if (_showAllMembers)
                     {
-                        // Show ALL members
                         query = @"SELECT 
                             MemberID,
                             'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
@@ -631,13 +630,12 @@ namespace Gym_Membership_System
                             Phone,
                             MembershipType AS [Type], 
                             FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
-                            'Active' AS [Status]
+                            CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
                         FROM Members 
                         ORDER BY JoinDate DESC";
                     }
                     else
                     {
-                        // Show only active members (default)
                         query = @"SELECT 
                             MemberID,
                             'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
@@ -647,7 +645,7 @@ namespace Gym_Membership_System
                             Phone,
                             MembershipType AS [Type], 
                             FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
-                            'Active' AS [Status]
+                            CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
                         FROM Members 
                         WHERE IsActive = 1
                         ORDER BY JoinDate DESC";
@@ -686,10 +684,10 @@ namespace Gym_Membership_System
             columns["ID"].Width = 80;
             columns["ID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            columns["First Name"].HeaderText = "First";
+            columns["First Name"].HeaderText = "First Name";
             columns["First Name"].Width = 100;
 
-            columns["Last Name"].HeaderText = "Last";
+            columns["Last Name"].HeaderText = "Last Name";
             columns["Last Name"].Width = 100;
 
             columns["Email"].Width = 200;
@@ -725,6 +723,69 @@ namespace Gym_Membership_System
                 }
             }
         }
+        private async Task UpdateMemberStatusBasedOnAttendance()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    // Update members to Inactive if they haven't attended within their subscription period
+                    string query = @"
+                UPDATE Members 
+                SET IsActive = 0 
+                WHERE MemberID IN (
+                    SELECT m.MemberID
+                    FROM Members m
+                    LEFT JOIN (
+                        SELECT MemberID, MAX(AttendanceDate) AS LastAttendance
+                        FROM Attendance
+                        GROUP BY MemberID
+                    ) a ON m.MemberID = a.MemberID
+                    WHERE 
+                        (UPPER(m.MembershipType) = 'BASIC' AND (a.LastAttendance IS NULL OR a.LastAttendance < DATEADD(day, -14, GETDATE())))
+                        OR (UPPER(m.MembershipType) = 'PREMIUM' AND (a.LastAttendance IS NULL OR a.LastAttendance < DATEADD(month, -2, GETDATE())))
+                )";
+
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        int updated = await cmd.ExecuteNonQueryAsync();
+                        if (updated > 0)
+                        {
+                            Console.WriteLine($"Updated {updated} members to inactive due to attendance inactivity");
+                        }
+                    }
+
+                    // Reactivate members who have recent attendance
+                    string reactivateQuery = @"
+                UPDATE Members 
+                SET IsActive = 1 
+                WHERE MemberID IN (
+                    SELECT m.MemberID
+                    FROM Members m
+                    INNER JOIN Attendance a ON m.MemberID = a.MemberID
+                    WHERE 
+                        (UPPER(m.MembershipType) = 'BASIC' AND a.AttendanceDate >= DATEADD(day, -14, GETDATE()))
+                        OR (UPPER(m.MembershipType) = 'PREMIUM' AND a.AttendanceDate >= DATEADD(month, -2, GETDATE()))
+                    GROUP BY m.MemberID
+                )";
+
+                    using (SqlCommand cmd = new SqlCommand(reactivateQuery, conn))
+                    {
+                        int reactivated = await cmd.ExecuteNonQueryAsync();
+                        if (reactivated > 0)
+                        {
+                            Console.WriteLine($"Reactivated {reactivated} members due to recent attendance");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating member status from attendance: {ex.Message}");
+            }
+        }
 
         public async Task RefreshMembers()
         {
@@ -733,6 +794,7 @@ namespace Gym_Membership_System
 
             try
             {
+                await UpdateMemberStatusBasedOnAttendance(); // Add this line
                 await LoadMembersAsync();
                 await UpdateStatsAsync();
                 await UpdateTrends();

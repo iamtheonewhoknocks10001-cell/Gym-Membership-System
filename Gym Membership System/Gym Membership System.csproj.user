@@ -28,6 +28,9 @@
     <Compile Update="LOGIN.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="PaymentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SIGNUP.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -16,12 +16,10 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblSelectCustomer = new System.Windows.Forms.Label();
-            this.cmbCustomer = new System.Windows.Forms.ComboBox();
+            this.lblSearchClient = new System.Windows.Forms.Label();
+            this.txtSearchClient = new System.Windows.Forms.TextBox();
             this.lblStatusLabel = new System.Windows.Forms.Label();
             this.lblStatusValue = new System.Windows.Forms.Label();
-            this.lblDueAlert = new System.Windows.Forms.Label();
-            this.lblWeekRange = new System.Windows.Forms.Label();
             this.dgvAttendance = new System.Windows.Forms.DataGridView();
             this.btnMarkPresent = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -33,7 +31,7 @@
             // ============================================
             // FORM SETTINGS
             // ============================================
-            this.BackColor = System.Drawing.Color.FromArgb(245, 245, 250);
+            this.BackColor = System.Drawing.Color.FromArgb(30, 30, 35);
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.DoubleBuffered = true;
@@ -49,46 +47,46 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(200, 60);
+            this.lblTitle.Size = new System.Drawing.Size(100, 65);
             this.lblTitle.Text = "ATTENDANCE TRACKER";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblTitle.Padding = new Padding(30, 0, 0, 0);
 
             // ============================================
-            // SELECT CUSTOMER LABEL
+            // SEARCH CLIENT LABEL
             // ============================================
-            this.lblSelectCustomer.AutoSize = true;
-            this.lblSelectCustomer.BackColor = System.Drawing.Color.Transparent;
-            this.lblSelectCustomer.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblSelectCustomer.ForeColor = System.Drawing.Color.FromArgb(50, 50, 60);
-            this.lblSelectCustomer.Location = new System.Drawing.Point(0, 0);
-            this.lblSelectCustomer.Name = "lblSelectCustomer";
-            this.lblSelectCustomer.Size = new Size(180, 32);
-            this.lblSelectCustomer.Text = "Select Customer:";
-            this.lblSelectCustomer.TextAlign = ContentAlignment.MiddleRight;
+            this.lblSearchClient.AutoSize = true;
+            this.lblSearchClient.BackColor = System.Drawing.Color.Transparent;
+            this.lblSearchClient.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblSearchClient.ForeColor = System.Drawing.Color.FromArgb(220, 220, 230);
+            this.lblSearchClient.Location = new System.Drawing.Point(0, 0);
+            this.lblSearchClient.Name = "lblSearchClient";
+            this.lblSearchClient.Size = new Size(150, 32);
+            this.lblSearchClient.Text = "Search Client:";
+            this.lblSearchClient.TextAlign = ContentAlignment.MiddleRight;
 
             // ============================================
-            // CUSTOMER COMBOBOX
+            // SEARCH TEXTBOX
             // ============================================
-            this.cmbCustomer.BackColor = System.Drawing.Color.White;
-            this.cmbCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCustomer.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.cmbCustomer.Location = new System.Drawing.Point(0, 0);
-            this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new Size(350, 36);
-            this.cmbCustomer.TabIndex = 1;
-            this.cmbCustomer.SelectedIndexChanged += new System.EventHandler(this.cmbCustomer_SelectedIndexChanged);
+            this.txtSearchClient.BackColor = System.Drawing.Color.White;
+            this.txtSearchClient.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.txtSearchClient.Location = new System.Drawing.Point(0, 0);
+            this.txtSearchClient.Name = "txtSearchClient";
+            this.txtSearchClient.PlaceholderText = "🔍 Type member name to search...";
+            this.txtSearchClient.Size = new Size(350, 36);
+            this.txtSearchClient.TabIndex = 1;
+            this.txtSearchClient.TextChanged += new System.EventHandler(this.txtSearchClient_TextChanged);
 
             // ============================================
             // STATUS LABEL
             // ============================================
             this.lblStatusLabel.AutoSize = true;
             this.lblStatusLabel.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatusLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblStatusLabel.ForeColor = System.Drawing.Color.FromArgb(50, 50, 60);
+            this.lblStatusLabel.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblStatusLabel.ForeColor = System.Drawing.Color.FromArgb(220, 220, 230);
             this.lblStatusLabel.Location = new System.Drawing.Point(0, 0);
             this.lblStatusLabel.Name = "lblStatusLabel";
-            this.lblStatusLabel.Size = new Size(70, 28);
+            this.lblStatusLabel.Size = new Size(80, 32);
             this.lblStatusLabel.Text = "Status:";
             this.lblStatusLabel.TextAlign = ContentAlignment.MiddleRight;
 
@@ -98,35 +96,14 @@
             this.lblStatusValue.AutoSize = true;
             this.lblStatusValue.BackColor = System.Drawing.Color.Transparent;
             this.lblStatusValue.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblStatusValue.ForeColor = System.Drawing.Color.FromArgb(255, 255, 255);
             this.lblStatusValue.Location = new System.Drawing.Point(0, 0);
             this.lblStatusValue.Name = "lblStatusValue";
             this.lblStatusValue.Size = new Size(180, 32);
-            this.lblStatusValue.Text = "Select a customer";
+            this.lblStatusValue.Text = "Select a member";
 
             // ============================================
-            // DUE ALERT LABEL
-            // ============================================
-            this.lblDueAlert.AutoSize = true;
-            this.lblDueAlert.BackColor = System.Drawing.Color.Transparent;
-            this.lblDueAlert.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblDueAlert.Location = new System.Drawing.Point(0, 0);
-            this.lblDueAlert.Name = "lblDueAlert";
-            this.lblDueAlert.Size = new Size(0, 25);
-
-            // ============================================
-            // WEEK RANGE LABEL
-            // ============================================
-            this.lblWeekRange.AutoSize = true;
-            this.lblWeekRange.BackColor = System.Drawing.Color.Transparent;
-            this.lblWeekRange.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic);
-            this.lblWeekRange.ForeColor = System.Drawing.Color.FromArgb(100, 100, 110);
-            this.lblWeekRange.Location = new System.Drawing.Point(0, 0);
-            this.lblWeekRange.Name = "lblWeekRange";
-            this.lblWeekRange.Size = new Size(220, 23);
-            this.lblWeekRange.Text = "Showing last 7 days of attendance";
-
-            // ============================================
-            // DATA GRID VIEW
+            // DATA GRID VIEW - Simplified columns
             // ============================================
             this.dgvAttendance.BackgroundColor = System.Drawing.Color.White;
             this.dgvAttendance.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -145,38 +122,43 @@
             this.dgvAttendance.Name = "dgvAttendance";
             this.dgvAttendance.Size = new Size(900, 400);
             this.dgvAttendance.TabIndex = 2;
+            this.dgvAttendance.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAttendance_CellClick);
 
             // Header styling
             this.dgvAttendance.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(240, 240, 245);
             this.dgvAttendance.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(60, 60, 70);
             this.dgvAttendance.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.dgvAttendance.ColumnHeadersDefaultCellStyle.SelectionBackColor = System.Drawing.Color.Aquamarine;
+            this.dgvAttendance.ColumnHeadersDefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
 
             // Row styling
             this.dgvAttendance.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgvAttendance.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgvAttendance.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(255, 245, 235);
-            this.dgvAttendance.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
+            this.dgvAttendance.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightCoral;
+            this.dgvAttendance.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
             this.dgvAttendance.DefaultCellStyle.Padding = new Padding(10);
-            this.dgvAttendance.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(248, 248, 252);
+            this.dgvAttendance.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
 
-            // Predefine columns
-            this.dgvAttendance.Columns.Add("Date", "Date");
-            this.dgvAttendance.Columns.Add("Day", "Day");
-            this.dgvAttendance.Columns.Add("Status", "Status");
-            this.dgvAttendance.Columns.Add("CheckIn", "Check In");
-            this.dgvAttendance.Columns.Add("CheckOut", "Check Out");
+
+            // Hide MemberID column
+            if (this.dgvAttendance.Columns.Contains("MemberID"))
+                this.dgvAttendance.Columns["MemberID"].Visible = false;
 
             // Column widths
-            this.dgvAttendance.Columns["Date"].Width = 120;
-            this.dgvAttendance.Columns["Day"].Width = 100;
-            this.dgvAttendance.Columns["Status"].Width = 100;
-            this.dgvAttendance.Columns["CheckIn"].Width = 100;
-            this.dgvAttendance.Columns["CheckOut"].Width = 100;
+            if (this.dgvAttendance.Columns.Count >= 6)
+            {
+                this.dgvAttendance.Columns["MemberName"].Width = 250;
+                this.dgvAttendance.Columns["DateJoined"].Width = 120;
+                this.dgvAttendance.Columns["DueDate"].Width = 120;
+                this.dgvAttendance.Columns["Status"].Width = 120;
+                this.dgvAttendance.Columns["LastCheckIn"].Width = 150;
+            }
 
-            // Center align all columns
+            // Center align columns
             foreach (DataGridViewColumn col in this.dgvAttendance.Columns)
             {
-                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                if (col.Name != "MemberName")
+                    col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
 
             // ============================================
@@ -231,12 +213,10 @@
             // ADD ALL CONTROLS
             // ============================================
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblSelectCustomer);
-            this.Controls.Add(this.cmbCustomer);
+            this.Controls.Add(this.lblSearchClient);
+            this.Controls.Add(this.txtSearchClient);
             this.Controls.Add(this.lblStatusLabel);
             this.Controls.Add(this.lblStatusValue);
-            this.Controls.Add(this.lblDueAlert);
-            this.Controls.Add(this.lblWeekRange);
             this.Controls.Add(this.dgvAttendance);
             this.Controls.Add(this.btnMarkPresent);
             this.Controls.Add(this.btnRefresh);
@@ -251,12 +231,10 @@
         }
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label lblSelectCustomer;
-        private System.Windows.Forms.ComboBox cmbCustomer;
+        private System.Windows.Forms.Label lblSearchClient;
+        private System.Windows.Forms.TextBox txtSearchClient;
         private System.Windows.Forms.Label lblStatusLabel;
         private System.Windows.Forms.Label lblStatusValue;
-        private System.Windows.Forms.Label lblDueAlert;
-        private System.Windows.Forms.Label lblWeekRange;
         private System.Windows.Forms.DataGridView dgvAttendance;
         private System.Windows.Forms.Button btnMarkPresent;
         private System.Windows.Forms.Button btnRefresh;

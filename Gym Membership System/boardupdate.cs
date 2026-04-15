@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
@@ -11,18 +12,35 @@ namespace Gym_Membership_System
     {
         private int _memberId;
         private string _connectionString;
-        private bool isEditing = false;
+
+        // Visual constants for dark background
+        private const int OverlayAlpha = 180;
+        private const int VignetteAlpha = 200;
+        private const float VignetteFocus = 0.55f;
+        private const int GradientAlpha = 80;
+        private readonly Image _backgroundImage = Properties.Resources.loginbg;
 
         public BoardUpdate(int memberId, string connectionString)
         {
             InitializeComponent();
             _memberId = memberId;
             _connectionString = connectionString;
-            LoadMemberData();
-            SetControlsReadOnly(true);
+
+            // Setup dark background
+            this.BackgroundImage = null;
+            this.DoubleBuffered = true;
+
+            SetStyle(ControlStyles.OptimizedDoubleBuffer |
+                     ControlStyles.AllPaintingInWmPaint |
+                     ControlStyles.UserPaint |
+                     ControlStyles.ResizeRedraw |
+                     ControlStyles.DoubleBuffer, true);
+
+            // Call async method without awaiting (fire and forget)
+            _ = LoadMemberDataAsync();
         }
 
-        private async void LoadMemberData()
+        private async Task LoadMemberDataAsync()
         {
             try
             {
@@ -34,10 +52,7 @@ namespace Gym_Membership_System
                                         FirstName, 
                                         LastName, 
                                         Email, 
-                                        Phone,
-                                        MembershipType, 
-                                        JoinDate,
-                                        IsActive
+                                        Phone
                                     FROM Members 
                                     WHERE MemberID = @MemberID";
 
@@ -49,24 +64,15 @@ namespace Gym_Membership_System
                         {
                             if (await reader.ReadAsync())
                             {
-                                // Load data into form controls
-                                lblMemberIDValue.Text = $"MEM-{_memberId:D4}";
-                                txtFirstName.Text = reader["FirstName"].ToString();
-                                txtLastName.Text = reader["LastName"].ToString();
-                                txtEmail.Text = reader["Email"].ToString();
-                                txtPhone.Text = reader["Phone"].ToString();
-
-                                // Set membership type
-                                string membershipType = reader["MembershipType"].ToString();
-                                if (cmbMembershipType.Items.Contains(membershipType))
-                                    cmbMembershipType.SelectedItem = membershipType;
-                                else
-                                    cmbMembershipType.SelectedIndex = 0;
-
-                                dtpJoinDate.Value = Convert.ToDateTime(reader["JoinDate"]);
-
-                                bool isActive = Convert.ToBoolean(reader["IsActive"]);
-                                cmbStatus.SelectedItem = isActive ? "Active" : "Inactive";
+                                // Use Invoke to update UI controls from background thread
+                                this.Invoke(new Action(() =>
+                                {
+                                    lblMemberIDValue.Text = $"MEM-{_memberId:D4}";
+                                    txtFirstName.Text = reader["FirstName"].ToString();
+                                    txtLastName.Text = reader["LastName"].ToString();
+                                    txtEmail.Text = reader["Email"].ToString();
+                                    txtPhone.Text = reader["Phone"].ToString();
+                                }));
                             }
                         }
                     }
@@ -74,32 +80,12 @@ namespace Gym_Membership_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading member data: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Invoke(new Action(() =>
+                {
+                    MessageBox.Show($"Error loading member data: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }));
             }
-        }
-
-        private void SetControlsReadOnly(bool readOnly)
-        {
-            txtFirstName.ReadOnly = readOnly;
-            txtLastName.ReadOnly = readOnly;
-            txtEmail.ReadOnly = readOnly;
-            txtPhone.ReadOnly = readOnly;
-            cmbMembershipType.Enabled = !readOnly;
-            dtpJoinDate.Enabled = !readOnly;
-            cmbStatus.Enabled = !readOnly;
-
-            btnUpdate.Enabled = !readOnly;
-            btnEdit.Enabled = readOnly;
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            isEditing = true;
-            SetControlsReadOnly(false);
-            txtFirstName.Focus();
-            statusStripLabel.Text = "Edit mode: You can now update member information.";
-            statusStripLabel.ForeColor = Color.FromArgb(255, 100, 0);
         }
 
         private async void btnUpdate_Click(object sender, EventArgs e)
@@ -117,15 +103,11 @@ namespace Gym_Membership_System
                     using (SqlConnection conn = new SqlConnection(_connectionString))
                     {
                         await conn.OpenAsync();
-                        // REMOVED UpdatedAt column from the query
                         string query = @"UPDATE Members 
                                         SET FirstName = @FirstName,
                                             LastName = @LastName,
                                             Email = @Email,
-                                            Phone = @Phone,
-                                            MembershipType = @MembershipType,
-                                            JoinDate = @JoinDate,
-                                            IsActive = @IsActive
+                                            Phone = @Phone
                                         WHERE MemberID = @MemberID";
 
                         using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -135,9 +117,6 @@ namespace Gym_Membership_System
                             cmd.Parameters.AddWithValue("@LastName", txtLastName.Text.Trim());
                             cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
                             cmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
-                            cmd.Parameters.AddWithValue("@MembershipType", cmbMembershipType.SelectedItem.ToString());
-                            cmd.Parameters.AddWithValue("@JoinDate", dtpJoinDate.Value);
-                            cmd.Parameters.AddWithValue("@IsActive", cmbStatus.SelectedItem.ToString() == "Active");
 
                             int rowsAffected = await cmd.ExecuteNonQueryAsync();
 
@@ -145,8 +124,6 @@ namespace Gym_Membership_System
                             {
                                 statusStripLabel.Text = "✓ Member information updated successfully!";
                                 statusStripLabel.ForeColor = Color.FromArgb(76, 175, 80);
-                                isEditing = false;
-                                SetControlsReadOnly(true);
 
                                 MessageBox.Show("Member information has been updated successfully!",
                                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -219,19 +196,53 @@ namespace Gym_Membership_System
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (isEditing)
-            {
-                DialogResult result = MessageBox.Show("Discard changes and close?",
-                    "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    this.Close();
-                }
-            }
-            else
+            DialogResult result = MessageBox.Show("Discard changes and close?",
+                "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
                 this.Close();
             }
+        }
+
+        protected override void OnPaintBackground(PaintEventArgs e)
+        {
+            base.OnPaintBackground(e);
+
+            var g = e.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            Rectangle rect = ClientRectangle;
+            if (rect.Width <= 0 || rect.Height <= 0) return;
+
+            if (_backgroundImage != null)
+            {
+                var img = _backgroundImage;
+                float ratio = Math.Max((float)rect.Width / img.Width, (float)rect.Height / img.Height);
+                int drawW = (int)Math.Ceiling(img.Width * ratio);
+                int drawH = (int)Math.Ceiling(img.Height * ratio);
+                int drawX = rect.X + (rect.Width - drawW) / 2;
+                int drawY = rect.Y + (rect.Height - drawH) / 2;
+                g.DrawImage(img, new Rectangle(drawX, drawY, drawW, drawH));
+            }
+
+            using (var overlay = new SolidBrush(Color.FromArgb(OverlayAlpha, 0, 0, 0)))
+                g.FillRectangle(overlay, rect);
+
+            using (var path = new GraphicsPath())
+            {
+                float inflateW = rect.Width * 0.5f;
+                float inflateH = rect.Height * 0.5f;
+                path.AddEllipse(rect.X - inflateW / 2, rect.Y - inflateH / 2, rect.Width + inflateW, rect.Height + inflateH);
+                using (var pgb = new PathGradientBrush(path))
+                {
+                    pgb.CenterColor = Color.FromArgb(0, 0, 0, 0);
+                    pgb.SurroundColors = new[] { Color.FromArgb(VignetteAlpha, 0, 0, 0) };
+                    pgb.FocusScales = new PointF(VignetteFocus, VignetteFocus);
+                    g.FillRectangle(pgb, rect);
+                }
+            }
+
+            using (var lg = new LinearGradientBrush(rect, Color.FromArgb(GradientAlpha, 0, 0, 0), Color.FromArgb(0, 0, 0, 0), 90f))
+                g.FillRectangle(lg, rect);
         }
     }
 }

@@ -58,24 +58,6 @@ C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windo
 C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.ForgotAccountForm.resources
 C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.AddPaymentForm.resources
 C:\Users\JEFS\Gym-Membership-System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.FormPayments.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.csproj.AssemblyReference.cache
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.AddMember.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.AddPaymentForm.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.Attendance.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.BaseForm.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.BoardUpdate.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.ForgotAccountForm.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.Form1.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.FormPayments.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.LOGIN.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.Properties.Resources.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.SIGNUP.resources
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.csproj.GenerateResource.cache
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.AssemblyInfoInputs.cache
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.AssemblyInfo.cs
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.csproj.CoreCompileInputs.cache
-C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.sourcelink.json
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\bin\Debug\net8.0-windows\Gym Membership System.exe
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\bin\Debug\net8.0-windows\Gym Membership System.deps.json
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\bin\Debug\net8.0-windows\Gym Membership System.runtimeconfig.json
@@ -114,6 +96,25 @@ C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\bin\Debug\net8.0-windows\runtimes\win-x64\native\WebView2Loader.dll
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\bin\Debug\net8.0-windows\runtimes\win-x86\native\WebView2Loader.dll
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\bin\Debug\net8.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.csproj.AssemblyReference.cache
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.AddMember.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.AddPaymentForm.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.Attendance.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.BaseForm.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.BoardUpdate.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.ForgotAccountForm.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.Form1.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.FormPayments.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.LOGIN.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.PaymentDetails.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.Properties.Resources.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym_Membership_System.SIGNUP.resources
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.csproj.GenerateResource.cache
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.AssemblyInfoInputs.cache
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.AssemblyInfo.cs
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.csproj.CoreCompileInputs.cache
+C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.sourcelink.json
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Memb.5DEDC591.Up2Date
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\Gym Membership System.dll
 C:\Users\Xyrelle Rafael\source\repos\Gym Membership System\Gym Membership System\obj\Debug\net8.0-windows\refint\Gym Membership System.dll

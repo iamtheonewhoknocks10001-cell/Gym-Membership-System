@@ -32,12 +32,13 @@ namespace Gym_Membership_System
         private TextBox txtLastName;
         private Label lblEmail;
         private TextBox txtEmail;
+        private Label lblPhone;
+        private TextBox txtPhone;
         private Button btnSearch;
         private Button btnCancel;
         private Panel resultsPanel;
         private Label lblResultsTitle;
         private DataGridView dgvResults;
-        private Button btnUpdatePassword;
 
         private bool accountFound = false;
         private int foundAdminID = 0;
@@ -56,7 +57,7 @@ namespace Gym_Membership_System
         {
             // Form settings
             this.Text = "Account Recovery";
-            this.Size = new Size(1000, 800);
+            this.Size = new Size(1000, 750);
             this.StartPosition = FormStartPosition.CenterParent;
             this.BackColor = Color.FromArgb(30, 30, 30);
             this.ForeColor = Color.White;
@@ -76,10 +77,10 @@ namespace Gym_Membership_System
 
         private void SetupForm()
         {
-            // Main panel with proper padding and margins
+            // Main panel
             mainPanel = new Panel();
             mainPanel.BackColor = Color.FromArgb(40, 40, 45);
-            mainPanel.Size = new Size(920, 720);
+            mainPanel.Size = new Size(920, 620);
             mainPanel.Location = new Point(40, 30);
             mainPanel.Padding = new Padding(25);
             this.Controls.Add(mainPanel);
@@ -87,47 +88,49 @@ namespace Gym_Membership_System
             // Title
             lblTitle = new Label();
             lblTitle.Text = "ACCOUNT RECOVERY";
-            lblTitle.Font = new Font("Impact", 32F, FontStyle.Bold);
+            lblTitle.Font = new Font("Impact", 28F, FontStyle.Bold);
             lblTitle.ForeColor = Color.FromArgb(255, 100, 0);
-            lblTitle.Size = new Size(500, 50);
-            lblTitle.Location = new Point(210, 20);
+            lblTitle.Size = new Size(500, 40);
+            lblTitle.Location = new Point(210, 15);
             lblTitle.TextAlign = ContentAlignment.MiddleCenter;
             mainPanel.Controls.Add(lblTitle);
 
             // Subtitle
             lblSubtitle = new Label();
             lblSubtitle.Text = "Recover your account";
-            lblSubtitle.Font = new Font("Segoe UI", 14F, FontStyle.Italic);
+            lblSubtitle.Font = new Font("Segoe UI", 12F, FontStyle.Italic);
             lblSubtitle.ForeColor = Color.FromArgb(200, 200, 200);
-            lblSubtitle.Size = new Size(300, 25);
-            lblSubtitle.Location = new Point(310, 70);
+            lblSubtitle.Size = new Size(300, 20);
+            lblSubtitle.Location = new Point(310, 60);
             lblSubtitle.TextAlign = ContentAlignment.MiddleCenter;
             mainPanel.Controls.Add(lblSubtitle);
 
             // Instruction
             lblInstruction = new Label();
-            lblInstruction.Text = "Enter any of the following details to find your account:";
-            lblInstruction.Font = new Font("Segoe UI", 12F, FontStyle.Regular);
+            lblInstruction.Text = "Enter your details below to find your account:";
+            lblInstruction.Font = new Font("Segoe UI", 11F, FontStyle.Regular);
             lblInstruction.ForeColor = Color.White;
-            lblInstruction.Size = new Size(500, 30);
-            lblInstruction.Location = new Point(210, 110);
+            lblInstruction.Size = new Size(500, 25);
+            lblInstruction.Location = new Point(210, 90);
             lblInstruction.TextAlign = ContentAlignment.MiddleCenter;
             mainPanel.Controls.Add(lblInstruction);
 
-            // Input fields
-            int startY = 160;
+            // ============================================
+            // INPUT FIELDS
+            // ============================================
+            int startY = 135;
             int labelX = 220;
             int fieldX = 370;
             int fieldWidth = 320;
             int labelWidth = 130;
-            int rowSpacing = 55;
+            int rowSpacing = 50;
 
             // First Name
             lblFirstName = new Label();
             lblFirstName.Text = "First Name:";
-            lblFirstName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblFirstName.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             lblFirstName.ForeColor = Color.White;
-            lblFirstName.Size = new Size(labelWidth, 30);
+            lblFirstName.Size = new Size(labelWidth, 28);
             lblFirstName.Location = new Point(labelX, startY);
             lblFirstName.TextAlign = ContentAlignment.MiddleRight;
             mainPanel.Controls.Add(lblFirstName);
@@ -135,9 +138,9 @@ namespace Gym_Membership_System
             txtFirstName = new TextBox();
             txtFirstName.BackColor = Color.FromArgb(60, 60, 65);
             txtFirstName.ForeColor = Color.White;
-            txtFirstName.Font = new Font("Segoe UI", 12F);
+            txtFirstName.Font = new Font("Segoe UI", 11F);
             txtFirstName.BorderStyle = BorderStyle.FixedSingle;
-            txtFirstName.Size = new Size(fieldWidth, 35);
+            txtFirstName.Size = new Size(fieldWidth, 30);
             txtFirstName.Location = new Point(fieldX, startY);
             txtFirstName.PlaceholderText = "Enter first name";
             txtFirstName.TextChanged += (s, e) => ClearResults();
@@ -146,9 +149,9 @@ namespace Gym_Membership_System
             // Last Name
             lblLastName = new Label();
             lblLastName.Text = "Last Name:";
-            lblLastName.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblLastName.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             lblLastName.ForeColor = Color.White;
-            lblLastName.Size = new Size(labelWidth, 30);
+            lblLastName.Size = new Size(labelWidth, 28);
             lblLastName.Location = new Point(labelX, startY + rowSpacing);
             lblLastName.TextAlign = ContentAlignment.MiddleRight;
             mainPanel.Controls.Add(lblLastName);
@@ -156,9 +159,9 @@ namespace Gym_Membership_System
             txtLastName = new TextBox();
             txtLastName.BackColor = Color.FromArgb(60, 60, 65);
             txtLastName.ForeColor = Color.White;
-            txtLastName.Font = new Font("Segoe UI", 12F);
+            txtLastName.Font = new Font("Segoe UI", 11F);
             txtLastName.BorderStyle = BorderStyle.FixedSingle;
-            txtLastName.Size = new Size(fieldWidth, 35);
+            txtLastName.Size = new Size(fieldWidth, 30);
             txtLastName.Location = new Point(fieldX, startY + rowSpacing);
             txtLastName.PlaceholderText = "Enter last name";
             txtLastName.TextChanged += (s, e) => ClearResults();
@@ -167,9 +170,9 @@ namespace Gym_Membership_System
             // Email
             lblEmail = new Label();
             lblEmail.Text = "Email:";
-            lblEmail.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblEmail.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             lblEmail.ForeColor = Color.White;
-            lblEmail.Size = new Size(labelWidth, 30);
+            lblEmail.Size = new Size(labelWidth, 28);
             lblEmail.Location = new Point(labelX, startY + rowSpacing * 2);
             lblEmail.TextAlign = ContentAlignment.MiddleRight;
             mainPanel.Controls.Add(lblEmail);
@@ -177,26 +180,49 @@ namespace Gym_Membership_System
             txtEmail = new TextBox();
             txtEmail.BackColor = Color.FromArgb(60, 60, 65);
             txtEmail.ForeColor = Color.White;
-            txtEmail.Font = new Font("Segoe UI", 12F);
+            txtEmail.Font = new Font("Segoe UI", 11F);
             txtEmail.BorderStyle = BorderStyle.FixedSingle;
-            txtEmail.Size = new Size(fieldWidth, 35);
+            txtEmail.Size = new Size(fieldWidth, 30);
             txtEmail.Location = new Point(fieldX, startY + rowSpacing * 2);
             txtEmail.PlaceholderText = "admin@gym.com";
             txtEmail.TextChanged += (s, e) => ClearResults();
             mainPanel.Controls.Add(txtEmail);
 
-            // Buttons - UPDATED FONTS
-            int buttonY = startY + rowSpacing * 3 + 25;
+            // Phone
+            lblPhone = new Label();
+            lblPhone.Text = "Phone:";
+            lblPhone.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            lblPhone.ForeColor = Color.White;
+            lblPhone.Size = new Size(labelWidth, 28);
+            lblPhone.Location = new Point(labelX, startY + rowSpacing * 3);
+            lblPhone.TextAlign = ContentAlignment.MiddleRight;
+            mainPanel.Controls.Add(lblPhone);
+
+            txtPhone = new TextBox();
+            txtPhone.BackColor = Color.FromArgb(60, 60, 65);
+            txtPhone.ForeColor = Color.White;
+            txtPhone.Font = new Font("Segoe UI", 11F);
+            txtPhone.BorderStyle = BorderStyle.FixedSingle;
+            txtPhone.Size = new Size(fieldWidth, 30);
+            txtPhone.Location = new Point(fieldX, startY + rowSpacing * 3);
+            txtPhone.PlaceholderText = "(555) 123-4567";
+            txtPhone.TextChanged += (s, e) => ClearResults();
+            mainPanel.Controls.Add(txtPhone);
+
+            // ============================================
+            // BUTTONS
+            // ============================================
+            int buttonY = startY + rowSpacing * 4 + 10;
 
             btnSearch = new Button();
             btnSearch.Text = "SEARCH ACCOUNT";
             btnSearch.BackColor = Color.FromArgb(255, 100, 0);
             btnSearch.FlatStyle = FlatStyle.Flat;
             btnSearch.FlatAppearance.BorderSize = 0;
-            btnSearch.Font = new Font("Segoe UI", 14F, FontStyle.Bold); // Changed from Impact
+            btnSearch.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             btnSearch.ForeColor = Color.White;
-            btnSearch.Size = new Size(220, 45);
-            btnSearch.Location = new Point(220, buttonY);
+            btnSearch.Size = new Size(200, 40);
+            btnSearch.Location = new Point(240, buttonY);
             btnSearch.Cursor = Cursors.Hand;
             btnSearch.Click += BtnSearch_Click;
             mainPanel.Controls.Add(btnSearch);
@@ -206,19 +232,23 @@ namespace Gym_Membership_System
             btnCancel.BackColor = Color.FromArgb(100, 100, 100);
             btnCancel.FlatStyle = FlatStyle.Flat;
             btnCancel.FlatAppearance.BorderSize = 0;
-            btnCancel.Font = new Font("Segoe UI", 14F, FontStyle.Bold); // Changed from Impact
+            btnCancel.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             btnCancel.ForeColor = Color.White;
-            btnCancel.Size = new Size(220, 45);
+            btnCancel.Size = new Size(200, 40);
             btnCancel.Location = new Point(470, buttonY);
             btnCancel.Cursor = Cursors.Hand;
             btnCancel.Click += BtnCancel_Click;
             mainPanel.Controls.Add(btnCancel);
 
-            // Results Panel
+            // ============================================
+            // RESULTS PANEL
+            // ============================================
+            int resultsY = buttonY + 50;
+
             resultsPanel = new Panel();
             resultsPanel.BackColor = Color.FromArgb(50, 50, 55);
-            resultsPanel.Size = new Size(840, 280);
-            resultsPanel.Location = new Point(40, 380);
+            resultsPanel.Size = new Size(840, 230);
+            resultsPanel.Location = new Point(40, resultsY);
             resultsPanel.Visible = false;
             resultsPanel.Padding = new Padding(15);
             mainPanel.Controls.Add(resultsPanel);
@@ -226,10 +256,10 @@ namespace Gym_Membership_System
             // Results Title
             lblResultsTitle = new Label();
             lblResultsTitle.Text = "ACCOUNT FOUND";
-            lblResultsTitle.Font = new Font("Impact", 18F, FontStyle.Bold);
+            lblResultsTitle.Font = new Font("Impact", 16F, FontStyle.Bold);
             lblResultsTitle.ForeColor = Color.FromArgb(76, 175, 80);
-            lblResultsTitle.Size = new Size(300, 35);
-            lblResultsTitle.Location = new Point(270, 15);
+            lblResultsTitle.Size = new Size(300, 30);
+            lblResultsTitle.Location = new Point(270, 10);
             lblResultsTitle.TextAlign = ContentAlignment.MiddleCenter;
             resultsPanel.Controls.Add(lblResultsTitle);
 
@@ -237,9 +267,9 @@ namespace Gym_Membership_System
             dgvResults = new DataGridView();
             dgvResults.BackgroundColor = Color.FromArgb(60, 60, 65);
             dgvResults.ForeColor = Color.White;
-            dgvResults.Font = new Font("Segoe UI", 11F);
-            dgvResults.Size = new Size(800, 180);
-            dgvResults.Location = new Point(20, 60);
+            dgvResults.Font = new Font("Segoe UI", 10F);
+            dgvResults.Size = new Size(800, 150);
+            dgvResults.Location = new Point(20, 50);
             dgvResults.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvResults.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvResults.MultiSelect = false;
@@ -256,8 +286,8 @@ namespace Gym_Membership_System
             dgvResults.EnableHeadersVisualStyles = false;
             dgvResults.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(70, 70, 75);
             dgvResults.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvResults.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            dgvResults.ColumnHeadersHeight = 40;
+            dgvResults.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            dgvResults.ColumnHeadersHeight = 35;
 
             // Cell styling
             dgvResults.DefaultCellStyle.BackColor = Color.FromArgb(60, 60, 65);
@@ -266,28 +296,12 @@ namespace Gym_Membership_System
             dgvResults.DefaultCellStyle.SelectionForeColor = Color.White;
             dgvResults.DefaultCellStyle.Padding = new Padding(8);
 
-            dgvResults.CellClick += DgvResults_CellClick;
+            dgvResults.CellDoubleClick += DgvResults_CellDoubleClick;
             resultsPanel.Controls.Add(dgvResults);
-
-            // Update Password Button - UPDATED FONT
-            btnUpdatePassword = new Button();
-            btnUpdatePassword.Text = "UPDATE PASSWORD";
-            btnUpdatePassword.BackColor = Color.FromArgb(76, 175, 80);
-            btnUpdatePassword.FlatStyle = FlatStyle.Flat;
-            btnUpdatePassword.FlatAppearance.BorderSize = 0;
-            btnUpdatePassword.Font = new Font("Segoe UI", 14F, FontStyle.Bold); // Changed from Impact
-            btnUpdatePassword.ForeColor = Color.White;
-            btnUpdatePassword.Size = new Size(220, 45);
-            btnUpdatePassword.Location = new Point(350, 670);
-            btnUpdatePassword.Visible = false;
-            btnUpdatePassword.Cursor = Cursors.Hand;
-            btnUpdatePassword.Click += BtnUpdatePassword_Click;
-            mainPanel.Controls.Add(btnUpdatePassword);
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
-            // Find and show the login form
             foreach (Form f in Application.OpenForms)
             {
                 if (f is LOGIN)
@@ -322,18 +336,48 @@ namespace Gym_Membership_System
         private void ClearResults()
         {
             resultsPanel.Visible = false;
-            btnUpdatePassword.Visible = false;
             accountFound = false;
         }
 
         private async void BtnSearch_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text) &&
-                string.IsNullOrWhiteSpace(txtLastName.Text) &&
-                string.IsNullOrWhiteSpace(txtEmail.Text))
+            if (string.IsNullOrWhiteSpace(txtFirstName.Text))
             {
-                MessageBox.Show("Please enter at least one search criteria.",
-                    "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("First Name is required.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtFirstName.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                MessageBox.Show("Last Name is required.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtLastName.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                MessageBox.Show("Email is required.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return;
+            }
+
+            if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains("."))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                MessageBox.Show("Phone number is required.", "Validation Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPhone.Focus();
                 return;
             }
 
@@ -348,21 +392,20 @@ namespace Gym_Membership_System
                 {
                     await conn.OpenAsync();
 
-                    string query = "SELECT AdminID, FirstName, LastName, Email, Username, Role FROM Admins WHERE 1=1";
-
-                    if (!string.IsNullOrWhiteSpace(txtFirstName.Text))
-                        query += " AND FirstName LIKE '%" + txtFirstName.Text + "%'";
-
-                    if (!string.IsNullOrWhiteSpace(txtLastName.Text))
-                        query += " AND LastName LIKE '%" + txtLastName.Text + "%'";
-
-                    if (!string.IsNullOrWhiteSpace(txtEmail.Text))
-                        query += " AND Email LIKE '%" + txtEmail.Text + "%'";
-
-                    query += " ORDER BY LastName, FirstName";
+                    string query = @"SELECT AdminID, FirstName, LastName, Email, Username, Role, Phone 
+                                    FROM Admins 
+                                    WHERE FirstName = @FirstName 
+                                    AND LastName = @LastName 
+                                    AND Email = @Email 
+                                    AND Phone = @Phone";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
+                        cmd.Parameters.AddWithValue("@FirstName", txtFirstName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@LastName", txtLastName.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Email", txtEmail.Text.Trim());
+                        cmd.Parameters.AddWithValue("@Phone", txtPhone.Text.Trim());
+
                         DataTable dt = new DataTable();
                         using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                         {
@@ -373,11 +416,11 @@ namespace Gym_Membership_System
                         {
                             dgvResults.DataSource = dt;
 
-                            // Hide AdminID column
                             if (dgvResults.Columns["AdminID"] != null)
                                 dgvResults.Columns["AdminID"].Visible = false;
+                            if (dgvResults.Columns["Phone"] != null)
+                                dgvResults.Columns["Phone"].Visible = false;
 
-                            // Format column headers
                             if (dgvResults.Columns["FirstName"] != null)
                                 dgvResults.Columns["FirstName"].HeaderText = "First Name";
                             if (dgvResults.Columns["LastName"] != null)
@@ -390,7 +433,6 @@ namespace Gym_Membership_System
                                 lblResultsTitle.Text = "ACCOUNT FOUND";
                                 lblResultsTitle.ForeColor = Color.FromArgb(76, 175, 80);
 
-                                // Auto-select the first row
                                 if (dgvResults.Rows.Count > 0)
                                 {
                                     dgvResults.Rows[0].Selected = true;
@@ -401,14 +443,12 @@ namespace Gym_Membership_System
                             {
                                 lblResultsTitle.Text = $"MULTIPLE ACCOUNTS FOUND ({dt.Rows.Count})";
                                 lblResultsTitle.ForeColor = Color.FromArgb(255, 150, 0);
-                                btnUpdatePassword.Visible = false;
                             }
                         }
                         else
                         {
                             resultsPanel.Visible = false;
-                            btnUpdatePassword.Visible = false;
-                            MessageBox.Show("No accounts found with the provided information.",
+                            MessageBox.Show("No account found matching the provided information.\n\nPlease check your First Name, Last Name, Email, and Phone number.",
                                 "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
@@ -427,7 +467,6 @@ namespace Gym_Membership_System
             {
                 DataGridViewRow row = dgvResults.Rows[rowIndex];
 
-                // Safely get values
                 if (row.Cells["AdminID"].Value != null)
                     foundAdminID = Convert.ToInt32(row.Cells["AdminID"].Value);
 
@@ -435,39 +474,32 @@ namespace Gym_Membership_System
                 foundUsername = row.Cells["Username"].Value?.ToString() ?? "";
 
                 accountFound = true;
-                btnUpdatePassword.Visible = true;
             }
         }
 
-        private void DgvResults_CellClick(object sender, DataGridViewCellEventArgs e)
+        private async void DgvResults_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
-                SelectAccount(e.RowIndex);
+                DataGridViewRow row = dgvResults.Rows[e.RowIndex];
+
+                int adminId = Convert.ToInt32(row.Cells["AdminID"].Value);
+                string email = row.Cells["Email"].Value?.ToString() ?? "";
+                string username = row.Cells["Username"].Value?.ToString() ?? "";
+
+                string newPassword = ShowPasswordDialog(email, username);
+                if (!string.IsNullOrEmpty(newPassword))
+                {
+                    await UpdatePassword(adminId, newPassword, email);
+                }
             }
         }
 
-        private async void BtnUpdatePassword_Click(object sender, EventArgs e)
-        {
-            if (!accountFound || foundAdminID == 0)
-            {
-                MessageBox.Show("Please search and select an account first.",
-                    "No Account Selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            string newPassword = ShowPasswordDialog();
-            if (!string.IsNullOrEmpty(newPassword))
-            {
-                await UpdatePassword(foundAdminID, newPassword);
-            }
-        }
-
-        private string ShowPasswordDialog()
+        private string ShowPasswordDialog(string email, string username)
         {
             Form passwordForm = new Form();
             passwordForm.Text = "Update Password";
-            passwordForm.Size = new Size(450, 300);
+            passwordForm.Size = new Size(450, 280);
             passwordForm.StartPosition = FormStartPosition.CenterParent;
             passwordForm.FormBorderStyle = FormBorderStyle.FixedDialog;
             passwordForm.MaximizeBox = false;
@@ -477,25 +509,25 @@ namespace Gym_Membership_System
             passwordForm.Font = new Font("Segoe UI", 9F);
 
             Label lblInfo = new Label();
-            lblInfo.Text = $"Updating password for:\n{foundEmail}";
+            lblInfo.Text = $"Account: {username}\n{email}";
             lblInfo.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             lblInfo.ForeColor = Color.FromArgb(255, 150, 0);
             lblInfo.Size = new Size(350, 50);
-            lblInfo.Location = new Point(50, 20);
+            lblInfo.Location = new Point(50, 15);
             lblInfo.TextAlign = ContentAlignment.MiddleCenter;
             passwordForm.Controls.Add(lblInfo);
 
             Label lblNewPassword = new Label();
             lblNewPassword.Text = "New Password:";
             lblNewPassword.Location = new Point(50, 80);
-            lblNewPassword.Size = new Size(120, 30);
+            lblNewPassword.Size = new Size(120, 25);
             lblNewPassword.ForeColor = Color.White;
             lblNewPassword.Font = new Font("Segoe UI", 11F);
             passwordForm.Controls.Add(lblNewPassword);
 
             TextBox txtNewPassword = new TextBox();
-            txtNewPassword.Location = new Point(180, 80);
-            txtNewPassword.Size = new Size(200, 30);
+            txtNewPassword.Location = new Point(180, 78);
+            txtNewPassword.Size = new Size(200, 28);
             txtNewPassword.PasswordChar = '*';
             txtNewPassword.BackColor = Color.FromArgb(60, 60, 65);
             txtNewPassword.ForeColor = Color.White;
@@ -505,15 +537,15 @@ namespace Gym_Membership_System
 
             Label lblConfirmPassword = new Label();
             lblConfirmPassword.Text = "Confirm:";
-            lblConfirmPassword.Location = new Point(50, 130);
-            lblConfirmPassword.Size = new Size(120, 30);
+            lblConfirmPassword.Location = new Point(50, 120);
+            lblConfirmPassword.Size = new Size(120, 25);
             lblConfirmPassword.ForeColor = Color.White;
             lblConfirmPassword.Font = new Font("Segoe UI", 11F);
             passwordForm.Controls.Add(lblConfirmPassword);
 
             TextBox txtConfirmPassword = new TextBox();
-            txtConfirmPassword.Location = new Point(180, 130);
-            txtConfirmPassword.Size = new Size(200, 30);
+            txtConfirmPassword.Location = new Point(180, 118);
+            txtConfirmPassword.Size = new Size(200, 28);
             txtConfirmPassword.PasswordChar = '*';
             txtConfirmPassword.BackColor = Color.FromArgb(60, 60, 65);
             txtConfirmPassword.ForeColor = Color.White;
@@ -521,30 +553,37 @@ namespace Gym_Membership_System
             txtConfirmPassword.Font = new Font("Segoe UI", 11F);
             passwordForm.Controls.Add(txtConfirmPassword);
 
-            // UPDATED: Password dialog buttons with better fonts
+            Panel buttonPanel = new Panel();
+            buttonPanel.Size = new Size(220, 38);
+            buttonPanel.Location = new Point(115, 165);
+            buttonPanel.BackColor = Color.Transparent;
+            passwordForm.Controls.Add(buttonPanel);
+
             Button btnOK = new Button();
             btnOK.Text = "UPDATE";
             btnOK.BackColor = Color.FromArgb(76, 175, 80);
             btnOK.FlatStyle = FlatStyle.Flat;
             btnOK.FlatAppearance.BorderSize = 0;
             btnOK.ForeColor = Color.White;
-            btnOK.Font = new Font("Segoe UI", 12F, FontStyle.Bold); // Changed from Impact
-            btnOK.Location = new Point(120, 190);
-            btnOK.Size = new Size(100, 40);
+            btnOK.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnOK.Location = new Point(0, 0);
+            btnOK.Size = new Size(100, 36);
+            btnOK.Cursor = Cursors.Hand;
             btnOK.DialogResult = DialogResult.OK;
-            passwordForm.Controls.Add(btnOK);
+            buttonPanel.Controls.Add(btnOK);
 
-            Button btnCancel = new Button();
-            btnCancel.Text = "CANCEL";
-            btnCancel.BackColor = Color.FromArgb(100, 100, 100);
-            btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.FlatAppearance.BorderSize = 0;
-            btnCancel.ForeColor = Color.White;
-            btnCancel.Font = new Font("Segoe UI", 12F, FontStyle.Bold); // Changed from Impact
-            btnCancel.Location = new Point(240, 190);
-            btnCancel.Size = new Size(100, 40);
-            btnCancel.DialogResult = DialogResult.Cancel;
-            passwordForm.Controls.Add(btnCancel);
+            Button btnCancelDialog = new Button();
+            btnCancelDialog.Text = "CANCEL";
+            btnCancelDialog.BackColor = Color.FromArgb(100, 100, 100);
+            btnCancelDialog.FlatStyle = FlatStyle.Flat;
+            btnCancelDialog.FlatAppearance.BorderSize = 0;
+            btnCancelDialog.ForeColor = Color.White;
+            btnCancelDialog.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            btnCancelDialog.Location = new Point(120, 0);
+            btnCancelDialog.Size = new Size(100, 36);
+            btnCancelDialog.Cursor = Cursors.Hand;
+            btnCancelDialog.DialogResult = DialogResult.Cancel;
+            buttonPanel.Controls.Add(btnCancelDialog);
 
             if (passwordForm.ShowDialog() == DialogResult.OK)
             {
@@ -552,14 +591,14 @@ namespace Gym_Membership_System
                 {
                     MessageBox.Show("Password must be at least 6 characters.",
                         "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return ShowPasswordDialog();
+                    return ShowPasswordDialog(email, username);
                 }
 
                 if (txtNewPassword.Text != txtConfirmPassword.Text)
                 {
                     MessageBox.Show("Passwords do not match.",
                         "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return ShowPasswordDialog();
+                    return ShowPasswordDialog(email, username);
                 }
 
                 return txtNewPassword.Text;
@@ -568,7 +607,7 @@ namespace Gym_Membership_System
             return null;
         }
 
-        private async Task UpdatePassword(int adminId, string newPassword)
+        private async Task UpdatePassword(int adminId, string newPassword, string email)
         {
             try
             {
@@ -586,10 +625,9 @@ namespace Gym_Membership_System
 
                         if (result > 0)
                         {
-                            MessageBox.Show($"✓ Password updated successfully for {foundEmail}!\n\nYou can now login with your new password.",
+                            MessageBox.Show($"✓ Password updated successfully for {email}!\n\nYou can now login with your new password.",
                                 "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            // Find and show login form before closing
                             foreach (Form f in Application.OpenForms)
                             {
                                 if (f is LOGIN)
@@ -612,7 +650,6 @@ namespace Gym_Membership_System
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            // Find and show the login form before closing
             foreach (Form f in Application.OpenForms)
             {
                 if (f is LOGIN)
@@ -643,11 +680,9 @@ namespace Gym_Membership_System
                 g.DrawImage(_backgroundImage, new Rectangle(drawX, drawY, drawW, drawH));
             }
 
-            // Dark overlay
             using (var overlay = new SolidBrush(Color.FromArgb(OverlayAlpha, 0, 0, 0)))
                 g.FillRectangle(overlay, rect);
 
-            // Vignette effect
             using (var path = new GraphicsPath())
             {
                 float inflateW = rect.Width * 0.5f;
@@ -663,7 +698,6 @@ namespace Gym_Membership_System
                 }
             }
 
-            // Gradient overlay
             using (var lg = new LinearGradientBrush(rect,
                 Color.FromArgb(GradientAlpha, 0, 0, 0),
                 Color.FromArgb(0, 0, 0, 0), 90f))
