@@ -13,11 +13,157 @@ namespace Gym_Membership_System
         private string connectionString = "Server=DESKTOP-PMQJTOJ;Database=GymDB;Trusted_Connection=True;TrustServerCertificate=True;";
         private DataTable paymentsTable;
         private string currentFilterType = "All"; // "All", "Basic", "Premium"
+        private bool _isDarkMode = true;
 
         public FormPayments()
         {
             InitializeComponent();
             AttachEventHandlers();
+
+            // Subscribe to theme changes
+            ThemeManager.ThemeChanged += OnThemeChanged;
+        }
+
+        private void OnThemeChanged(bool isDarkMode)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(() => OnThemeChanged(isDarkMode)));
+                return;
+            }
+
+            _isDarkMode = isDarkMode;
+            ApplyTheme(isDarkMode);
+        }
+
+        public void ApplyTheme(bool isDarkMode)
+        {
+            if (isDarkMode)
+            {
+                // ========== DARK MODE ==========
+                this.BackColor = Color.FromArgb(30, 30, 35);
+
+                // Labels
+                lblTitle.ForeColor = Color.FromArgb(255, 100, 50);
+                lblTotalAmount.ForeColor = Color.FromArgb(220, 220, 230);
+                lblTotalPayments.ForeColor = Color.FromArgb(220, 220, 230);
+                lblFilterDate.ForeColor = Color.FromArgb(220, 220, 230);
+
+                // Buttons
+                btnRefresh.BackColor = Color.FromArgb(70, 90, 120);
+                btnRefresh.ForeColor = Color.White;
+                btnPrintReceipt.BackColor = Color.FromArgb(80, 80, 90);
+                btnPrintReceipt.ForeColor = Color.White;
+                btnBack.BackColor = Color.FromArgb(80, 80, 90);
+                btnBack.ForeColor = Color.White;
+                btnApplyFilter.BackColor = Color.FromArgb(70, 90, 120);
+                btnApplyFilter.ForeColor = Color.White;
+
+                // Plan buttons
+                if (currentFilterType == "Basic")
+                {
+                    btnBasic.BackColor = Color.FromArgb(255, 100, 50);
+                }
+                else
+                {
+                    btnBasic.BackColor = Color.FromArgb(33, 150, 243);
+                }
+                btnBasic.ForeColor = Color.White;
+
+                if (currentFilterType == "Premium")
+                {
+                    btnPremium.BackColor = Color.FromArgb(255, 100, 50);
+                }
+                else
+                {
+                    btnPremium.BackColor = Color.FromArgb(156, 39, 176);
+                }
+                btnPremium.ForeColor = Color.White;
+
+                // Search box
+                txtSearch.BackColor = Color.FromArgb(55, 55, 62);
+                txtSearch.ForeColor = Color.FromArgb(220, 220, 230);
+
+                // DateTimePicker
+                dtpFilterDate.BackColor = Color.FromArgb(55, 55, 62);
+                dtpFilterDate.ForeColor = Color.FromArgb(220, 220, 230);
+
+                // DataGridView
+                dgvPayments.BackgroundColor = Color.FromArgb(45, 45, 52);
+                dgvPayments.GridColor = Color.FromArgb(55, 55, 65);
+                dgvPayments.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 50, 58);
+                dgvPayments.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(200, 200, 210);
+                dgvPayments.DefaultCellStyle.BackColor = Color.FromArgb(45, 45, 52);
+                dgvPayments.DefaultCellStyle.ForeColor = Color.FromArgb(200, 200, 210);
+                dgvPayments.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(48, 48, 55);
+                dgvPayments.RowHeadersDefaultCellStyle.BackColor = Color.FromArgb(40, 40, 48);
+                dgvPayments.RowHeadersDefaultCellStyle.ForeColor = Color.FromArgb(200, 200, 210);
+            }
+            else
+            {
+                // ========== LIGHT MODE ==========
+                this.BackColor = Color.FromArgb(245, 245, 250);
+
+                // Labels
+                lblTitle.ForeColor = Color.FromArgb(255, 100, 0);
+                lblTotalAmount.ForeColor = Color.FromArgb(50, 50, 60);
+                lblTotalPayments.ForeColor = Color.FromArgb(50, 50, 60);
+                lblFilterDate.ForeColor = Color.FromArgb(50, 50, 60);
+
+                // Buttons
+                btnRefresh.BackColor = Color.FromArgb(100, 120, 150);
+                btnRefresh.ForeColor = Color.White;
+                btnPrintReceipt.BackColor = Color.FromArgb(100, 100, 100);
+                btnPrintReceipt.ForeColor = Color.White;
+                btnBack.BackColor = Color.FromArgb(100, 100, 100);
+                btnBack.ForeColor = Color.White;
+                btnApplyFilter.BackColor = Color.FromArgb(100, 120, 150);
+                btnApplyFilter.ForeColor = Color.White;
+
+                // Plan buttons
+                if (currentFilterType == "Basic")
+                {
+                    btnBasic.BackColor = Color.FromArgb(255, 100, 0);
+                }
+                else
+                {
+                    btnBasic.BackColor = Color.FromArgb(33, 150, 243);
+                }
+                btnBasic.ForeColor = Color.White;
+
+                if (currentFilterType == "Premium")
+                {
+                    btnPremium.BackColor = Color.FromArgb(255, 100, 0);
+                }
+                else
+                {
+                    btnPremium.BackColor = Color.FromArgb(156, 39, 176);
+                }
+                btnPremium.ForeColor = Color.White;
+
+                // Search box
+                txtSearch.BackColor = Color.White;
+                txtSearch.ForeColor = Color.Black;
+
+                // DateTimePicker
+                dtpFilterDate.BackColor = Color.White;
+                dtpFilterDate.ForeColor = Color.Black;
+
+                // DataGridView
+                dgvPayments.BackgroundColor = Color.White;
+                dgvPayments.GridColor = Color.FromArgb(235, 235, 240);
+                dgvPayments.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 245);
+                dgvPayments.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(60, 60, 70);
+                dgvPayments.DefaultCellStyle.BackColor = Color.White;
+                dgvPayments.DefaultCellStyle.ForeColor = Color.Black;
+                dgvPayments.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 248, 252);
+                dgvPayments.RowHeadersDefaultCellStyle.BackColor = Color.White;
+                dgvPayments.RowHeadersDefaultCellStyle.ForeColor = Color.Black;
+            }
+
+            // Refresh the DataGridView
+            dgvPayments.Refresh();
+            this.Invalidate();
         }
 
         private void AttachEventHandlers()
@@ -35,16 +181,18 @@ namespace Gym_Membership_System
 
         private async void FormPayments_Load(object sender, EventArgs e)
         {
+            // Apply current theme
+            _isDarkMode = ThemeManager.IsDarkMode;
+            ApplyTheme(_isDarkMode);
+
             // Set default date to show all payments
             if (dtpFilterDate != null)
             {
                 dtpFilterDate.Value = new DateTime(2020, 1, 1);
-
             }
 
             await LoadPaymentsAsync();
             await UpdateStatisticsAsync();
-
         }
 
         private async Task LoadPaymentsAsync()
@@ -261,6 +409,7 @@ namespace Gym_Membership_System
             currentFilterType = "Basic";
             HighlightPlanButton(btnBasic, btnPremium);
             ApplyFilters();
+            ApplyTheme(_isDarkMode); // Refresh theme to update button colors
             await Task.CompletedTask;
         }
 
@@ -269,12 +418,13 @@ namespace Gym_Membership_System
             currentFilterType = "Premium";
             HighlightPlanButton(btnPremium, btnBasic);
             ApplyFilters();
+            ApplyTheme(_isDarkMode); // Refresh theme to update button colors
             await Task.CompletedTask;
         }
 
         private void HighlightPlanButton(Button selected, Button other)
         {
-            selected.BackColor = Color.FromArgb(255, 100, 0);
+            selected.BackColor = Color.FromArgb(255, 100, 50);
             selected.ForeColor = Color.White;
             other.BackColor = other == btnBasic ? Color.FromArgb(33, 150, 243) : Color.FromArgb(156, 39, 176);
             other.ForeColor = Color.White;
@@ -290,6 +440,7 @@ namespace Gym_Membership_System
 
             await LoadPaymentsAsync();
             await UpdateStatisticsAsync();
+            ApplyTheme(_isDarkMode); // Refresh theme
         }
 
         private async void BtnPrintReceipt_Click(object sender, EventArgs e)
@@ -442,6 +593,13 @@ namespace Gym_Membership_System
                 MessageBox.Show($"Error opening payment details: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        protected override void OnFormClosed(FormClosedEventArgs e)
+        {
+            // Unsubscribe from theme changes
+            ThemeManager.ThemeChanged -= OnThemeChanged;
+            base.OnFormClosed(e);
         }
     }
 }

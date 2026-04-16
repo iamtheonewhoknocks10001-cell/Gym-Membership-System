@@ -7,48 +7,44 @@
       "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\formpayments.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\formpayments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\formpayments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\forgotaccountform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\forgotaccountform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\signup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\signup.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\signup.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\login.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\login.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\addpaymentform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\addpaymentform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\attendance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\attendance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\thememanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\thememanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\addpaymentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\addpaymentform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\formpayments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\formpayments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\attendance.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\attendance.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\attendance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\attendance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\paymentdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\paymentdetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|c:\\users\\xyrelle rafael\\source\\repos\\gym membership system\\gym membership system\\paymentdetails.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|solutionrelative:gym membership system\\paymentdetails.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3220D79A-D1DB-4CCE-AD96-77C3506CD536}|Gym Membership System\\Gym Membership System.csproj|C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\gym membership system\\login.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -66,17 +62,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 2,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\Form1.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\Form1.cs",
               "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\Form1.cs",
               "RelativeToolTip": "Gym Membership System\\Form1.cs",
-              "ViewState": "AgIAAOQCAAAAAAAAAAAmwBMDAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAGMEAAAAAAAAAAAwwJQEAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-23T13:31:57.887Z",
               "IsPinned": true,
@@ -84,29 +80,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "Form1.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\Form1.Designer.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\Form1.Designer.cs",
               "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\Form1.Designer.cs",
               "RelativeToolTip": "Gym Membership System\\Form1.Designer.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAqwEEBAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAABUCAAAAAAAAAAAgwDcCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-07T05:51:46.128Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormPayments.cs",
-              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\FormPayments.cs",
-              "RelativeDocumentMoniker": "Gym Membership System\\FormPayments.cs",
-              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\FormPayments.cs",
-              "RelativeToolTip": "Gym Membership System\\FormPayments.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAYwCkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T13:02:57.001Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -122,116 +104,118 @@
               "RelativeDocumentMoniker": "Gym Membership System\\FormPayments.Designer.cs",
               "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\FormPayments.Designer.cs",
               "RelativeToolTip": "Gym Membership System\\FormPayments.Designer.cs",
-              "ViewState": "AgIAAK4AAAAAAAAAAAAqwMAAAABeAAAAAAAAAA==",
+              "ViewState": "AgIAAPwAAAAAAAAAAAAgwBABAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T10:06:27.538Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ForgotAccountForm.cs",
-              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\ForgotAccountForm.cs",
-              "RelativeDocumentMoniker": "Gym Membership System\\ForgotAccountForm.cs",
-              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\ForgotAccountForm.cs",
-              "RelativeToolTip": "Gym Membership System\\ForgotAccountForm.cs",
-              "ViewState": "AgIAAJMCAAAAAAAAAAAiwMICAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T07:26:29.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SIGNUP.cs",
-              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\SIGNUP.cs",
-              "RelativeDocumentMoniker": "Gym Membership System\\SIGNUP.cs",
-              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\SIGNUP.cs",
-              "RelativeToolTip": "Gym Membership System\\SIGNUP.cs",
-              "ViewState": "AgIAAGsBAAAAAAAAAAAiwI8BAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T01:58:54.64Z",
+              "WhenOpened": "2026-04-16T10:08:11.759Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "SIGNUP.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\SIGNUP.Designer.cs",
-              "RelativeDocumentMoniker": "Gym Membership System\\SIGNUP.Designer.cs",
-              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\SIGNUP.Designer.cs",
-              "RelativeToolTip": "Gym Membership System\\SIGNUP.Designer.cs",
-              "ViewState": "AgIAAEsBAAAAAAAAAAAmwHoBAAABAAAAAAAAAA==",
+              "Title": "FormPayments.cs",
+              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\FormPayments.cs",
+              "RelativeDocumentMoniker": "Gym Membership System\\FormPayments.cs",
+              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\FormPayments.cs",
+              "RelativeToolTip": "Gym Membership System\\FormPayments.cs",
+              "ViewState": "AgIAAC0CAAAAAAAAAAAmwFwCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T04:39:18.001Z",
+              "WhenOpened": "2026-04-16T08:29:32.459Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "LOGIN.cs",
-              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\LOGIN.cs",
-              "RelativeDocumentMoniker": "Gym Membership System\\LOGIN.cs",
-              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\LOGIN.cs",
-              "RelativeToolTip": "Gym Membership System\\LOGIN.cs",
-              "ViewState": "AgIAAFMAAAAAAAAAAAD4v2kAAAAwAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T09:07:45.777Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\Form1.cs",
-              "RelativeDocumentMoniker": "Gym Membership System\\Form1.cs",
-              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\Form1.cs [Design]",
-              "RelativeToolTip": "Gym Membership System\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-07T07:00:38.762Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LOGIN.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\LOGIN.Designer.cs",
-              "RelativeDocumentMoniker": "Gym Membership System\\LOGIN.Designer.cs",
-              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\LOGIN.Designer.cs",
-              "RelativeToolTip": "Gym Membership System\\LOGIN.Designer.cs",
-              "ViewState": "AgIAAFAAAAAAAAAAAAAqwGkAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T00:44:40.981Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "attendance.cs",
-              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\attendance.cs",
-              "RelativeDocumentMoniker": "Gym Membership System\\attendance.cs",
-              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\attendance.cs",
-              "RelativeToolTip": "Gym Membership System\\attendance.cs",
-              "ViewState": "AgIAAFQBAAAAAAAAAAA8wGwBAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T06:08:41.246Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 7,
               "Title": "attendance.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\attendance.Designer.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\attendance.Designer.cs",
               "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\attendance.Designer.cs",
               "RelativeToolTip": "Gym Membership System\\attendance.Designer.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAQwJgAAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAIAAAAAAAAAAAAAQwIkAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-14T06:17:53.597Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 4,
+              "Title": "AddPaymentForm.cs",
+              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\AddPaymentForm.cs",
+              "RelativeDocumentMoniker": "Gym Membership System\\AddPaymentForm.cs",
+              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\AddPaymentForm.cs",
+              "RelativeToolTip": "Gym Membership System\\AddPaymentForm.cs",
+              "ViewState": "AgIAAMoBAAAAAAAAAAAmwPkBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T06:49:44.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ThemeManager.cs",
+              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\ThemeManager.cs",
+              "RelativeDocumentMoniker": "Gym Membership System\\ThemeManager.cs",
+              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\ThemeManager.cs",
+              "RelativeToolTip": "Gym Membership System\\ThemeManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T09:45:27.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AddPaymentForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\AddPaymentForm.Designer.cs",
+              "RelativeDocumentMoniker": "Gym Membership System\\AddPaymentForm.Designer.cs",
+              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\AddPaymentForm.Designer.cs",
+              "RelativeToolTip": "Gym Membership System\\AddPaymentForm.Designer.cs",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAgwDwBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T07:23:18.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "attendance.cs",
+              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\attendance.cs",
+              "RelativeDocumentMoniker": "Gym Membership System\\attendance.cs",
+              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\attendance.cs",
+              "RelativeToolTip": "Gym Membership System\\attendance.cs",
+              "ViewState": "AgIAAFUBAAAAAAAAAAAmwGwBAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-14T06:08:41.246Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PaymentDetails.cs",
+              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\PaymentDetails.cs",
+              "RelativeDocumentMoniker": "Gym Membership System\\PaymentDetails.cs",
+              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\PaymentDetails.cs",
+              "RelativeToolTip": "Gym Membership System\\PaymentDetails.cs",
+              "ViewState": "AgIAABwBAAAAAAAAAAAmwOgAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T08:30:41.312Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "PaymentDetails.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\PaymentDetails.Designer.cs",
+              "RelativeDocumentMoniker": "Gym Membership System\\PaymentDetails.Designer.cs",
+              "ToolTip": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\PaymentDetails.Designer.cs",
+              "RelativeToolTip": "Gym Membership System\\PaymentDetails.Designer.cs",
+              "ViewState": "AgIAANYAAAAAAAAAAAAqwPIAAABJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-16T08:32:02.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "LOGIN.cs [Design]",
               "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\LOGIN.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\LOGIN.cs",
@@ -242,7 +226,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "BaseForm.cs",
               "DocumentMoniker": "C:\\Users\\Xyrelle Rafael\\source\\repos\\Gym Membership System\\Gym Membership System\\BaseForm.cs",
               "RelativeDocumentMoniker": "Gym Membership System\\BaseForm.cs",

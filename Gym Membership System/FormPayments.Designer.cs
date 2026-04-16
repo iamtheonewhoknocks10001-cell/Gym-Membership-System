@@ -243,6 +243,35 @@
             this.dgvPayments.Size = new System.Drawing.Size(1371, 698);
             this.dgvPayments.TabIndex = 0;
 
+            // ============================================
+            // COLUMN HEADER STYLING
+            // ============================================
+            // Normal state
+            this.dgvPayments.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(240, 240, 245);
+            this.dgvPayments.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(60, 60, 70);
+            this.dgvPayments.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.dgvPayments.ColumnHeadersDefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+
+            // Selected state (when you click on a column header)
+            this.dgvPayments.ColumnHeadersDefaultCellStyle.SelectionBackColor = System.Drawing.Color.White;  // Orange
+            this.dgvPayments.ColumnHeadersDefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            // ============================================
+            // ROW STYLING
+            // ============================================
+            // Normal rows
+            this.dgvPayments.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgvPayments.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgvPayments.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(10);
+            this.dgvPayments.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+
+            // Selected rows
+            this.dgvPayments.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LimeGreen;
+            this.dgvPayments.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+
+            // Alternating rows (every other row)
+            this.dgvPayments.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.DarkOrange;
+
             // FormPayments
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

@@ -178,6 +178,7 @@ namespace Gym_Membership_System
             btnBack.Location = new Point(formWidth - 160, formHeight - 100);
         }
 
+
         private async void BtnNext_Click(object sender, EventArgs e)
         {
             // Prevent multiple validation calls
@@ -265,32 +266,28 @@ namespace Gym_Membership_System
 
                     ClearForm();
 
-                    // Open payment form
+                    // Open payment form (no DialogResult checking needed)
                     AddPaymentForm paymentForm = new AddPaymentForm(connectionString, "Admin", _newMemberId, _newMemberName, newMember.MembershipType);
-                    DialogResult paymentResult = paymentForm.ShowDialog();
+                    paymentForm.ShowDialog();
 
-                    // ONLY go to Form1 if payment was actually saved (DialogResult.OK)
-                    if (paymentResult == DialogResult.OK)
+                    // After payment form closes, show Form1 and close AddMember
+                    Form1 dashboard = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+
+                    if (dashboard != null && !dashboard.IsDisposed)
                     {
-                        Form1 dashboard = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-
-                        if (dashboard != null && !dashboard.IsDisposed)
-                        {
-                            dashboard.Show();
-                            dashboard.BringToFront();
-                            dashboard.WindowState = FormWindowState.Maximized;
-                            await dashboard.RefreshMembers();
-                        }
-                        else
-                        {
-                            Form1 mainForm = new Form1("", "", "");
-                            mainForm.Show();
-                        }
-
-                        // Close AddMember only after successful payment
-                        this.Close();
+                        dashboard.Show();
+                        dashboard.BringToFront();
+                        dashboard.WindowState = FormWindowState.Maximized;
+                        await dashboard.RefreshMembers();
                     }
-                    // If payment was cancelled (DialogResult.Cancel), just stay on AddMember
+                    else
+                    {
+                        Form1 mainForm = new Form1("", "", "");
+                        mainForm.Show();
+                    }
+
+                    // Close AddMember
+                    this.Hide();
                 }
             }
             finally
@@ -392,7 +389,7 @@ namespace Gym_Membership_System
                 mainForm.Show();
             }
 
-            // THEN close AddMember
+            // THEN close AddMember (use Close instead of Dispose)
             this.Dispose();
         }
 

@@ -2,6 +2,7 @@
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
@@ -17,7 +18,7 @@ namespace Gym_Membership_System
         private string preSelectedMembershipType = "";
         private AddMember _addMemberForm;
 
-        // Visual constants - MATCHING ADD MEMBER FORM
+        // Visual constants
         private const int OverlayAlpha = 180;
         private const int VignetteAlpha = 200;
         private const float VignetteFocus = 0.55f;
@@ -39,7 +40,10 @@ namespace Gym_Membership_System
                      ControlStyles.ResizeRedraw |
                      ControlStyles.DoubleBuffer, true);
 
-            this.Load += (s, e) => CenterControls();
+            this.Load += (s, e) =>
+            {
+                CenterControls();
+            };
             this.Resize += (s, e) => { CenterControls(); this.Invalidate(); };
 
             LoadMembers();
@@ -70,7 +74,10 @@ namespace Gym_Membership_System
                      ControlStyles.ResizeRedraw |
                      ControlStyles.DoubleBuffer, true);
 
-            this.Load += (s, e) => CenterControls();
+            this.Load += (s, e) =>
+            {
+                CenterControls();
+            };
             this.Resize += (s, e) => { CenterControls(); this.Invalidate(); };
 
             LoadMembershipPlans();
@@ -92,8 +99,6 @@ namespace Gym_Membership_System
             btnCancel.Click += (s, e) => this.Close();
             btnBack.Click += BtnBack_Click;
         }
-
-        
 
         private void CenterControls()
         {
@@ -193,9 +198,17 @@ namespace Gym_Membership_System
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    cmbMember.DisplayMember = "MemberName";
-                    cmbMember.ValueMember = "MemberID";
-                    cmbMember.DataSource = dt;
+                    if (dt.Rows.Count > 0)
+                    {
+                        cmbMember.DisplayMember = "MemberName";
+                        cmbMember.ValueMember = "MemberID";
+                        cmbMember.DataSource = dt;
+                    }
+                    else
+                    {
+                        MessageBox.Show("No active members found. Please add members first.",
+                            "No Members", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
             catch (Exception ex)
@@ -231,7 +244,7 @@ namespace Gym_Membership_System
                     cmbMember.Enabled = false;
                 }
 
-                if (!string.IsNullOrEmpty(preSelectedMembershipType))
+                if (!string.IsNullOrEmpty(preSelectedMembershipType) && cmbMembershipType.Items.Count > 0)
                 {
                     for (int i = 0; i < cmbMembershipType.Items.Count; i++)
                     {
@@ -265,23 +278,24 @@ namespace Gym_Membership_System
                     adapter.Fill(dt);
 
                     cmbMembershipType.Items.Clear();
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        cmbMembershipType.Items.Add(row["PlanName"].ToString());
-                    }
 
-                    if (!string.IsNullOrEmpty(preSelectedMembershipType) && cmbMembershipType.Items.Count > 0)
+                    if (dt.Rows.Count > 0)
                     {
-                        for (int i = 0; i < cmbMembershipType.Items.Count; i++)
+                        foreach (DataRow row in dt.Rows)
                         {
-                            if (cmbMembershipType.Items[i].ToString().ToUpper() == preSelectedMembershipType.ToUpper())
-                            {
-                                cmbMembershipType.SelectedIndex = i;
-                                break;
-                            }
+                            cmbMembershipType.Items.Add(row["PlanName"].ToString());
                         }
                     }
-                    else if (cmbMembershipType.Items.Count > 0)
+                    else
+                    {
+                        // Fallback to default plans if table is empty
+                        cmbMembershipType.Items.Add("BASIC");
+                        cmbMembershipType.Items.Add("PREMIUM");
+                        MessageBox.Show("Membership plans loaded from defaults. Please run SQL to insert plans.",
+                            "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
+                    if (cmbMembershipType.Items.Count > 0)
                     {
                         cmbMembershipType.SelectedIndex = 0;
                     }
@@ -289,8 +303,15 @@ namespace Gym_Membership_System
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading membership plans: {ex.Message}",
+                MessageBox.Show($"Error loading membership plans: {ex.Message}\nUsing default plans.",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                // Fallback to default plans
+                cmbMembershipType.Items.Clear();
+                cmbMembershipType.Items.Add("BASIC");
+                cmbMembershipType.Items.Add("PREMIUM");
+                if (cmbMembershipType.Items.Count > 0)
+                    cmbMembershipType.SelectedIndex = 0;
             }
         }
 
@@ -321,6 +342,19 @@ namespace Gym_Membership_System
             }
             catch
             {
+                // Fallback prices
+                if (membership.ToUpper() == "BASIC")
+                {
+                    if (period == "Monthly") return 1050.00m;
+                    if (period == "Quarterly") return 3150.00m;
+                    if (period == "Annual") return 12775.00m;
+                }
+                else if (membership.ToUpper() == "PREMIUM")
+                {
+                    if (period == "Monthly") return 1400.00m;
+                    if (period == "Quarterly") return 4000.00m;
+                    if (period == "Annual") return 15000.00m;
+                }
                 return 0;
             }
         }
@@ -380,13 +414,13 @@ namespace Gym_Membership_System
                     string paymentStatus = "Paid";
 
                     string query = @"INSERT INTO Payments 
-                            (MemberID, Amount, PaymentDate, DueDate, PaymentMethod, 
-                             PaymentStatus, ReceiptNumber, PaymentFor, 
-                             PaymentPeriod, ProcessedBy, CreatedAt)
-                            VALUES 
-                            (@MemberID, @Amount, @PaymentDate, @DueDate, @PaymentMethod,
-                             @PaymentStatus, @ReceiptNumber, @PaymentFor,
-                             @PaymentPeriod, @ProcessedBy, @CreatedAt)";
+                    (MemberID, Amount, PaymentDate, DueDate, PaymentMethod, 
+                     PaymentStatus, ReceiptNumber, PaymentFor, 
+                     PaymentPeriod, ProcessedBy, CreatedAt)
+                    VALUES 
+                    (@MemberID, @Amount, @PaymentDate, @DueDate, @PaymentMethod,
+                     @PaymentStatus, @ReceiptNumber, @PaymentFor,
+                     @PaymentPeriod, @ProcessedBy, @CreatedAt)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
@@ -409,7 +443,6 @@ namespace Gym_Membership_System
                 MessageBox.Show($"Payment recorded successfully!\nReceipt Number: {receiptNumber}\nAmount: ₱{nudAmount.Value:N2}",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Just close this form
                 this.Close();
             }
             catch (Exception ex)
@@ -418,30 +451,15 @@ namespace Gym_Membership_System
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void BtnBack_Click(object sender, EventArgs e)
         {
-            // Find AddMember form
-            AddMember addMemberForm = Application.OpenForms.OfType<AddMember>().FirstOrDefault();
-
-            if (addMemberForm != null && !addMemberForm.IsDisposed)
-            {
-                // Make sure AddMember is visible
-                addMemberForm.Show();
-                addMemberForm.BringToFront();
-                addMemberForm.Opacity = 1;
-            }
-
-            // Close this form
-            this.Close();
+            this.Dispose();
         }
+
         private string GenerateReceiptNumber()
         {
             return $"RCP-{DateTime.Now:yyyyMMdd}-{new Random().Next(1000, 9999)}";
-        }
-
-        private void AddPaymentForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         protected override void OnPaintBackground(PaintEventArgs e)

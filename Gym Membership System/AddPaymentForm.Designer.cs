@@ -74,17 +74,17 @@
             lblMember.Text = "Member:";
             lblMember.TextAlign = ContentAlignment.MiddleRight;
 
-            cmbMember.BackColor = Color.White;
+            cmbMember.BackColor = Color.FromArgb(55, 55, 62);
             cmbMember.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbMember.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
-            cmbMember.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            cmbMember.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            cmbMember.ForeColor = Color.FromArgb(220, 220, 230);
             cmbMember.Location = new Point(0, 0);
             cmbMember.Name = "cmbMember";
             cmbMember.Size = new Size(400, 38);
             cmbMember.TabIndex = 1;
 
             // ============================================
-            // MEMBERSHIP TYPE - Darker text inside
+            // MEMBERSHIP TYPE
             // ============================================
             lblMembershipType.BackColor = Color.Transparent;
             lblMembershipType.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
@@ -96,17 +96,17 @@
             lblMembershipType.Text = "Membership Type:";
             lblMembershipType.TextAlign = ContentAlignment.MiddleRight;
 
-            cmbMembershipType.BackColor = Color.White;
+            cmbMembershipType.BackColor = Color.FromArgb(55, 55, 62);
             cmbMembershipType.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbMembershipType.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
-            cmbMembershipType.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            cmbMembershipType.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            cmbMembershipType.ForeColor = Color.FromArgb(220, 220, 230);
             cmbMembershipType.Location = new Point(0, 0);
             cmbMembershipType.Name = "cmbMembershipType";
             cmbMembershipType.Size = new Size(400, 38);
             cmbMembershipType.TabIndex = 3;
 
             // ============================================
-            // PAYMENT PERIOD - Darker text inside
+            // PAYMENT PERIOD
             // ============================================
             lblPaymentPeriod.BackColor = Color.Transparent;
             lblPaymentPeriod.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
@@ -118,10 +118,10 @@
             lblPaymentPeriod.Text = "Payment Period:";
             lblPaymentPeriod.TextAlign = ContentAlignment.MiddleRight;
 
-            cmbPaymentPeriod.BackColor = Color.White;
+            cmbPaymentPeriod.BackColor = Color.FromArgb(55, 55, 62);
             cmbPaymentPeriod.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPaymentPeriod.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
-            cmbPaymentPeriod.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            cmbPaymentPeriod.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            cmbPaymentPeriod.ForeColor = Color.FromArgb(220, 220, 230);
             cmbPaymentPeriod.Items.AddRange(new object[] { "Monthly", "Quarterly", "Annual" });
             cmbPaymentPeriod.Location = new Point(0, 0);
             cmbPaymentPeriod.Name = "cmbPaymentPeriod";
@@ -129,11 +129,11 @@
             cmbPaymentPeriod.TabIndex = 5;
 
             // ============================================
-            // AMOUNT - Darker text inside
+            // AMOUNT
             // ============================================
             lblAmount.BackColor = Color.Transparent;
             lblAmount.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblAmount.ForeColor = Color.White;
+            lblAmount.ForeColor = Color.FromArgb(255, 150, 100);
             lblAmount.Location = new Point(0, 0);
             lblAmount.Name = "lblAmount";
             lblAmount.Size = new Size(180, 35);
@@ -141,10 +141,10 @@
             lblAmount.Text = "Amount:";
             lblAmount.TextAlign = ContentAlignment.MiddleRight;
 
-            nudAmount.BackColor = Color.FromArgb(245, 245, 250);
+            nudAmount.BackColor = Color.FromArgb(55, 55, 62);
             nudAmount.DecimalPlaces = 2;
-            nudAmount.Font = new Font("Segoe UI", 16F, FontStyle.Bold);  // Large + Bold
-            nudAmount.ForeColor = Color.DarkOrange;  // Green
+            nudAmount.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            nudAmount.ForeColor = Color.FromArgb(255, 180, 80);
             nudAmount.Location = new Point(0, 0);
             nudAmount.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             nudAmount.Name = "nudAmount";
@@ -154,7 +154,7 @@
             nudAmount.ThousandsSeparator = true;
 
             // ============================================
-            // PAYMENT METHOD - Darker text inside
+            // PAYMENT METHOD
             // ============================================
             lblPaymentMethod.BackColor = Color.Transparent;
             lblPaymentMethod.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
@@ -166,10 +166,10 @@
             lblPaymentMethod.Text = "Payment Method:";
             lblPaymentMethod.TextAlign = ContentAlignment.MiddleRight;
 
-            cmbPaymentMethod.BackColor = Color.White;
+            cmbPaymentMethod.BackColor = Color.FromArgb(55, 55, 62);
             cmbPaymentMethod.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbPaymentMethod.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
-            cmbPaymentMethod.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            cmbPaymentMethod.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            cmbPaymentMethod.ForeColor = Color.FromArgb(220, 220, 230);
             cmbPaymentMethod.Items.AddRange(new object[] { "Cash", "GCash" });
             cmbPaymentMethod.Location = new Point(0, 0);
             cmbPaymentMethod.Name = "cmbPaymentMethod";
@@ -177,7 +177,7 @@
             cmbPaymentMethod.TabIndex = 9;
 
             // ============================================
-            // PAYMENT DATE - Darker text inside
+            // PAYMENT DATE
             // ============================================
             lblPaymentDate.BackColor = Color.Transparent;
             lblPaymentDate.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
@@ -190,8 +190,8 @@
             lblPaymentDate.TextAlign = ContentAlignment.MiddleRight;
 
             dtpPaymentDate.Enabled = false;
-            dtpPaymentDate.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
-            dtpPaymentDate.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            dtpPaymentDate.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dtpPaymentDate.ForeColor = Color.FromArgb(220, 220, 230);
             dtpPaymentDate.Location = new Point(0, 0);
             dtpPaymentDate.Name = "dtpPaymentDate";
             dtpPaymentDate.Size = new Size(400, 38);
@@ -199,7 +199,7 @@
             dtpPaymentDate.Value = DateTime.Now;
 
             // ============================================
-            // DUE DATE - Darker text inside
+            // DUE DATE
             // ============================================
             lblDueDate.BackColor = Color.Transparent;
             lblDueDate.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
@@ -212,8 +212,8 @@
             lblDueDate.TextAlign = ContentAlignment.MiddleRight;
 
             dtpDueDate.Enabled = false;
-            dtpDueDate.Font = new Font("Segoe UI", 13F, FontStyle.Bold);  // Larger + Bold
-            dtpDueDate.ForeColor = Color.FromArgb(20, 20, 30);  // Very dark
+            dtpDueDate.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
+            dtpDueDate.ForeColor = Color.FromArgb(220, 220, 230);
             dtpDueDate.Location = new Point(0, 0);
             dtpDueDate.Name = "dtpDueDate";
             dtpDueDate.Size = new Size(400, 38);
@@ -222,11 +222,11 @@
             // ============================================
             // SAVE BUTTON
             // ============================================
-            btnSave.BackColor = Color.FromArgb(255, 100, 0);
+            btnSave.BackColor = Color.FromArgb(255, 100, 50);
             btnSave.Cursor = Cursors.Hand;
             btnSave.FlatAppearance.BorderSize = 0;
             btnSave.FlatStyle = FlatStyle.Flat;
-            btnSave.Font = new Font("Impact", 18F, FontStyle.Bold);
+            btnSave.Font = new Font("Calibri", 18F, FontStyle.Bold);
             btnSave.ForeColor = Color.White;
             btnSave.Location = new Point(0, 0);
             btnSave.Name = "btnSave";
@@ -238,11 +238,11 @@
             // ============================================
             // CANCEL BUTTON
             // ============================================
-            btnCancel.BackColor = Color.FromArgb(100, 100, 100);
+            btnCancel.BackColor = Color.FromArgb(80, 80, 90);
             btnCancel.Cursor = Cursors.Hand;
             btnCancel.FlatAppearance.BorderSize = 0;
             btnCancel.FlatStyle = FlatStyle.Flat;
-            btnCancel.Font = new Font("Impact", 18F, FontStyle.Bold);
+            btnCancel.Font = new Font("Calibri", 18F, FontStyle.Bold);
             btnCancel.ForeColor = Color.White;
             btnCancel.Location = new Point(0, 0);
             btnCancel.Name = "btnCancel";
@@ -254,7 +254,7 @@
             // ============================================
             // BACK BUTTON
             // ============================================
-            btnBack.BackColor = Color.FromArgb(100, 100, 100);
+            btnBack.BackColor = Color.FromArgb(80, 80, 90);
             btnBack.Cursor = Cursors.Hand;
             btnBack.FlatAppearance.BorderSize = 0;
             btnBack.FlatStyle = FlatStyle.Flat;
@@ -266,7 +266,7 @@
             btnBack.TabIndex = 21;
             btnBack.Text = "← BACK";
             btnBack.UseVisualStyleBackColor = false;
-            btnBack.Click += (s, e) => this.Close();
+            // REMOVED: btnBack.Click += (s, e) => this.Close();
 
             // ============================================
             // ADD ALL CONTROLS

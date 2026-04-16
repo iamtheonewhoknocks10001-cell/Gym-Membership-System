@@ -135,7 +135,7 @@
             this.dgvAttendance.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgvAttendance.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgvAttendance.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightCoral;
-            this.dgvAttendance.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvAttendance.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvAttendance.DefaultCellStyle.Padding = new Padding(10);
             this.dgvAttendance.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.LightGray;
 

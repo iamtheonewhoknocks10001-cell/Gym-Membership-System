@@ -24,9 +24,10 @@ namespace Gym_Membership_System
         private string _username;
         private DataTable membersTable;
         private bool isLoading = false;
-        private bool _showInactive = false;  // Track whether to show inactive members
-        private bool _showAllMembers = false;  // Track whether to show all members (for Total Members card)
-        private bool _showNewMembers = false;  // Track whether to show new members only (for New card)
+        private bool _showInactive = false;
+        private bool _showAllMembers = false;
+        private bool _showNewMembers = false;
+        private bool _isDarkMode = true;  // Track current mode (default is dark)
 
         private Panel loadingPanel;
         private Label loadingLabel;
@@ -59,6 +60,130 @@ namespace Gym_Membership_System
             ConfigureDataGridView();
         }
 
+        public void ApplyTheme(bool isDarkMode)
+        {
+            _isDarkMode = isDarkMode;
+
+            if (isDarkMode)
+            {
+                // ========== DARK MODE ==========
+                btnDarkMode.Text = "☀️ LIGHT MODE";
+                btnDarkMode.BackColor = Color.FromArgb(60, 60, 70);
+                btnDarkMode.ForeColor = Color.White;
+
+                // Main Form Background
+                this.BackColor = Color.FromArgb(30, 30, 35);
+
+                // Navigation Panel
+                navPanel.BackColor = Color.FromArgb(25, 25, 30);
+                lblLogo.ForeColor = Color.FromArgb(255, 100, 50);
+
+                // Navigation Buttons
+                btnAddMember.ForeColor = Color.FromArgb(200, 200, 210);
+                btnPayments.ForeColor = Color.FromArgb(200, 200, 210);
+                btnAttendance.ForeColor = Color.FromArgb(200, 200, 210);
+                btnLogout.ForeColor = Color.FromArgb(200, 200, 210);
+
+                // Dashboard
+                dashboardContainer.BackColor = Color.FromArgb(35, 35, 40);
+                lblGreeting.ForeColor = Color.FromArgb(220, 220, 230);
+                statsPanel.BackColor = Color.FromArgb(35, 35, 40);
+
+                // Stats Cards
+                cardTotal.BackColor = Color.FromArgb(45, 45, 52);
+                lblTotalValue.ForeColor = Color.FromArgb(255, 150, 100);
+                lblTotalLabel.ForeColor = Color.FromArgb(180, 180, 190);
+
+                cardActive.BackColor = Color.FromArgb(45, 45, 52);
+                lblActiveValue.ForeColor = Color.FromArgb(100, 200, 100);
+                lblActiveLabel.ForeColor = Color.FromArgb(180, 180, 190);
+
+                cardNew.BackColor = Color.FromArgb(45, 45, 52);
+                lblNewValue.ForeColor = Color.FromArgb(255, 180, 80);
+                lblNewLabel.ForeColor = Color.FromArgb(180, 180, 190);
+
+                // Members Section
+                membersSection.BackColor = Color.FromArgb(40, 40, 45);
+                membersHeader.BackColor = Color.FromArgb(35, 35, 42);
+                lblMembersTitle.ForeColor = Color.FromArgb(220, 220, 230);
+
+                // Search Box
+                txtSearch.BackColor = Color.FromArgb(55, 55, 62);
+                txtSearch.ForeColor = Color.FromArgb(220, 220, 230);
+
+                // DataGridView
+                dgvMembers.BackgroundColor = Color.FromArgb(45, 45, 52);
+                dgvMembers.GridColor = Color.FromArgb(55, 55, 65);
+                dgvMembers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(50, 50, 58);
+                dgvMembers.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(200, 200, 210);
+                dgvMembers.DefaultCellStyle.BackColor = Color.FromArgb(45, 45, 52);
+                dgvMembers.DefaultCellStyle.ForeColor = Color.FromArgb(200, 200, 210);
+                dgvMembers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(48, 48, 55);
+            }
+            else
+            {
+                // ========== LIGHT MODE ==========
+                btnDarkMode.Text = "🌙 DARK MODE";
+                btnDarkMode.BackColor = Color.FromArgb(50, 50, 60);
+                btnDarkMode.ForeColor = Color.White;
+
+                // Main Form Background
+                this.BackColor = Color.FromArgb(245, 245, 250);
+
+                // Navigation Panel
+                navPanel.BackColor = Color.White;
+                lblLogo.ForeColor = Color.FromArgb(255, 100, 0);
+
+                // Navigation Buttons
+                btnAddMember.ForeColor = Color.FromArgb(80, 80, 90);
+                btnPayments.ForeColor = Color.FromArgb(80, 80, 90);
+                btnAttendance.ForeColor = Color.FromArgb(80, 80, 90);
+                btnLogout.ForeColor = Color.FromArgb(80, 80, 90);
+
+                // Dashboard
+                dashboardContainer.BackColor = Color.FromArgb(245, 245, 250);
+                lblGreeting.ForeColor = Color.FromArgb(50, 50, 60);
+                statsPanel.BackColor = Color.FromArgb(245, 245, 250);
+
+                // Stats Cards
+                cardTotal.BackColor = Color.White;
+                lblTotalValue.ForeColor = Color.FromArgb(50, 50, 60);
+                lblTotalLabel.ForeColor = Color.Black;
+
+                cardActive.BackColor = Color.White;
+                lblActiveValue.ForeColor = Color.FromArgb(76, 175, 80);
+                lblActiveLabel.ForeColor = Color.Black;
+
+                cardNew.BackColor = Color.White;
+                lblNewValue.ForeColor = Color.FromArgb(255, 150, 0);
+                lblNewLabel.ForeColor = Color.Black;
+
+                // Members Section
+                membersSection.BackColor = Color.White;
+                membersHeader.BackColor = Color.Wheat;
+                lblMembersTitle.ForeColor = Color.FromArgb(75, 85, 110);
+
+                // Search Box
+                txtSearch.BackColor = Color.White;
+                txtSearch.ForeColor = Color.Black;
+
+                // DataGridView
+                dgvMembers.BackgroundColor = Color.White;
+                dgvMembers.GridColor = Color.FromArgb(235, 235, 240);
+                dgvMembers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(240, 240, 245);
+                dgvMembers.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(60, 60, 70);
+                dgvMembers.DefaultCellStyle.BackColor = Color.White;
+                dgvMembers.DefaultCellStyle.ForeColor = Color.Black;
+                dgvMembers.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 248, 252);
+            }
+
+            cardTotal.Invalidate();
+            cardActive.Invalidate();
+            cardNew.Invalidate();
+            dgvMembers.Refresh();
+            this.Invalidate();
+        }
+
         private void SetupModernDashboard()
         {
             statsFlowLayout.Controls.Clear();
@@ -85,7 +210,6 @@ namespace Gym_Membership_System
                     e.Graphics.DrawRectangle(pen, 0, 0, cardTotal.Width - 1, cardTotal.Height - 1);
                 }
 
-                // Add indicator dot showing current filter state
                 using (Brush brush = new SolidBrush(_showAllMembers ? Color.FromArgb(255, 100, 0) : Color.FromArgb(100, 100, 120)))
                 {
                     e.Graphics.FillEllipse(brush, cardTotal.Width - 20, 10, 10, 10);
@@ -126,7 +250,6 @@ namespace Gym_Membership_System
             statsFlowLayout.Controls.Add(cardTotal);
         }
 
-
         private void CreateActiveMembersCard()
         {
             cardActive = new Panel();
@@ -135,7 +258,7 @@ namespace Gym_Membership_System
             cardActive.Margin = new Padding(12, 5, 12, 5);
             cardActive.Padding = new Padding(10);
             cardActive.Cursor = Cursors.Hand;
-            cardActive.Click += (s, e) => ToggleShowInactive();  // Toggle inactive members
+            cardActive.Click += (s, e) => ToggleShowInactive();
 
             cardActive.Paint += (s, e) =>
             {
@@ -144,7 +267,6 @@ namespace Gym_Membership_System
                     e.Graphics.DrawRectangle(pen, 0, 0, cardActive.Width - 1, cardActive.Height - 1);
                 }
 
-                // Add indicator dot showing current filter state
                 using (Brush brush = new SolidBrush(_showInactive ? Color.FromArgb(255, 100, 0) : Color.FromArgb(76, 175, 80)))
                 {
                     e.Graphics.FillEllipse(brush, cardActive.Width - 20, 10, 10, 10);
@@ -184,32 +306,7 @@ namespace Gym_Membership_System
 
             statsFlowLayout.Controls.Add(cardActive);
         }
-        private async void ToggleShowAllMembers()
-        {
-            _showAllMembers = !_showAllMembers;
-            _showInactive = false;  // Reset Active Members filter when Total card is clicked
-            _showNewMembers = false; // Reset New Members filter when Total card is clicked
 
-            // Visual feedback - flash the card
-            cardTotal.BackColor = Color.FromArgb(255, 250, 240);
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 200;
-            timer.Tick += (s, e) =>
-            {
-                cardTotal.BackColor = Color.White;
-                timer.Stop();
-                timer.Dispose();
-            };
-            timer.Start();
-
-            // Force refresh of the card's paint to update the indicator dot
-            cardTotal.Invalidate();
-            cardActive.Invalidate();
-            cardNew.Invalidate();
-
-            // Refresh the member list with the new filter
-            await RefreshMembers();
-        }
         private void CreateNewMembersCard()
         {
             cardNew = new Panel();
@@ -218,7 +315,7 @@ namespace Gym_Membership_System
             cardNew.Margin = new Padding(12, 5, 12, 5);
             cardNew.Padding = new Padding(10);
             cardNew.Cursor = Cursors.Hand;
-            cardNew.Click += (s, e) => ToggleShowNewMembers();  // Show new members only
+            cardNew.Click += (s, e) => ToggleShowNewMembers();
 
             cardNew.Paint += (s, e) =>
             {
@@ -227,8 +324,7 @@ namespace Gym_Membership_System
                     e.Graphics.DrawRectangle(pen, 0, 0, cardNew.Width - 1, cardNew.Height - 1);
                 }
 
-                // Add indicator dot showing current filter state
-                using (Brush brush = new SolidBrush(_showNewMembers ? Color.FromArgb(255, 100, 0) : Color.Purple))
+                using (Brush brush = new SolidBrush(_showNewMembers ? Color.FromArgb(255, 100, 0) : Color.FromArgb(255, 150, 0)))
                 {
                     e.Graphics.FillEllipse(brush, cardNew.Width - 20, 10, 10, 10);
                 }
@@ -267,13 +363,37 @@ namespace Gym_Membership_System
 
             statsFlowLayout.Controls.Add(cardNew);
         }
+
+        private async void ToggleShowAllMembers()
+        {
+            _showAllMembers = !_showAllMembers;
+            _showInactive = false;
+            _showNewMembers = false;
+
+            cardTotal.BackColor = Color.FromArgb(255, 250, 240);
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 200;
+            timer.Tick += (s, e) =>
+            {
+                cardTotal.BackColor = Color.White;
+                timer.Stop();
+                timer.Dispose();
+            };
+            timer.Start();
+
+            cardTotal.Invalidate();
+            cardActive.Invalidate();
+            cardNew.Invalidate();
+
+            await RefreshMembers();
+        }
+
         private async void ToggleShowInactive()
         {
             _showInactive = !_showInactive;
-            _showAllMembers = false;  // Reset Total Members filter when Active card is clicked
-            _showNewMembers = false;  // Reset New Members filter when Active card is clicked
+            _showAllMembers = false;
+            _showNewMembers = false;
 
-            // Visual feedback - flash the card
             cardActive.BackColor = Color.FromArgb(255, 250, 240);
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Interval = 200;
@@ -285,23 +405,19 @@ namespace Gym_Membership_System
             };
             timer.Start();
 
-            // Force refresh of the card's paint to update the indicator dot
             cardActive.Invalidate();
             cardTotal.Invalidate();
             cardNew.Invalidate();
 
-            // Refresh the member list with the new filter
             await RefreshMembers();
         }
+
         private async void ToggleShowNewMembers()
         {
             _showNewMembers = !_showNewMembers;
-
-            // Reset other filters when New card is clicked
             _showAllMembers = false;
             _showInactive = false;
 
-            // Visual feedback - flash the card
             cardNew.BackColor = Color.FromArgb(255, 250, 240);
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
             timer.Interval = 200;
@@ -313,14 +429,13 @@ namespace Gym_Membership_System
             };
             timer.Start();
 
-            // Force refresh of all cards' paint to update indicator dots
             cardNew.Invalidate();
             cardTotal.Invalidate();
             cardActive.Invalidate();
 
-            // Refresh the member list with the new filter
             await RefreshMembers();
         }
+
         private void ShowMemberDetails(string category)
         {
             MessageBox.Show($"Showing detailed information for {category}",
@@ -400,7 +515,7 @@ namespace Gym_Membership_System
             dgvMembers.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvMembers.ColumnHeadersHeight = 45;
 
-            dgvMembers.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 100, 0);  // Orange
+            dgvMembers.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 100, 0);
 
             dgvMembers.DefaultCellStyle.BackColor = Color.White;
             dgvMembers.DefaultCellStyle.ForeColor = Color.Black;
@@ -414,6 +529,7 @@ namespace Gym_Membership_System
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            ThemeManager.RegisterForm(this);
             SetGreeting();
             CenterContent();
             this.Text = $"FitWare Admin Panel - {_role}";
@@ -530,7 +646,6 @@ namespace Gym_Membership_System
                 {
                     await conn.OpenAsync();
 
-                    // TOTAL MEMBERS - Count ALL members
                     string totalQuery = "SELECT COUNT(*) FROM Members";
                     using (SqlCommand cmd = new SqlCommand(totalQuery, conn))
                     {
@@ -538,7 +653,6 @@ namespace Gym_Membership_System
                         UpdateLabelText(lblTotalValue, total.ToString());
                     }
 
-                    // ACTIVE MEMBERS - Count only active members (IsActive = 1)
                     string activeQuery = "SELECT COUNT(*) FROM Members WHERE IsActive = 1";
                     using (SqlCommand cmd = new SqlCommand(activeQuery, conn))
                     {
@@ -546,8 +660,6 @@ namespace Gym_Membership_System
                         UpdateLabelText(lblActiveValue, active.ToString());
                     }
 
-                    // NEW MEMBERS THIS MONTH - Count members who joined this month (regardless of status)
-                    // This updates correctly when a new member from this month is deleted
                     string newQuery = "SELECT COUNT(*) FROM Members WHERE JoinDate >= DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)";
                     using (SqlCommand cmd = new SqlCommand(newQuery, conn))
                     {
@@ -595,9 +707,6 @@ namespace Gym_Membership_System
         {
             try
             {
-                // First, update member status based on attendance
-                await UpdateMemberStatusBasedOnAttendance();
-
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     await conn.OpenAsync();
@@ -606,55 +715,56 @@ namespace Gym_Membership_System
                     if (_showNewMembers)
                     {
                         query = @"SELECT 
-                            MemberID,
-                            'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
-                            FirstName AS [First Name], 
-                            LastName AS [Last Name], 
-                            Email, 
-                            Phone,
-                            MembershipType AS [Type], 
-                            FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
-                            CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
-                        FROM Members 
-                        WHERE JoinDate >= DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)
-                        ORDER BY JoinDate DESC";
+                                    MemberID,
+                                    'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
+                                    FirstName AS [First Name], 
+                                    LastName AS [Last Name], 
+                                    Email, 
+                                    Phone,
+                                    MembershipType AS [Type], 
+                                    FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
+                                    CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
+                                FROM Members 
+                                WHERE JoinDate >= DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)
+                                ORDER BY JoinDate DESC";
                     }
                     else if (_showAllMembers)
                     {
                         query = @"SELECT 
-                            MemberID,
-                            'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
-                            FirstName AS [First Name], 
-                            LastName AS [Last Name], 
-                            Email, 
-                            Phone,
-                            MembershipType AS [Type], 
-                            FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
-                            CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
-                        FROM Members 
-                        ORDER BY JoinDate DESC";
+                                    MemberID,
+                                    'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
+                                    FirstName AS [First Name], 
+                                    LastName AS [Last Name], 
+                                    Email, 
+                                    Phone,
+                                    MembershipType AS [Type], 
+                                    FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
+                                    CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
+                                FROM Members 
+                                ORDER BY JoinDate DESC";
                     }
                     else
                     {
                         query = @"SELECT 
-                            MemberID,
-                            'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
-                            FirstName AS [First Name], 
-                            LastName AS [Last Name], 
-                            Email, 
-                            Phone,
-                            MembershipType AS [Type], 
-                            FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
-                            CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
-                        FROM Members 
-                        WHERE IsActive = 1
-                        ORDER BY JoinDate DESC";
+                                    MemberID,
+                                    'MEM-' + RIGHT('0000' + CAST(MemberID AS VARCHAR(4)), 4) AS ID,
+                                    FirstName AS [First Name], 
+                                    LastName AS [Last Name], 
+                                    Email, 
+                                    Phone,
+                                    MembershipType AS [Type], 
+                                    FORMAT(JoinDate, 'MM/dd/yyyy') AS [Join Date],
+                                    CASE WHEN IsActive = 1 THEN 'Active' ELSE 'Inactive' END AS [Status]
+                                FROM Members 
+                                ORDER BY JoinDate DESC";
                     }
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
 
                     await Task.Run(() => adapter.Fill(dt));
+
+                    Console.WriteLine($"Loaded {dt.Rows.Count} members into DataTable");
 
                     this.BeginInvoke(new Action(() =>
                     {
@@ -723,69 +833,6 @@ namespace Gym_Membership_System
                 }
             }
         }
-        private async Task UpdateMemberStatusBasedOnAttendance()
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    await conn.OpenAsync();
-
-                    // Update members to Inactive if they haven't attended within their subscription period
-                    string query = @"
-                UPDATE Members 
-                SET IsActive = 0 
-                WHERE MemberID IN (
-                    SELECT m.MemberID
-                    FROM Members m
-                    LEFT JOIN (
-                        SELECT MemberID, MAX(AttendanceDate) AS LastAttendance
-                        FROM Attendance
-                        GROUP BY MemberID
-                    ) a ON m.MemberID = a.MemberID
-                    WHERE 
-                        (UPPER(m.MembershipType) = 'BASIC' AND (a.LastAttendance IS NULL OR a.LastAttendance < DATEADD(day, -14, GETDATE())))
-                        OR (UPPER(m.MembershipType) = 'PREMIUM' AND (a.LastAttendance IS NULL OR a.LastAttendance < DATEADD(month, -2, GETDATE())))
-                )";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        int updated = await cmd.ExecuteNonQueryAsync();
-                        if (updated > 0)
-                        {
-                            Console.WriteLine($"Updated {updated} members to inactive due to attendance inactivity");
-                        }
-                    }
-
-                    // Reactivate members who have recent attendance
-                    string reactivateQuery = @"
-                UPDATE Members 
-                SET IsActive = 1 
-                WHERE MemberID IN (
-                    SELECT m.MemberID
-                    FROM Members m
-                    INNER JOIN Attendance a ON m.MemberID = a.MemberID
-                    WHERE 
-                        (UPPER(m.MembershipType) = 'BASIC' AND a.AttendanceDate >= DATEADD(day, -14, GETDATE()))
-                        OR (UPPER(m.MembershipType) = 'PREMIUM' AND a.AttendanceDate >= DATEADD(month, -2, GETDATE()))
-                    GROUP BY m.MemberID
-                )";
-
-                    using (SqlCommand cmd = new SqlCommand(reactivateQuery, conn))
-                    {
-                        int reactivated = await cmd.ExecuteNonQueryAsync();
-                        if (reactivated > 0)
-                        {
-                            Console.WriteLine($"Reactivated {reactivated} members due to recent attendance");
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error updating member status from attendance: {ex.Message}");
-            }
-        }
 
         public async Task RefreshMembers()
         {
@@ -794,7 +841,6 @@ namespace Gym_Membership_System
 
             try
             {
-                await UpdateMemberStatusBasedOnAttendance(); // Add this line
                 await LoadMembersAsync();
                 await UpdateStatsAsync();
                 await UpdateTrends();
@@ -844,9 +890,7 @@ namespace Gym_Membership_System
             DataGridViewRow selectedRow = dgvMembers.SelectedRows[0];
             string memberId = selectedRow.Cells["ID"].Value?.ToString() ?? "";
             string memberName = $"{selectedRow.Cells["First Name"].Value} {selectedRow.Cells["Last Name"].Value}";
-            string currentStatus = selectedRow.Cells["Status"].Value?.ToString() ?? "";
 
-            // For permanent deletion, we don't need to check if inactive
             DialogResult result = MessageBox.Show(
                 $"⚠️ PERMANENT DELETE ⚠️\n\n" +
                 $"Are you sure you want to permanently delete {memberName} (ID: {memberId})?\n\n" +
@@ -890,7 +934,6 @@ namespace Gym_Membership_System
                     {
                         try
                         {
-                            // First, delete attendance records
                             string deleteAttendanceQuery = "DELETE FROM Attendance WHERE MemberID = @MemberID";
                             using (SqlCommand deleteAttendanceCmd = new SqlCommand(deleteAttendanceQuery, conn, transaction))
                             {
@@ -898,7 +941,6 @@ namespace Gym_Membership_System
                                 await deleteAttendanceCmd.ExecuteNonQueryAsync();
                             }
 
-                            // Then, permanently delete the member
                             string deleteMemberQuery = "DELETE FROM Members WHERE MemberID = @MemberID";
                             using (SqlCommand deleteMemberCmd = new SqlCommand(deleteMemberQuery, conn, transaction))
                             {
@@ -995,11 +1037,8 @@ namespace Gym_Membership_System
         private void btnAddMember_Click(object sender, EventArgs e)
         {
             this.Hide();
-            using (AddMember addMemberForm = new AddMember())
-            {
-                addMemberForm.ShowDialog();
-            }
-            // Make sure Form1 is visible and refreshed
+            AddMember addMemberForm = new AddMember();
+            addMemberForm.ShowDialog();
             this.Show();
             this.BringToFront();
             this.WindowState = FormWindowState.Maximized;
@@ -1039,6 +1078,12 @@ namespace Gym_Membership_System
                 MessageBox.Show($"Error opening Attendance Form: {ex.Message}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        // DARK MODE TOGGLE BUTTON CLICK EVENT
+        private void btnDarkMode_Click(object sender, EventArgs e)
+        {
+            ThemeManager.IsDarkMode = !ThemeManager.IsDarkMode;
         }
 
         private void btnLogout_Click(object sender, EventArgs e)

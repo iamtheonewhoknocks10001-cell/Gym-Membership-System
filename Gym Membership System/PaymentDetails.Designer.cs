@@ -45,7 +45,8 @@
             // Divider
             this.panelDivider = new System.Windows.Forms.Panel();
 
-            // Close Button
+            // Buttons
+            this.btnRenew = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
 
             this.panelContainer.SuspendLayout();
@@ -55,7 +56,7 @@
             // FORM SETTINGS
             // ============================================
             this.BackColor = System.Drawing.Color.FromArgb(30, 30, 35);
-            this.ClientSize = new System.Drawing.Size(500, 480);
+            this.ClientSize = new System.Drawing.Size(500, 520);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -92,9 +93,9 @@
             this.panelContainer.Controls.Add(this.lblRemaining);
             this.panelContainer.Controls.Add(this.lblRemainingValue);
             this.panelContainer.Controls.Add(this.panelDivider);
-            this.panelContainer.Location = new System.Drawing.Point(30, 110);
+            this.panelContainer.Location = new System.Drawing.Point(25, 110);
             this.panelContainer.Name = "panelContainer";
-            this.panelContainer.Size = new System.Drawing.Size(440, 300);
+            this.panelContainer.Size = new System.Drawing.Size(450, 320);
 
             // ============================================
             // PAYMENT ID
@@ -110,7 +111,7 @@
 
             this.lblPaymentIDValue.AutoSize = true;
             this.lblPaymentIDValue.BackColor = System.Drawing.Color.Transparent;
-            this.lblPaymentIDValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblPaymentIDValue.Font = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold);
             this.lblPaymentIDValue.ForeColor = System.Drawing.Color.FromArgb(255, 100, 0);
             this.lblPaymentIDValue.Location = new System.Drawing.Point(180, 20);
             this.lblPaymentIDValue.Name = "lblPaymentIDValue";
@@ -130,7 +131,7 @@
 
             this.lblStatusValue.AutoSize = true;
             this.lblStatusValue.BackColor = System.Drawing.Color.Transparent;
-            this.lblStatusValue.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblStatusValue.Font = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold);
             this.lblStatusValue.Location = new System.Drawing.Point(180, 65);
             this.lblStatusValue.Name = "lblStatusValue";
             this.lblStatusValue.Size = new System.Drawing.Size(0, 28);
@@ -140,7 +141,7 @@
             // ============================================
             this.lblMethod.AutoSize = true;
             this.lblMethod.BackColor = System.Drawing.Color.Transparent;
-            this.lblMethod.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblMethod.Font = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold);
             this.lblMethod.ForeColor = System.Drawing.Color.FromArgb(200, 200, 210);
             this.lblMethod.Location = new System.Drawing.Point(30, 110);
             this.lblMethod.Name = "lblMethod";
@@ -160,7 +161,7 @@
             // ============================================
             this.lblAmount.AutoSize = true;
             this.lblAmount.BackColor = System.Drawing.Color.Transparent;
-            this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblAmount.Font = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold);
             this.lblAmount.ForeColor = System.Drawing.Color.FromArgb(200, 200, 210);
             this.lblAmount.Location = new System.Drawing.Point(30, 155);
             this.lblAmount.Name = "lblAmount";
@@ -180,7 +181,7 @@
             // ============================================
             this.lblDueDate.AutoSize = true;
             this.lblDueDate.BackColor = System.Drawing.Color.Transparent;
-            this.lblDueDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblDueDate.Font = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold);
             this.lblDueDate.ForeColor = System.Drawing.Color.FromArgb(200, 200, 210);
             this.lblDueDate.Location = new System.Drawing.Point(30, 200);
             this.lblDueDate.Name = "lblDueDate";
@@ -196,7 +197,7 @@
             this.lblDueDateValue.Size = new System.Drawing.Size(0, 28);
 
             // ============================================
-            // REMAINING TIME - VALUE MOVED TO LEFT
+            // REMAINING TIME
             // ============================================
             this.lblRemaining.AutoSize = true;
             this.lblRemaining.BackColor = System.Drawing.Color.Transparent;
@@ -207,12 +208,10 @@
             this.lblRemaining.Size = new Size(166, 28);
             this.lblRemaining.Text = "Remaining Time:";
 
-            // MOVED: Value label now starts at X = 30 (same as other values, but below the label)
-            // Instead of being next to the label, it's on a new line aligned left
             this.lblRemainingValue.AutoSize = true;
             this.lblRemainingValue.BackColor = System.Drawing.Color.Transparent;
             this.lblRemainingValue.Font = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Bold);
-            this.lblRemainingValue.Location = new System.Drawing.Point(30, 273);  // Changed from 210 to 30
+            this.lblRemainingValue.Location = new System.Drawing.Point(30, 278);
             this.lblRemainingValue.Name = "lblRemainingValue";
             this.lblRemainingValue.Size = new System.Drawing.Size(0, 28);
 
@@ -220,9 +219,28 @@
             // DIVIDER
             // ============================================
             this.panelDivider.BackColor = System.Drawing.Color.FromArgb(60, 60, 70);
-            this.panelDivider.Location = new System.Drawing.Point(20, 310);
+            this.panelDivider.Location = new System.Drawing.Point(20, 315);
             this.panelDivider.Name = "panelDivider";
-            this.panelDivider.Size = new System.Drawing.Size(400, 1);
+            this.panelDivider.Size = new System.Drawing.Size(410, 1);
+            // In the InitializeComponent method, change the btnRenew section to always be visible:
+
+            // ============================================
+            // RENEW BUTTON - Always visible
+            // ============================================
+            this.btnRenew.BackColor = System.Drawing.Color.FromArgb(76, 175, 80);
+            this.btnRenew.Cursor = Cursors.Hand;
+            this.btnRenew.FlatAppearance.BorderSize = 0;
+            this.btnRenew.FlatStyle = FlatStyle.Flat;
+            this.btnRenew.Font = new Font("Calibri", 12F, FontStyle.Bold);
+            this.btnRenew.ForeColor = Color.White;
+            this.btnRenew.Location = new Point(100, 455);
+            this.btnRenew.Name = "btnRenew";
+            this.btnRenew.Size = new Size(140, 40);
+            this.btnRenew.Text = "🔄 RENEW";
+            this.btnRenew.UseVisualStyleBackColor = false;
+            this.btnRenew.Visible = true;  // Always visible
+            this.btnRenew.Enabled = true;   // Always enabled
+            this.btnRenew.Click += new EventHandler(this.btnRenew_Click);
 
             // ============================================
             // CLOSE BUTTON
@@ -231,12 +249,11 @@
             this.btnClose.Cursor = Cursors.Hand;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = FlatStyle.Flat;
-            this.btnClose.Font = new Font("Impact", 14F, FontStyle.Bold);
+            this.btnClose.Font = new Font("Calibri", 12F, FontStyle.Bold);
             this.btnClose.ForeColor = Color.White;
-            this.btnClose.Location = new Point(175, 420);
+            this.btnClose.Location = new Point(260, 455);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new Size(150, 40);
-            this.btnClose.TabIndex = 20;
+            this.btnClose.Size = new Size(140, 40);
             this.btnClose.Text = "CLOSE";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new EventHandler(this.btnClose_Click);
@@ -244,6 +261,7 @@
             // ============================================
             // ADD CONTROLS
             // ============================================
+            this.Controls.Add(this.btnRenew);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panelContainer);
             this.Controls.Add(this.lblTitle);
@@ -269,6 +287,7 @@
         private System.Windows.Forms.Label lblRemaining;
         private System.Windows.Forms.Label lblRemainingValue;
         private System.Windows.Forms.Panel panelDivider;
+        private System.Windows.Forms.Button btnRenew;
         private System.Windows.Forms.Button btnClose;
     }
 }

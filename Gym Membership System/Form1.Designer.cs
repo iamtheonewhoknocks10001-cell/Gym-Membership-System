@@ -22,6 +22,7 @@
             this.btnPayments = new System.Windows.Forms.Button();
             this.btnAttendance = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
+            this.btnDarkMode = new System.Windows.Forms.Button();
 
             // Dashboard Container - Fills remaining space
             this.dashboardContainer = new System.Windows.Forms.Panel();
@@ -49,6 +50,17 @@
             this.tableContainer = new System.Windows.Forms.Panel();
             this.dgvMembers = new System.Windows.Forms.DataGridView();
 
+            // Stats Card Controls
+            this.cardTotal = new System.Windows.Forms.Panel();
+            this.lblTotalValue = new System.Windows.Forms.Label();
+            this.lblTotalLabel = new System.Windows.Forms.Label();
+            this.cardActive = new System.Windows.Forms.Panel();
+            this.lblActiveValue = new System.Windows.Forms.Label();
+            this.lblActiveLabel = new System.Windows.Forms.Label();
+            this.cardNew = new System.Windows.Forms.Panel();
+            this.lblNewValue = new System.Windows.Forms.Label();
+            this.lblNewLabel = new System.Windows.Forms.Label();
+
             // Suspend layouts
             this.navPanel.SuspendLayout();
             this.dashboardContainer.SuspendLayout();
@@ -61,6 +73,9 @@
             this.membersHeaderContent.SuspendLayout();
             this.tableContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).BeginInit();
+            this.cardTotal.SuspendLayout();
+            this.cardActive.SuspendLayout();
+            this.cardNew.SuspendLayout();
             this.SuspendLayout();
 
             // ============================================
@@ -72,6 +87,7 @@
             this.navPanel.Controls.Add(this.btnPayments);
             this.navPanel.Controls.Add(this.btnAttendance);
             this.navPanel.Controls.Add(this.btnLogout);
+            this.navPanel.Controls.Add(this.btnDarkMode);
             this.navPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.navPanel.Height = 65;
             this.navPanel.Name = "navPanel";
@@ -136,6 +152,21 @@
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
 
             // ============================================
+            // DARK MODE TOGGLE BUTTON
+            // ============================================
+            this.btnDarkMode.BackColor = System.Drawing.Color.FromArgb(50, 50, 60);
+            this.btnDarkMode.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDarkMode.FlatAppearance.BorderSize = 0;
+            this.btnDarkMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDarkMode.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDarkMode.ForeColor = System.Drawing.Color.White;
+            this.btnDarkMode.Location = new System.Drawing.Point(770, 15);
+            this.btnDarkMode.Size = new System.Drawing.Size(110, 35);
+            this.btnDarkMode.Text = "🌙 DARK MODE";
+            this.btnDarkMode.UseVisualStyleBackColor = false;
+            this.btnDarkMode.Click += new System.EventHandler(this.btnDarkMode_Click);
+
+            // ============================================
             // DASHBOARD CONTAINER
             // ============================================
             this.dashboardContainer.BackColor = System.Drawing.Color.FromArgb(245, 245, 250);
@@ -184,9 +215,90 @@
             this.statsFlowLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.statsFlowLayout.WrapContents = false;
             this.statsFlowLayout.Location = new System.Drawing.Point(0, 0);
+            this.statsFlowLayout.Controls.Add(this.cardTotal);
+            this.statsFlowLayout.Controls.Add(this.cardActive);
+            this.statsFlowLayout.Controls.Add(this.cardNew);
 
             this.statsContainer.Resize += (s, e) => CenterStatsPanel();
             this.statsPanel.Controls.Add(this.statsContainer);
+
+            // ============================================
+            // TOTAL MEMBERS CARD
+            // ============================================
+            this.cardTotal.BackColor = System.Drawing.Color.White;
+            this.cardTotal.Size = new System.Drawing.Size(240, 110);
+            this.cardTotal.Margin = new System.Windows.Forms.Padding(12, 5, 12, 5);
+            this.cardTotal.Padding = new System.Windows.Forms.Padding(10);
+            this.cardTotal.Cursor = System.Windows.Forms.Cursors.Hand;
+
+            this.lblTotalValue.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold);
+            this.lblTotalValue.ForeColor = System.Drawing.Color.FromArgb(50, 50, 60);
+            this.lblTotalValue.Location = new System.Drawing.Point(85, 15);
+            this.lblTotalValue.Size = new System.Drawing.Size(100, 50);
+            this.lblTotalValue.Text = "0";
+            this.lblTotalValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            this.lblTotalLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular);
+            this.lblTotalLabel.ForeColor = System.Drawing.Color.Black;
+            this.lblTotalLabel.Location = new System.Drawing.Point(60, 70);
+            this.lblTotalLabel.Size = new System.Drawing.Size(150, 25);
+            this.lblTotalLabel.Text = "TOTAL MEMBERS";
+            this.lblTotalLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            this.cardTotal.Controls.Add(this.lblTotalValue);
+            this.cardTotal.Controls.Add(this.lblTotalLabel);
+
+            // ============================================
+            // ACTIVE MEMBERS CARD
+            // ============================================
+            this.cardActive.BackColor = System.Drawing.Color.White;
+            this.cardActive.Size = new System.Drawing.Size(240, 110);
+            this.cardActive.Margin = new System.Windows.Forms.Padding(12, 5, 12, 5);
+            this.cardActive.Padding = new System.Windows.Forms.Padding(10);
+            this.cardActive.Cursor = System.Windows.Forms.Cursors.Hand;
+
+            this.lblActiveValue.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold);
+            this.lblActiveValue.ForeColor = System.Drawing.Color.FromArgb(76, 175, 80);
+            this.lblActiveValue.Location = new System.Drawing.Point(85, 15);
+            this.lblActiveValue.Size = new System.Drawing.Size(100, 50);
+            this.lblActiveValue.Text = "0";
+            this.lblActiveValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            this.lblActiveLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular);
+            this.lblActiveLabel.ForeColor = System.Drawing.Color.Black;
+            this.lblActiveLabel.Location = new System.Drawing.Point(60, 70);
+            this.lblActiveLabel.Size = new System.Drawing.Size(150, 25);
+            this.lblActiveLabel.Text = "ACTIVE MEMBERS";
+            this.lblActiveLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            this.cardActive.Controls.Add(this.lblActiveValue);
+            this.cardActive.Controls.Add(this.lblActiveLabel);
+
+            // ============================================
+            // NEW MEMBERS CARD
+            // ============================================
+            this.cardNew.BackColor = System.Drawing.Color.White;
+            this.cardNew.Size = new System.Drawing.Size(240, 110);
+            this.cardNew.Margin = new System.Windows.Forms.Padding(12, 5, 12, 5);
+            this.cardNew.Padding = new System.Windows.Forms.Padding(10);
+            this.cardNew.Cursor = System.Windows.Forms.Cursors.Hand;
+
+            this.lblNewValue.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold);
+            this.lblNewValue.ForeColor = System.Drawing.Color.FromArgb(255, 150, 0);
+            this.lblNewValue.Location = new System.Drawing.Point(85, 15);
+            this.lblNewValue.Size = new System.Drawing.Size(100, 50);
+            this.lblNewValue.Text = "0";
+            this.lblNewValue.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            this.lblNewLabel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular);
+            this.lblNewLabel.ForeColor = System.Drawing.Color.Black;
+            this.lblNewLabel.Location = new System.Drawing.Point(60, 70);
+            this.lblNewLabel.Size = new System.Drawing.Size(150, 25);
+            this.lblNewLabel.Text = "NEW THIS MONTH";
+            this.lblNewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+
+            this.cardNew.Controls.Add(this.lblNewValue);
+            this.cardNew.Controls.Add(this.lblNewLabel);
 
             // ============================================
             // MEMBERS SECTION - White background
@@ -245,7 +357,7 @@
             this.btnRefresh.ForeColor = System.Drawing.Color.White;
             this.btnRefresh.Size = new System.Drawing.Size(100, 36);
             this.btnRefresh.Text = "⟳ Refresh";
-            this.btnRefresh.Cursor = Cursors.Hand;
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
 
             // Delete Button
@@ -256,7 +368,7 @@
             this.btnDelete.ForeColor = System.Drawing.Color.White;
             this.btnDelete.Size = new System.Drawing.Size(100, 36);
             this.btnDelete.Text = "🗑️ DELETE";
-            this.btnDelete.Cursor = Cursors.Hand;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 
             this.membersHeader.Controls.Add(this.membersHeaderContent);
@@ -338,6 +450,9 @@
             this.membersHeaderContent.PerformLayout();
             this.tableContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).EndInit();
+            this.cardTotal.ResumeLayout(false);
+            this.cardActive.ResumeLayout(false);
+            this.cardNew.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
@@ -376,7 +491,6 @@
             int searchBarVerticalPosition = 35;
             int buttonVerticalPosition = 30;
 
-
             // Title uses titleStartX (moved left)
             this.lblMembersTitle.Location = new System.Drawing.Point(titleStartX, titleVerticalPosition);
 
@@ -389,7 +503,6 @@
 
             int deleteX = refreshX + refreshWidth + spacing;
             this.btnDelete.Location = new System.Drawing.Point(deleteX, buttonVerticalPosition);
-
         }
 
         private void CenterTable()
@@ -418,6 +531,7 @@
         private System.Windows.Forms.Button btnPayments;
         private System.Windows.Forms.Button btnAttendance;
         private System.Windows.Forms.Button btnLogout;
+        private System.Windows.Forms.Button btnDarkMode;
 
         private System.Windows.Forms.Panel dashboardContainer;
         private System.Windows.Forms.Panel dashboardContent;
